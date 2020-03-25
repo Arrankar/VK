@@ -99,7 +99,6 @@
                         <outlet property="loginTextField" destination="4UP-z4-Tk0" id="vfp-Nj-4LU"/>
                         <outlet property="passwordLabel" destination="yNZ-eg-LwW" id="pvN-xh-PUB"/>
                         <outlet property="passwordTextField" destination="VmH-LV-2ZY" id="skn-wJ-sf4"/>
-                        <outlet property="scrollView" destination="oCw-3Q-DL3" id="F1w-td-FNL"/>
                         <outlet property="scrollViewBottomConstraint" destination="ycX-gu-cM5" id="ZHf-iC-7QM"/>
                         <outlet property="weatherLabel" destination="Of5-aO-dDb" id="Tpa-Rh-sf5"/>
                     </connections>

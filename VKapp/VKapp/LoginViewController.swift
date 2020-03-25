@@ -18,8 +18,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     
     @IBOutlet weak var loginButton: UIButton!
-    
-    @IBOutlet weak var scrollView: UIScrollView!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +53,6 @@ class LoginViewController: UIViewController {
         let frame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
         
         scrollViewBottomConstraint.constant = frame.height
-//        scrollView.contentOffset = CGPoint(x: 0, y: frame.height)
     }
     
     @objc func keyboardWillBeHidden(notification: Notification) {
