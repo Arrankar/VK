@@ -36,16 +36,39 @@ class LoginViewController: UIViewController {
             object: nil)
     }
 
-    @IBAction func loginPressed() {
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        switch identifier {
+        case "loginSegue":
+            
+            let isAuth = login()
+            
+            if !isAuth {
+                showErrorAlert()
+            }
+            
+            return isAuth
+        default:
+            return true
+        }
+    }
+    
+    func login() -> Bool {
         let login = loginTextField.text!
         let password = passwordTextField.text!
         
-        
-        if login == "admin" && password == "123456" {
-            print("успешная авторизация")
-        } else {
-            print("неуспешная авторизация")
-        }
+        return login == "admin" && password == "123456"
+    }
+    
+    func showErrorAlert() {
+      
+        let alert = UIAlertController(
+            title: "Ошибка",
+            message: "Неверные имя пользователя или пароль",
+            preferredStyle: .alert)
+       
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true)
     }
     
     @objc func keyboardWasShown(notification: Notification) {
