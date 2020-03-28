@@ -9,8 +9,7 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    @IBOutlet weak var scrollViewBottomConstraint: NSLayoutConstraint!
-    
+        
     @IBOutlet weak var weatherLabel: UILabel!
     @IBOutlet weak var loginLabel: UILabel!
     @IBOutlet weak var passwordLabel: UILabel!
@@ -19,6 +18,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var loginButton: UIButton!
 
+    @IBOutlet weak var scrollBotConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,29 +37,33 @@ class LoginViewController: UIViewController {
     }
 
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+         
         switch identifier {
         case "loginSegue":
-            
-            let isAuth = login()
-            
-            if !isAuth {
-                showErrorAlert()
-            }
-            
-            return isAuth
+           let auth = login()
+            return auth
         default:
-            return true
+            return false
         }
-    }
+}
     
     func login() -> Bool {
         let login = loginTextField.text!
         let password = passwordTextField.text!
         
-        return login == "admin" && password == "123456"
+        switch (login, password) {
+        case ("admin", "123456"):
+            return true
+        case ("admin", _):
+            passwordError()
+            return false
+        default:
+            loginError()
+            return false
+        }
     }
     
-    func showErrorAlert() {
+    func loginError() {
       
         let alert = UIAlertController(
             title: "Ошибка",
@@ -71,15 +75,27 @@ class LoginViewController: UIViewController {
         present(alert, animated: true)
     }
     
+    func passwordError() {
+      
+        let alert = UIAlertController(
+            title: "Ошибка",
+            message: "Неверный пароль",
+            preferredStyle: .alert)
+       
+        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true)
+    }
+    
     @objc func keyboardWasShown(notification: Notification) {
         let userInfo = (notification as NSNotification).userInfo as! [String: Any]
         let frame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
         
-        scrollViewBottomConstraint.constant = frame.height
+        scrollBotConstraint.constant = frame.height
     }
     
     @objc func keyboardWillBeHidden(notification: Notification) {
-        scrollViewBottomConstraint.constant = 0
+        scrollBotConstraint.constant = 0
     }
     
 }
