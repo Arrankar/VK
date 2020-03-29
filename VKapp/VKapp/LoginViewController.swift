@@ -9,20 +9,20 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-        
-    @IBOutlet weak var weatherLabel: UILabel!
+    
+    @IBOutlet weak var vkLabel: UILabel!
     @IBOutlet weak var loginLabel: UILabel!
     @IBOutlet weak var passwordLabel: UILabel!
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     @IBOutlet weak var loginButton: UIButton!
-
+    
     @IBOutlet weak var scrollBotConstraint: NSLayoutConstraint!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        weatherLabel.text = "VK"
+        vkLabel.text = "VK"
         
         NotificationCenter.default.addObserver(
             self,
@@ -35,17 +35,17 @@ class LoginViewController: UIViewController {
             name: UIResponder.keyboardWillHideNotification,
             object: nil)
     }
-
+    
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-         
+        
         switch identifier {
         case "loginSegue":
-           let auth = login()
+            let auth = login()
             return auth
         default:
             return false
         }
-}
+    }
     
     func login() -> Bool {
         let login = loginTextField.text!
@@ -64,24 +64,24 @@ class LoginViewController: UIViewController {
     }
     
     func loginError() {
-      
+        
         let alert = UIAlertController(
             title: "Ошибка",
             message: "Неверные имя пользователя или пароль",
             preferredStyle: .alert)
-       
+        
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(action)
         present(alert, animated: true)
     }
     
     func passwordError() {
-      
+        
         let alert = UIAlertController(
             title: "Ошибка",
             message: "Неверный пароль",
             preferredStyle: .alert)
-       
+        
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alert.addAction(action)
         present(alert, animated: true)

@@ -66,7 +66,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.82099320217569782" green="0.96848052740097046" blue="0.73368326540781037" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.67864265489999998" green="1" blue="0.66833503429999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstItem="zdI-WU-DUz" firstAttribute="top" secondItem="VmH-LV-2ZY" secondAttribute="bottom" constant="100" id="3Kl-Fd-TpV"/>
                                     <constraint firstItem="Of5-aO-dDb" firstAttribute="top" secondItem="oCw-3Q-DL3" secondAttribute="top" constant="100" id="3pT-OP-yJS"/>
@@ -85,7 +85,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.60769969219999997" green="0.78385293479999996" blue="0.56860083340000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.67864265489999998" green="1" blue="0.66833503429999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="oCw-3Q-DL3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="9KO-GW-0hT"/>
                             <constraint firstAttribute="bottom" secondItem="oCw-3Q-DL3" secondAttribute="bottom" priority="750" id="dwf-eU-uDc"/>
@@ -102,7 +102,7 @@
                         <outlet property="passwordLabel" destination="yNZ-eg-LwW" id="pvN-xh-PUB"/>
                         <outlet property="passwordTextField" destination="VmH-LV-2ZY" id="skn-wJ-sf4"/>
                         <outlet property="scrollBotConstraint" destination="dwf-eU-uDc" id="35W-7h-WUy"/>
-                        <outlet property="weatherLabel" destination="Of5-aO-dDb" id="Tpa-Rh-sf5"/>
+                        <outlet property="vkLabel" destination="Of5-aO-dDb" id="Tpa-Rh-sf5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -128,7 +128,7 @@
             </objects>
             <point key="canvasLocation" x="-126" y="1285"/>
         </scene>
-        <!-- -->
+        <!--Friends-->
         <scene sceneID="8D3-ze-I5R">
             <objects>
                 <tableViewController id="QBo-1P-h3p" sceneMemberID="viewController">
@@ -154,13 +154,15 @@
                             <outlet property="delegate" destination="QBo-1P-h3p" id="7QO-wP-wyq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title=" " id="Ngy-O5-ixD"/>
+                    <navigationItem key="navigationItem" title="Friends" id="Ngy-O5-ixD">
+                        <barButtonItem key="backBarButtonItem" title="  " id="RSu-je-Jba"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TL0-06-FPy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1616" y="920"/>
         </scene>
-        <!--     -->
+        <!--Groups-->
         <scene sceneID="be3-0o-YrL">
             <objects>
                 <tableViewController id="kfK-k4-3T2" sceneMemberID="viewController">
@@ -183,7 +185,7 @@
                             <outlet property="delegate" destination="kfK-k4-3T2" id="5Tn-1A-rJU"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="     " id="AMm-NA-kzd">
+                    <navigationItem key="navigationItem" title="Groups" id="AMm-NA-kzd">
                         <barButtonItem key="backBarButtonItem" title=" " id="KjG-LQ-lTy"/>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="v7z-rr-xtJ">
                             <connections>
@@ -230,7 +232,7 @@
             </objects>
             <point key="canvasLocation" x="820" y="920"/>
         </scene>
-        <!--Title-->
+        <!--Images-->
         <scene sceneID="1lk-tg-DMc">
             <objects>
                 <collectionViewController id="QKK-KU-gzQ" sceneMemberID="viewController">
@@ -259,7 +261,7 @@
                             <outlet property="delegate" destination="QKK-KU-gzQ" id="5fD-w9-KvH"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Title" id="Yl3-9I-ZW3"/>
+                    <navigationItem key="navigationItem" title="Images" id="Yl3-9I-ZW3"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbc-pz-yAv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -288,9 +290,7 @@
                             <outlet property="delegate" destination="R7v-JZ-Y4z" id="S4l-Sw-zQ1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Search" id="ocI-6c-FaN">
-                        <barButtonItem key="backBarButtonItem" title="  " id="Du9-Dg-hcb"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Search" id="ocI-6c-FaN"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Sg-7W-7dj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
