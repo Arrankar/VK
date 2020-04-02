@@ -35,16 +35,24 @@ class GroupsTableViewController: UITableViewController {
         return cell
     }
     
+    
     @IBAction func addGroup(segue: UIStoryboardSegue) {
         
         if segue.identifier == "addGroup" {
-            
-            guard let allGroupsTableViewController = segue.source as? AllGroupsTableViewController else { return }
+        
+            guard let allGroupsTableViewController = segue.source as? AllGroupsTableViewController  else { return }
             
             if let indexPath = allGroupsTableViewController.tableView.indexPathForSelectedRow {
                 
-                let group = allGroupsTableViewController.groups[indexPath.row]
+                var group: Group
                 
+                if allGroupsTableViewController.searching {
+                    group = allGroupsTableViewController.filteedGroups[indexPath.row]
+                   
+                } else {
+                    group = allGroupsTableViewController.groups[indexPath.row]
+                }
+             
                 if !groups.contains(group) {
                     groups.append(group)
                     
@@ -53,5 +61,13 @@ class GroupsTableViewController: UITableViewController {
             }
         }
         
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            groups.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
 }
