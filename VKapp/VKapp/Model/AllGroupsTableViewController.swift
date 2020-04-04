@@ -22,7 +22,6 @@ class AllGroupsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
-        filteredGroups = groups
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -61,7 +60,7 @@ extension AllGroupsTableViewController: UISearchBarDelegate {
         filteredGroups = groups.filter({ (group: Group) -> Bool in
             return group.groupName.lowercased().contains(searchText.lowercased())
         })
-        searching = true
+            searching = true
         tableView.reloadData()
     }
     
