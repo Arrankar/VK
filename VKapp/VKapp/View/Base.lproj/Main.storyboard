@@ -66,11 +66,20 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b0y-KS-xIo" customClass="LikeButton" customModule="VKapp" customModuleProvider="target">
+                                        <rect key="frame" x="87" y="595" width="240" height="128"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="240" id="vVn-nA-ojc"/>
+                                            <constraint firstAttribute="height" constant="128" id="zgO-tK-myy"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.67864265489999998" green="1" blue="0.66833503429999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstItem="zdI-WU-DUz" firstAttribute="top" secondItem="VmH-LV-2ZY" secondAttribute="bottom" constant="100" id="3Kl-Fd-TpV"/>
                                     <constraint firstItem="Of5-aO-dDb" firstAttribute="top" secondItem="oCw-3Q-DL3" secondAttribute="top" constant="100" id="3pT-OP-yJS"/>
+                                    <constraint firstItem="b0y-KS-xIo" firstAttribute="centerX" secondItem="oCw-3Q-DL3" secondAttribute="centerX" id="4F6-sB-cVH"/>
                                     <constraint firstAttribute="trailing" secondItem="VmH-LV-2ZY" secondAttribute="trailing" constant="20" id="9BI-2d-Hin"/>
                                     <constraint firstAttribute="bottom" secondItem="zdI-WU-DUz" secondAttribute="bottom" constant="10" id="B7C-hs-kcp"/>
                                     <constraint firstItem="VmH-LV-2ZY" firstAttribute="centerX" secondItem="oCw-3Q-DL3" secondAttribute="centerX" id="I9m-Ne-mQa"/>
@@ -82,6 +91,7 @@
                                     <constraint firstItem="Cg4-lP-vCo" firstAttribute="top" secondItem="Of5-aO-dDb" secondAttribute="bottom" constant="60" id="eTn-Gz-c4I"/>
                                     <constraint firstItem="4UP-z4-Tk0" firstAttribute="top" secondItem="Cg4-lP-vCo" secondAttribute="bottom" constant="20" id="fMx-l2-XV2"/>
                                     <constraint firstItem="zdI-WU-DUz" firstAttribute="centerX" secondItem="oCw-3Q-DL3" secondAttribute="centerX" id="lSt-r2-b9N"/>
+                                    <constraint firstItem="b0y-KS-xIo" firstAttribute="top" secondItem="zdI-WU-DUz" secondAttribute="bottom" constant="23" id="pRl-ia-4dH"/>
                                     <constraint firstItem="4UP-z4-Tk0" firstAttribute="centerX" secondItem="oCw-3Q-DL3" secondAttribute="centerX" id="xra-u9-Hlu"/>
                                 </constraints>
                             </scrollView>
@@ -173,6 +183,23 @@
                                                 <constraint firstAttribute="width" constant="100" id="xU6-Nk-LOY"/>
                                                 <constraint firstAttribute="trailing" secondItem="BML-RM-I22" secondAttribute="trailing" id="xX1-hJ-rew"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="opacity">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                    <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                    <real key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRaius">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <outlet property="avatar" destination="BML-RM-I22" id="dyg-fH-yDR"/>
                                             </connections>
@@ -192,7 +219,7 @@
                                     <outlet property="friendImage" destination="7NP-wt-62L" id="eWn-D4-Vr9"/>
                                     <outlet property="friendName" destination="k6W-61-1sh" id="wj5-c3-Pm2"/>
                                     <outlet property="friendSurname" destination="RI4-z7-YjD" id="08L-m7-qn5"/>
-                                    <segue destination="QKK-KU-gzQ" kind="show" id="KI2-n9-gya"/>
+                                    <segue destination="QKK-KU-gzQ" kind="show" identifier="imagesSegue" id="KI2-n9-gya"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -337,15 +364,26 @@
                                                 <constraint firstAttribute="width" constant="120" id="7Ed-V2-Rov"/>
                                             </constraints>
                                         </imageView>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zY6-Qq-FID" customClass="LikeButton" customModule="VKapp" customModuleProvider="target">
+                                            <rect key="frame" x="90" y="120" width="50" height="20"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="50" id="3nf-75-3Ga"/>
+                                                <constraint firstAttribute="height" constant="20" id="ioP-S2-bl1"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="XMd-p5-6w0" firstAttribute="centerX" secondItem="sh4-Zf-YWz" secondAttribute="centerX" id="3KC-aY-AqL"/>
+                                        <constraint firstAttribute="trailing" secondItem="zY6-Qq-FID" secondAttribute="trailing" constant="10" id="FEj-Ih-sm2"/>
                                         <constraint firstItem="XMd-p5-6w0" firstAttribute="centerY" secondItem="sh4-Zf-YWz" secondAttribute="centerY" id="Ocr-XH-95I"/>
+                                        <constraint firstAttribute="bottom" secondItem="zY6-Qq-FID" secondAttribute="bottom" constant="10" id="wAH-yV-D2m"/>
                                     </constraints>
                                 </collectionViewCellContentView>
                                 <size key="customSize" width="150" height="150"/>
                                 <connections>
                                     <outlet property="friendPhoto" destination="XMd-p5-6w0" id="eHU-hg-h4N"/>
+                                    <outlet property="like" destination="zY6-Qq-FID" id="o4H-zr-kKX"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

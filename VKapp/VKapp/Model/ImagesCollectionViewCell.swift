@@ -8,7 +8,12 @@
 
 import UIKit
 
+
+@available(iOS 13.0, *)
 class ImagesCollectionViewCell: UICollectionViewCell {
+ 
+    @IBOutlet weak var like: LikeButton!
     @IBOutlet weak var friendPhoto: UIImageView!
-    
+
 }
+
