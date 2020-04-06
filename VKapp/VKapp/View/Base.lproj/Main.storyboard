@@ -371,6 +371,9 @@
                                                 <constraint firstAttribute="width" constant="50" id="3nf-75-3Ga"/>
                                                 <constraint firstAttribute="height" constant="20" id="ioP-S2-bl1"/>
                                             </constraints>
+                                            <connections>
+                                                <action selector="likePressed:" destination="tky-OD-iYu" eventType="valueChanged" id="U1N-Mk-0vp"/>
+                                            </connections>
                                         </view>
                                     </subviews>
                                     <constraints>
@@ -383,7 +386,7 @@
                                 <size key="customSize" width="150" height="150"/>
                                 <connections>
                                     <outlet property="friendPhoto" destination="XMd-p5-6w0" id="eHU-hg-h4N"/>
-                                    <outlet property="like" destination="zY6-Qq-FID" id="o4H-zr-kKX"/>
+                                    <outlet property="likeButton" destination="zY6-Qq-FID" id="o4H-zr-kKX"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

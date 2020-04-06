@@ -13,11 +13,12 @@ private let reuseIdentifier = "ImagesCollectionViewCell"
 @available(iOS 13.0, *)
 class ImagesCollectionViewController: UICollectionViewController {
 
+    
     var friendsImages = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {

@@ -18,7 +18,6 @@
 		1F9BAF6A2434B00C0043931B /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9BAF692434B00C0043931B /* Group.swift */; };
 		1F9BAF732438A17D0043931B /* AvatarImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9BAF722438A17D0043931B /* AvatarImage.swift */; };
 		1F9BAF752438E1880043931B /* likeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9BAF742438E1880043931B /* likeControl.swift */; };
-		1F9BAF772439D05C0043931B /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9BAF762439D05C0043931B /* File.swift */; };
 		1FDE27152434927400032313 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE27142434927400032313 /* FriendsTableViewController.swift */; };
 		1FDE2717243492D000032313 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE2716243492D000032313 /* FriendsTableViewCell.swift */; };
 		1FDE27192434931F00032313 /* GroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE27182434931F00032313 /* GroupsTableViewCell.swift */; };
@@ -35,13 +34,12 @@
 		1F8628E92428DE8A00B19754 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F8628EC2428DE8A00B19754 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F8628EE2428DE8A00B19754 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1F8F182E2434A64100CEDCB1 /* AllGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AllGroupsTableViewController.swift; path = VKapp/Model/AllGroupsTableViewController.swift; sourceTree = SOURCE_ROOT; };
-		1F8F18302434A68C00CEDCB1 /* AllGroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AllGroupsTableViewCell.swift; path = VKapp/Model/AllGroupsTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		1F8F182E2434A64100CEDCB1 /* AllGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AllGroupsTableViewController.swift; path = VKapp/Groups/AllGroupsTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		1F8F18302434A68C00CEDCB1 /* AllGroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AllGroupsTableViewCell.swift; path = VKapp/Groups/AllGroupsTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		1F9BAF672434AF910043931B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1F9BAF692434B00C0043931B /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		1F9BAF722438A17D0043931B /* AvatarImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImage.swift; sourceTree = "<group>"; };
 		1F9BAF742438E1880043931B /* likeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = likeControl.swift; sourceTree = "<group>"; };
-		1F9BAF762439D05C0043931B /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		1FDE27142434927400032313 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		1FDE2716243492D000032313 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
 		1FDE27182434931F00032313 /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewCell.swift; sourceTree = "<group>"; };
@@ -80,6 +78,8 @@
 		1F8628DF2428DE8800B19754 /* VKapp */ = {
 			isa = PBXGroup;
 			children = (
+				1F9BAF79243B2CC70043931B /* Groups */,
+				1F9BAF78243B2CA10043931B /* Friends */,
 				1FDE2721243494CC00032313 /* Model */,
 				1FDE2720243494BB00032313 /* View */,
 				1F8628E02428DE8800B19754 /* AppDelegate.swift */,
@@ -88,6 +88,28 @@
 				1F8628EE2428DE8A00B19754 /* Info.plist */,
 			);
 			path = VKapp;
+			sourceTree = "<group>";
+		};
+		1F9BAF78243B2CA10043931B /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				1FDE271E2434949D00032313 /* ImagesCollectionViewCell.swift */,
+				1FDE271C2434942900032313 /* ImagesCollectionViewController.swift */,
+				1FDE2716243492D000032313 /* FriendsTableViewCell.swift */,
+				1FDE27142434927400032313 /* FriendsTableViewController.swift */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
+		1F9BAF79243B2CC70043931B /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				1F8F18302434A68C00CEDCB1 /* AllGroupsTableViewCell.swift */,
+				1F8F182E2434A64100CEDCB1 /* AllGroupsTableViewController.swift */,
+				1FDE271A2434935800032313 /* GroupsTableViewController.swift */,
+				1FDE27182434931F00032313 /* GroupsTableViewCell.swift */,
+			);
+			path = Groups;
 			sourceTree = "<group>";
 		};
 		1FDE2720243494BB00032313 /* View */ = {
@@ -101,20 +123,11 @@
 		1FDE2721243494CC00032313 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1FDE27182434931F00032313 /* GroupsTableViewCell.swift */,
-				1FDE271A2434935800032313 /* GroupsTableViewController.swift */,
-				1FDE271C2434942900032313 /* ImagesCollectionViewController.swift */,
-				1FDE271E2434949D00032313 /* ImagesCollectionViewCell.swift */,
 				1F9BAF672434AF910043931B /* User.swift */,
 				1F9BAF692434B00C0043931B /* Group.swift */,
 				1F8628E42428DE8800B19754 /* LoginViewController.swift */,
 				1F9BAF722438A17D0043931B /* AvatarImage.swift */,
 				1F9BAF742438E1880043931B /* likeControl.swift */,
-				1F9BAF762439D05C0043931B /* File.swift */,
-				1FDE2716243492D000032313 /* FriendsTableViewCell.swift */,
-				1FDE27142434927400032313 /* FriendsTableViewController.swift */,
-				1F8F18302434A68C00CEDCB1 /* AllGroupsTableViewCell.swift */,
-				1F8F182E2434A64100CEDCB1 /* AllGroupsTableViewController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -200,7 +213,6 @@
 				1FDE27152434927400032313 /* FriendsTableViewController.swift in Sources */,
 				1FDE271D2434942900032313 /* ImagesCollectionViewController.swift in Sources */,
 				1F8F182F2434A64100CEDCB1 /* AllGroupsTableViewController.swift in Sources */,
-				1F9BAF772439D05C0043931B /* File.swift in Sources */,
 				1FDE2717243492D000032313 /* FriendsTableViewCell.swift in Sources */,
 				1FDE271F2434949D00032313 /* ImagesCollectionViewCell.swift in Sources */,
 				1FDE271B2434935800032313 /* GroupsTableViewController.swift in Sources */,

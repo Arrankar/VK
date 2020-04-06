@@ -15,7 +15,7 @@ class LikeButton: UIControl {
     var likeCount = 10
     var button = UIButton()
     var label = UILabel()
-    var isPressed = true
+    var isPressed = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -50,16 +50,16 @@ class LikeButton: UIControl {
     }
     
     @objc private func like(_ sender: UIButton) {
-        if  !isPressed {
+        if  isPressed {
             likeCount -= 1
             label.text = "\(likeCount)"
             button.setImage(UIImage(systemName: "heart"), for: .normal)
-           isPressed = true
+            isPressed = false
         } else {
         button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         likeCount += 1
         label.text = "\(likeCount)"
-        isPressed = false
+        isPressed = true
     }
 }
     override func layoutSubviews() {

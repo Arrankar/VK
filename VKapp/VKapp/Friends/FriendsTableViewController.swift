@@ -11,9 +11,9 @@ import UIKit
 @available(iOS 13.0, *)
 class FriendsTableViewController: UITableViewController {
     
-    public var friends = [User(name: "Алексей", surname: "Приходько", photo: "6.jpg", images: ["4", "6", "4", "6"]),
-                   User(name: "Валерий", surname: "Иванов", photo: "4.jpg", images: ["6","6"]),
-                   User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["6", "6", "6"])]
+    public var friends = [User(name: "Алексей", surname: "Приходько", photo: "1.jpg", images: ["4", "6", "nauka", "1"]),
+                   User(name: "Валерий", surname: "Иванов", photo: "4.jpg", images: ["6","1"]),
+                   User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"])]
     
     
     

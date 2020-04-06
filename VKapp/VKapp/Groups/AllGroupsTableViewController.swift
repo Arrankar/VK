@@ -14,7 +14,10 @@ class AllGroupsTableViewController: UITableViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     var groups = [Group(groupName: "Наука", groupImage: "nauka.jpeg"),
-                  Group(groupName: "Техника", groupImage: "1.jpeg")]
+                  Group(groupName: "Техника", groupImage: "1.jpeg"),
+    Group(groupName: "Здоровье", groupImage: "6.jpeg"),
+    Group(groupName: "Красота", groupImage: "4.jpeg"),
+    Group(groupName: "Технологии", groupImage: "nauka.jpeg")]
     
     var filteredGroups = [Group]()
     var searching = false
