@@ -12,4 +12,5 @@ struct User {
     var name: String
     var surname: String
     var photo: String
+    var images: [String]
 }

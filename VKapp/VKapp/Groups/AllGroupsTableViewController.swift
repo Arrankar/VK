@@ -14,9 +14,12 @@ class AllGroupsTableViewController: UITableViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     var groups = [Group(groupName: "Наука", groupImage: "nauka.jpeg"),
-                  Group(groupName: "Техника", groupImage: "1.jpeg")]
+                  Group(groupName: "Техника", groupImage: "1.jpeg"),
+    Group(groupName: "Здоровье", groupImage: "6.jpeg"),
+    Group(groupName: "Красота", groupImage: "4.jpeg"),
+    Group(groupName: "Технологии", groupImage: "nauka.jpeg")]
     
-    var filteedGroups = [Group]()
+    var filteredGroups = [Group]()
     var searching = false
     
     override func viewDidLoad() {
@@ -30,7 +33,7 @@ class AllGroupsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searching {
-        return filteedGroups.count
+        return filteredGroups.count
         }
         return groups.count
     }
@@ -41,7 +44,7 @@ class AllGroupsTableViewController: UITableViewController {
         var group: Group
         
         if searching {
-            group = filteedGroups[indexPath.row]
+            group = filteredGroups[indexPath.row]
         } else {
             group = groups[indexPath.row]
         }
@@ -57,10 +60,10 @@ class AllGroupsTableViewController: UITableViewController {
 extension AllGroupsTableViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filteedGroups = groups.filter({ (group: Group) -> Bool in
+        filteredGroups = groups.filter({ (group: Group) -> Bool in
             return group.groupName.lowercased().contains(searchText.lowercased())
         })
-        searching = true
+            searching = true
         tableView.reloadData()
     }
     

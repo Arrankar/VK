@@ -47,7 +47,7 @@ class GroupsTableViewController: UITableViewController {
                 var group: Group
                 
                 if allGroupsTableViewController.searching {
-                    group = allGroupsTableViewController.filteedGroups[indexPath.row]
+                    group = allGroupsTableViewController.filteredGroups[indexPath.row]
                    
                 } else {
                     group = allGroupsTableViewController.groups[indexPath.row]
