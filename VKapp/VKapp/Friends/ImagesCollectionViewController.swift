@@ -10,11 +10,15 @@ import UIKit
 
 private let reuseIdentifier = "ImagesCollectionViewCell"
 
+@available(iOS 13.0, *)
 class ImagesCollectionViewController: UICollectionViewController {
 
+    
+    var friendsImages = [String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -24,12 +28,13 @@ class ImagesCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
-        return 1
+        return friendsImages.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ImagesCollectionViewCell
-        cell.friendPhoto.image = UIImage(named: "4.jpg")
+        cell.friendPhoto.image = UIImage(named: friendsImages[indexPath.row])
+        
         return cell
     }
 
