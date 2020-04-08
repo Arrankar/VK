@@ -379,6 +379,7 @@
                                 <connections>
                                     <outlet property="friendPhoto" destination="XMd-p5-6w0" id="eHU-hg-h4N"/>
                                     <outlet property="likeButton" destination="zY6-Qq-FID" id="o4H-zr-kKX"/>
+                                    <segue destination="5Ho-Nc-K6D" kind="presentation" identifier="fullImage" id="q8q-0s-04T"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -392,6 +393,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbc-pz-yAv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2503" y="920"/>
+        </scene>
+        <!--Full Image View Controller-->
+        <scene sceneID="rhp-bN-5VH">
+            <objects>
+                <viewController id="5Ho-Nc-K6D" customClass="FullImageViewController" customModule="VKapp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iPj-sw-QKQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9uT-rV-WS8">
+                                <rect key="frame" x="7" y="221" width="400" height="400"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="8nf-WF-Zzc"/>
+                                    <constraint firstAttribute="width" constant="400" id="rl1-Tw-mzl"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="9uT-rV-WS8" firstAttribute="centerY" secondItem="iPj-sw-QKQ" secondAttribute="centerY" id="ZB7-ks-m0l"/>
+                            <constraint firstItem="9uT-rV-WS8" firstAttribute="centerX" secondItem="iPj-sw-QKQ" secondAttribute="centerX" id="vaY-g3-sXo"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="D0G-Zh-tn1"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="gUd-vy-iaz"/>
+                    <connections>
+                        <outlet property="fullImage" destination="9uT-rV-WS8" id="zEz-W7-ixg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xHG-qB-5QT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3416" y="919"/>
         </scene>
         <!--Search-->
         <scene sceneID="Dae-jU-dkt">

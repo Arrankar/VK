@@ -14,10 +14,6 @@ class ImagesCollectionViewCell: UICollectionViewCell {
  
     @IBOutlet weak var likeButton: LikeButton!
     @IBOutlet weak var friendPhoto: UIImageView!
-
-    @IBAction func likePressed(_ sender: Any) {
-    }
-    
     
 }
 
