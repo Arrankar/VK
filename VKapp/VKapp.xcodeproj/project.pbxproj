@@ -19,6 +19,8 @@
 		1F9BAF732438A17D0043931B /* AvatarImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9BAF722438A17D0043931B /* AvatarImage.swift */; };
 		1F9BAF752438E1880043931B /* likeControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9BAF742438E1880043931B /* likeControl.swift */; };
 		1F9BAF7B243CAFEC0043931B /* FullImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9BAF7A243CAFEB0043931B /* FullImageViewController.swift */; };
+		1F9BAF85243E3D560043931B /* ApiWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9BAF84243E3D550043931B /* ApiWrapper.swift */; };
+		1F9BAF88243E41480043931B /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F9BAF87243E41480043931B /* WebKit.framework */; };
 		1FDE27152434927400032313 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE27142434927400032313 /* FriendsTableViewController.swift */; };
 		1FDE2717243492D000032313 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE2716243492D000032313 /* FriendsTableViewCell.swift */; };
 		1FDE27192434931F00032313 /* GroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE27182434931F00032313 /* GroupsTableViewCell.swift */; };
@@ -42,6 +44,8 @@
 		1F9BAF722438A17D0043931B /* AvatarImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImage.swift; sourceTree = "<group>"; };
 		1F9BAF742438E1880043931B /* likeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = likeControl.swift; sourceTree = "<group>"; };
 		1F9BAF7A243CAFEB0043931B /* FullImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FullImageViewController.swift; path = VKapp/Friends/FullImageViewController.swift; sourceTree = SOURCE_ROOT; };
+		1F9BAF84243E3D550043931B /* ApiWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiWrapper.swift; sourceTree = "<group>"; };
+		1F9BAF87243E41480043931B /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		1FDE27142434927400032313 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		1FDE2716243492D000032313 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
 		1FDE27182434931F00032313 /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewCell.swift; sourceTree = "<group>"; };
@@ -55,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F9BAF88243E41480043931B /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +71,7 @@
 			children = (
 				1F8628DF2428DE8800B19754 /* VKapp */,
 				1F8628DE2428DE8800B19754 /* Products */,
+				1F9BAF86243E41480043931B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -115,6 +121,14 @@
 			path = Groups;
 			sourceTree = "<group>";
 		};
+		1F9BAF86243E41480043931B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1F9BAF87243E41480043931B /* WebKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		1FDE2720243494BB00032313 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +145,7 @@
 				1F8628E42428DE8800B19754 /* LoginViewController.swift */,
 				1F9BAF722438A17D0043931B /* AvatarImage.swift */,
 				1F9BAF742438E1880043931B /* likeControl.swift */,
+				1F9BAF84243E3D550043931B /* ApiWrapper.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -212,6 +227,7 @@
 				1F9BAF732438A17D0043931B /* AvatarImage.swift in Sources */,
 				1F9BAF752438E1880043931B /* likeControl.swift in Sources */,
 				1F9BAF6A2434B00C0043931B /* Group.swift in Sources */,
+				1F9BAF85243E3D560043931B /* ApiWrapper.swift in Sources */,
 				1F8628E12428DE8800B19754 /* AppDelegate.swift in Sources */,
 				1FDE27152434927400032313 /* FriendsTableViewController.swift in Sources */,
 				1FDE271D2434942900032313 /* ImagesCollectionViewController.swift in Sources */,
