@@ -63,8 +63,8 @@ extension AllGroupsTableViewController: UISearchBarDelegate {
         filteredGroups = groups.filter({ (group: Group) -> Bool in
             return group.groupName.lowercased().contains(searchText.lowercased())
         })
-            searching = true
+        searching = true
+        
         tableView.reloadData()
     }
-    
 }
