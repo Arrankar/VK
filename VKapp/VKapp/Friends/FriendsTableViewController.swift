@@ -47,7 +47,7 @@ class FriendsTableViewController: UITableViewController {
         if segue.identifier == "imagesSegue" {
             
             if let indexPath = tableView.indexPathForSelectedRow {
-
+              
                 let imagesVC = segue.destination as! ImagesCollectionViewController
                 imagesVC.friendsImages = friends[indexPath.row].images
             

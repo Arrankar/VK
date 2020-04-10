@@ -7,96 +7,46 @@
 //
 
 import UIKit
+import WebKit
 
 class LoginViewController: UIViewController {
     
-    @IBOutlet weak var vkLabel: UILabel!
-    @IBOutlet weak var loginLabel: UILabel!
-    @IBOutlet weak var passwordLabel: UILabel!
-    @IBOutlet weak var loginTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var webView2: WKWebView!
+
     
-    @IBOutlet weak var loginButton: UIButton!
+
     
-    @IBOutlet weak var scrollBotConstraint: NSLayoutConstraint!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        vkLabel.text = "VK"
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboardWasShown(notification:)),
-            name: UIResponder.keyboardWillShowNotification,
-            object: nil)
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(keyboardWillBeHidden(notification:)),
-            name: UIResponder.keyboardWillHideNotification,
-            object: nil)
+        webView2.navigationDelegate = self
+        webView2.load(ApiWrapper.authRequest)
     }
-    
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        
-        switch identifier {
-        case "loginSegue":
-            let auth = login()
-            return auth
-        default:
-            return false
-        }
-    }
-    
-    func login() -> Bool {
-        let login = loginTextField.text!
-        let password = passwordTextField.text!
-        
-        switch (login, password) {
-        case ("admin", "123456"):
-            return true
-        case ("admin", _):
-            passwordError()
-            return false
-        default:
-            loginError()
-            return false
-        }
-    }
-    
-    func loginError() {
-        
-        let alert = UIAlertController(
-            title: "Ошибка",
-            message: "Неверные имя пользователя или пароль",
-            preferredStyle: .alert)
-        
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true)
-    }
-    
-    func passwordError() {
-        
-        let alert = UIAlertController(
-            title: "Ошибка",
-            message: "Неверный пароль",
-            preferredStyle: .alert)
-        
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true)
-    }
-    
-    @objc func keyboardWasShown(notification: Notification) {
-        let userInfo = (notification as NSNotification).userInfo as! [String: Any]
-        let frame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
-        
-        scrollBotConstraint.constant = frame.height
-    }
-    
-    @objc func keyboardWillBeHidden(notification: Notification) {
-        scrollBotConstraint.constant = 0
-    }
-    
 }
-
+    
+    extension LoginViewController: WKNavigationDelegate {
+    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
+        
+        guard let url = navigationResponse.response.url, url.path == "/blank.html", let fragment = url.fragment else {
+            decisionHandler(.allow)
+            return
+        }
+        
+        let params = fragment
+            .components(separatedBy: "&")
+            .map { $0.components(separatedBy: "=") }
+            .reduce([String: String]()) { result, param in
+                var dict = result
+                let key = param[0]
+                let value = param[1]
+                dict[key] = value
+                return dict
+        }
+        
+        ApiWrapper.token = params["access_token"]!
+        decisionHandler(.cancel)
+        performSegue(withIdentifier: "authSuccessed", sender: self)
+    }
+}
