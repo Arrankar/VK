@@ -40,7 +40,6 @@ class ImagesCollectionViewController: UICollectionViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let fullImageVC = segue.destination as? FullImageViewController {
             let indexPath = collectionView.indexPathsForSelectedItems!.first!
-            print(friendsImages)
             fullImageVC.currentPhoto = UIImage(named: friendsImages[indexPath.item])
 
         }

@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F564D032441ED9800728620 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564D022441ED9800728620 /* NewsTableViewCell.swift */; };
+		1F564D072442028700728620 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564D062442028700728620 /* News.swift */; };
 		1F8628E12428DE8800B19754 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8628E02428DE8800B19754 /* AppDelegate.swift */; };
 		1F8628E52428DE8800B19754 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8628E42428DE8800B19754 /* LoginViewController.swift */; };
 		1F8628E82428DE8800B19754 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F8628E62428DE8800B19754 /* Main.storyboard */; };
 		1F8628EA2428DE8A00B19754 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F8628E92428DE8A00B19754 /* Assets.xcassets */; };
 		1F8628ED2428DE8A00B19754 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F8628EB2428DE8A00B19754 /* LaunchScreen.storyboard */; };
+		1F86C3452441D7EA0095B677 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86C3442441D7EA0095B677 /* NewsViewController.swift */; };
 		1F8F182F2434A64100CEDCB1 /* AllGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F182E2434A64100CEDCB1 /* AllGroupsTableViewController.swift */; };
 		1F8F18312434A68C00CEDCB1 /* AllGroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F18302434A68C00CEDCB1 /* AllGroupsTableViewCell.swift */; };
 		1F9BAF682434AF910043931B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9BAF672434AF910043931B /* User.swift */; };
@@ -30,6 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F564D022441ED9800728620 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		1F564D062442028700728620 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		1F8628DD2428DE8800B19754 /* VKapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F8628E02428DE8800B19754 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F8628E42428DE8800B19754 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -37,6 +42,7 @@
 		1F8628E92428DE8A00B19754 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F8628EC2428DE8A00B19754 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F8628EE2428DE8A00B19754 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1F86C3442441D7EA0095B677 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		1F8F182E2434A64100CEDCB1 /* AllGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AllGroupsTableViewController.swift; path = VKapp/Groups/AllGroupsTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		1F8F18302434A68C00CEDCB1 /* AllGroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AllGroupsTableViewCell.swift; path = VKapp/Groups/AllGroupsTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		1F9BAF672434AF910043931B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -86,6 +92,7 @@
 		1F8628DF2428DE8800B19754 /* VKapp */ = {
 			isa = PBXGroup;
 			children = (
+				1F86C3432441D7B30095B677 /* News */,
 				1F9BAF79243B2CC70043931B /* Groups */,
 				1F9BAF78243B2CA10043931B /* Friends */,
 				1FDE2721243494CC00032313 /* Model */,
@@ -96,6 +103,15 @@
 				1F8628EE2428DE8A00B19754 /* Info.plist */,
 			);
 			path = VKapp;
+			sourceTree = "<group>";
+		};
+		1F86C3432441D7B30095B677 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				1F86C3442441D7EA0095B677 /* NewsViewController.swift */,
+				1F564D022441ED9800728620 /* NewsTableViewCell.swift */,
+			);
+			path = News;
 			sourceTree = "<group>";
 		};
 		1F9BAF78243B2CA10043931B /* Friends */ = {
@@ -146,6 +162,7 @@
 				1F9BAF722438A17D0043931B /* AvatarImage.swift */,
 				1F9BAF742438E1880043931B /* likeControl.swift */,
 				1F9BAF84243E3D550043931B /* ApiWrapper.swift */,
+				1F564D062442028700728620 /* News.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -227,8 +244,10 @@
 				1F9BAF732438A17D0043931B /* AvatarImage.swift in Sources */,
 				1F9BAF752438E1880043931B /* likeControl.swift in Sources */,
 				1F9BAF6A2434B00C0043931B /* Group.swift in Sources */,
+				1F564D072442028700728620 /* News.swift in Sources */,
 				1F9BAF85243E3D560043931B /* ApiWrapper.swift in Sources */,
 				1F8628E12428DE8800B19754 /* AppDelegate.swift in Sources */,
+				1F564D032441ED9800728620 /* NewsTableViewCell.swift in Sources */,
 				1FDE27152434927400032313 /* FriendsTableViewController.swift in Sources */,
 				1FDE271D2434942900032313 /* ImagesCollectionViewController.swift in Sources */,
 				1F9BAF7B243CAFEC0043931B /* FullImageViewController.swift in Sources */,
@@ -236,6 +255,7 @@
 				1FDE2717243492D000032313 /* FriendsTableViewCell.swift in Sources */,
 				1FDE271F2434949D00032313 /* ImagesCollectionViewCell.swift in Sources */,
 				1FDE271B2434935800032313 /* GroupsTableViewController.swift in Sources */,
+				1F86C3452441D7EA0095B677 /* NewsViewController.swift in Sources */,
 				1F9BAF682434AF910043931B /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
