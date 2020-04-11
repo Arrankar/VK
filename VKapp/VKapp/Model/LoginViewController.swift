@@ -12,12 +12,7 @@ import WebKit
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var webView2: WKWebView!
-
-    
-
-    
-
-    
+ 
     override func viewDidLoad() {
         super.viewDidLoad()
         webView2.navigationDelegate = self

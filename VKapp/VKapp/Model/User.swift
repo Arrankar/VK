@@ -13,4 +13,14 @@ struct User {
     var surname: String
     var photo: String
     var images: [String]
+    var fullName: String {
+        get {
+            return "\(name) \(surname)"
+        }
+    }
+}
+
+struct Section {
+    let title: String
+    var items: [User]
 }
