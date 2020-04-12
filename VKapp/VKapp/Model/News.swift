@@ -13,6 +13,6 @@ struct News {
     let newsDate: String
     let newsSourseImage: String
     let newsText: String
-    let newsImage: String?
+    let newsImage: [String?]
 }
 

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1F564D032441ED9800728620 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564D022441ED9800728620 /* NewsTableViewCell.swift */; };
 		1F564D072442028700728620 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564D062442028700728620 /* News.swift */; };
+		1F564D0B244218C300728620 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564D0A244218C300728620 /* TestView.swift */; };
 		1F8628E12428DE8800B19754 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8628E02428DE8800B19754 /* AppDelegate.swift */; };
 		1F8628E52428DE8800B19754 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8628E42428DE8800B19754 /* LoginViewController.swift */; };
 		1F8628E82428DE8800B19754 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F8628E62428DE8800B19754 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* Begin PBXFileReference section */
 		1F564D022441ED9800728620 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		1F564D062442028700728620 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		1F564D0A244218C300728620 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		1F8628DD2428DE8800B19754 /* VKapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F8628E02428DE8800B19754 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F8628E42428DE8800B19754 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -72,6 +74,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F564D0C2443180500728620 /* NewsCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NewsCell;
+			sourceTree = "<group>";
+		};
 		1F8628D42428DE8800B19754 = {
 			isa = PBXGroup;
 			children = (
@@ -108,8 +117,10 @@
 		1F86C3432441D7B30095B677 /* News */ = {
 			isa = PBXGroup;
 			children = (
+				1F564D0C2443180500728620 /* NewsCell */,
 				1F86C3442441D7EA0095B677 /* NewsViewController.swift */,
 				1F564D022441ED9800728620 /* NewsTableViewCell.swift */,
+				1F564D0A244218C300728620 /* TestView.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -238,6 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F564D0B244218C300728620 /* TestView.swift in Sources */,
 				1FDE27192434931F00032313 /* GroupsTableViewCell.swift in Sources */,
 				1F8F18312434A68C00CEDCB1 /* AllGroupsTableViewCell.swift in Sources */,
 				1F8628E52428DE8800B19754 /* LoginViewController.swift in Sources */,
