@@ -72,10 +72,14 @@ class FriendsTableViewController: UITableViewController {
 @available(iOS 13.0, *)
 extension FriendsTableViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        let filteredUsers = friends.filter({ (friend: User) -> Bool in
-            return friend.fullName.lowercased().contains(searchText.lowercased())
-        })
-        sortedFriends(friends: filteredUsers)
+        if searchText.isEmpty {
+            sortedFriends(friends: friends)
+        } else {
+            let filteredUsers = friends.filter({ (friend: User) -> Bool in
+                return friend.fullName.lowercased().contains(searchText.lowercased())
+            })
+            sortedFriends(friends: filteredUsers)
+        }
         tableView.reloadData()
     }
     

@@ -119,8 +119,8 @@
 			children = (
 				1F564D0C2443180500728620 /* NewsCell */,
 				1F86C3442441D7EA0095B677 /* NewsViewController.swift */,
-				1F564D022441ED9800728620 /* NewsTableViewCell.swift */,
 				1F564D0A244218C300728620 /* TestView.swift */,
+				1F564D022441ED9800728620 /* NewsTableViewCell.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";

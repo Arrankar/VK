@@ -18,25 +18,24 @@ class TestView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        print (arrayOfPics)
+        
         for index in arrayOfPics {
-            
             if let element = index {
-            if arrayOfPics.count != 1 {
+                if arrayOfPics.count > 1 {
                     let imageView = UIImageView(image: UIImage(named: element))
-                imageView.frame = CGRect(x: picX, y: picY, width: Int(bounds.width) / 2, height: Int(imageView.frame.width))
+                    imageView.frame = CGRect(x: picX, y: picY, width: picWidth, height: picHeight)
                     addSubview(imageView)
-                    picX = picX + Int(imageView.frame.width)
+                    picX = picX + picWidth
                     if picX > Int(bounds.width) {
                         picX = 0
-                        picY = Int(imageView.frame.height) + picY + 10
-                } else {
-                    let imageView = UIImageView(image: UIImage(named: element))
-                imageView.frame = CGRect(x: picX, y: picY, width: Int(bounds.width), height: Int(bounds.height))
-                    addSubview(imageView)
+                        picY = picHeight + picY + 10
+                    } else {
+                        let imageView = UIImageView(image: UIImage(named: element))
+                        imageView.frame = CGRect(x: picX, y: picY, width: Int(bounds.width), height: Int(bounds.height))
+                        addSubview(imageView)
+                    }
                 }
             }
         }
     }
-}
 }
