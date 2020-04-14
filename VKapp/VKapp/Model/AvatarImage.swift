@@ -12,6 +12,7 @@ class AvatarView: UIView {
     
     @IBOutlet weak var avatar: UIImageView!
     
+    
     @IBInspectable
     var shadowOpacity: Float = 0.0 {
         didSet {
