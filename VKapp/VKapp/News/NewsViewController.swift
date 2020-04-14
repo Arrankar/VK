@@ -41,9 +41,9 @@ extension NewsViewController: UITableViewDataSource {
         if let image = news.newsImage[0] {
             cell.newsImage.image = UIImage(named: image)
         }
-        if news.newsImage.contains(nil) {
-            cell.imageHeight.constant = 10
-        }
+//        if news.newsImage.contains(nil) {
+//            cell.imageHeight.constant = 10
+//        }
         
 //        if !news.newsImage.contains(nil) {
 //            cell.testView.arrayOfPics = news.newsImage

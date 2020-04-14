@@ -12,17 +12,12 @@ import UIKit
 class FullImageViewController: UIViewController {
 
     @IBOutlet weak var fullImage: UIImageView!
+    @IBOutlet weak var dotsView: DotsView!
     
     var currentPhoto: UIImage!
-  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         fullImage.image = currentPhoto
-       
     }
-    
-
-   
-
 }
