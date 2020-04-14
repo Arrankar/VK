@@ -60,11 +60,14 @@ class AllGroupsTableViewController: UITableViewController {
 extension AllGroupsTableViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            filteredGroups = groups
+        } else {
         filteredGroups = groups.filter({ (group: Group) -> Bool in
             return group.groupName.lowercased().contains(searchText.lowercased())
         })
         searching = true
-        
+        }
         tableView.reloadData()
     }
 }
