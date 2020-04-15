@@ -13,11 +13,14 @@ private let reuseIdentifier = "ImagesCollectionViewCell"
 @available(iOS 13.0, *)
 class ImagesCollectionViewController: UICollectionViewController {
     
+
     
     var friendsImages = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+
         
     }
     
@@ -34,6 +37,7 @@ class ImagesCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ImagesCollectionViewCell
         cell.friendPhoto.image = UIImage(named: friendsImages[indexPath.row])
+    
         return cell
     }
     

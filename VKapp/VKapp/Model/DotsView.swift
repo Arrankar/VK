@@ -10,9 +10,11 @@ import UIKit
 
 class DotsView: UIView {
     
+    
     @IBOutlet weak var firstDot: UIView!
     @IBOutlet weak var secondDot: UIView!
     @IBOutlet weak var thirdDot: UIView!
+    
     
     
     override func layoutSubviews() {
@@ -20,20 +22,5 @@ class DotsView: UIView {
         firstDot.layer.cornerRadius = firstDot.bounds.height / 2
         secondDot.layer.cornerRadius = secondDot.bounds.height / 2
         thirdDot.layer.cornerRadius = thirdDot.bounds.height / 2
-        
-        
-        UIView.animate(withDuration: 1, delay: 0, options: [.repeat], animations: {
-            self.firstDot.alpha -= 1
-        }, completion: nil)
-        
-        UIView.animate(withDuration: 1, delay: 0.25, options: [.repeat], animations: {
-            self.secondDot.alpha -= 1
-        }, completion: nil)
-        UIView.animate(withDuration: 1, delay: 0.5, options: [.repeat], animations: {
-            self.thirdDot.alpha -= 1
-        }, completion: nil)
-        
     }
-    
-    
 }

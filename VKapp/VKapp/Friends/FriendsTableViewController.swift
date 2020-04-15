@@ -17,7 +17,7 @@ class FriendsTableViewController: UITableViewController {
     var friends = [User(name: "Алексей", surname: "Приходько", photo: "1.jpg", images: ["4", "6", "nauka", "1"]),
                    User(name: "Валерий", surname: "Иванов", photo: "4.jpg", images: ["6","1"]),
                    User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),
-                   User(name: "Харольд", surname: "Алексеев", photo: "4", images: ["6"])
+                   User(name: "Харольд", surname: "Алексеев", photo: "4", images: ["6"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"])
     ]
     
     var friendSection = [Section]()
@@ -43,12 +43,29 @@ class FriendsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FriendsTableViewCell", for: indexPath) as! FriendsTableViewCell
-        
+       
+             cell.contentView.alpha = 0
+    
+        UIView.animate(withDuration: 1,
+                       delay: 0,
+                       usingSpringWithDamping: 0.5,
+                       initialSpringVelocity: 0.3,
+                       options: [],
+                       animations: {
+                        cell.frame.origin.x -= 100
+        })
+
         cell.friendName.text = friendSection[indexPath.section].items[indexPath.row].name
         cell.friendSurname.text = friendSection[indexPath.section].items[indexPath.row].surname
         cell.friendImage.avatar.image = UIImage(named: friendSection[indexPath.section].items[indexPath.row].photo)
-        
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let cell = cell as! FriendsTableViewCell
+            UIView.animate(withDuration: 1, animations: {
+                cell.contentView.alpha = 1
+        })
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

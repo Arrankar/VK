@@ -15,5 +15,10 @@ class ImagesCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var likeButton: LikeButton!
     @IBOutlet weak var friendPhoto: UIImageView!
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+    }
+    
 }
 
