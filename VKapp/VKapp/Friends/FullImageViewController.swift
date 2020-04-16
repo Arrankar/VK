@@ -49,7 +49,13 @@ class FullImageViewController: UIViewController, UIGestureRecognizerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        fullImage.image = currentPhoto
+        
+        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 3, execute: {
+            self.firstDot1.layer.removeAllAnimations()
+            self.secondDot1.layer.removeAllAnimations()
+            self.thirdDot1.layer.removeAllAnimations()
+            self.fullImage.image = self.currentPhoto
+        })
     }
 }
 

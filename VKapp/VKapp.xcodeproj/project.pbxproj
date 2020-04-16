@@ -11,6 +11,7 @@
 		1F564D072442028700728620 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564D062442028700728620 /* News.swift */; };
 		1F564D0B244218C300728620 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564D0A244218C300728620 /* TestView.swift */; };
 		1F564D162445C16D00728620 /* DotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564D152445C16D00728620 /* DotsView.swift */; };
+		1F564D1824473DE300728620 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564D1724473DE300728620 /* SearchViewController.swift */; };
 		1F8628E12428DE8800B19754 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8628E02428DE8800B19754 /* AppDelegate.swift */; };
 		1F8628E52428DE8800B19754 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8628E42428DE8800B19754 /* LoginViewController.swift */; };
 		1F8628E82428DE8800B19754 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F8628E62428DE8800B19754 /* Main.storyboard */; };
@@ -39,6 +40,7 @@
 		1F564D062442028700728620 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		1F564D0A244218C300728620 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		1F564D152445C16D00728620 /* DotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotsView.swift; sourceTree = "<group>"; };
+		1F564D1724473DE300728620 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		1F8628DD2428DE8800B19754 /* VKapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F8628E02428DE8800B19754 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F8628E42428DE8800B19754 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				1F9BAF84243E3D550043931B /* ApiWrapper.swift */,
 				1F564D062442028700728620 /* News.swift */,
 				1F564D152445C16D00728620 /* DotsView.swift */,
+				1F564D1724473DE300728620 /* SearchViewController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				1F9BAF85243E3D560043931B /* ApiWrapper.swift in Sources */,
 				1F8628E12428DE8800B19754 /* AppDelegate.swift in Sources */,
 				1F564D032441ED9800728620 /* NewsTableViewCell.swift in Sources */,
+				1F564D1824473DE300728620 /* SearchViewController.swift in Sources */,
 				1FDE27152434927400032313 /* FriendsTableViewController.swift in Sources */,
 				1FDE271D2434942900032313 /* ImagesCollectionViewController.swift in Sources */,
 				1F9BAF7B243CAFEC0043931B /* FullImageViewController.swift in Sources */,
