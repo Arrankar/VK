@@ -32,7 +32,7 @@ class LikeButton: UIControl {
         label.text = "\(likeCount)"
         
     
-
+        
         button.addTarget(self, action: #selector(like(_:)), for: .touchUpInside)
         button.heightAnchor.constraint(equalToConstant: 20).isActive = true
         button.widthAnchor.constraint(equalToConstant: 20).isActive = true
@@ -52,13 +52,23 @@ class LikeButton: UIControl {
     @objc private func like(_ sender: UIButton) {
         if  isPressed {
             likeCount -= 1
-            label.text = "\(likeCount)"
+            UIView.transition(with: label,
+                              duration: 0.5,
+                              options: .transitionCurlUp,
+                              animations: {
+                                self.label.text = "\(self.likeCount)"
+            })
             button.setImage(UIImage(systemName: "heart"), for: .normal)
             isPressed = false
         } else {
         button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         likeCount += 1
-        label.text = "\(likeCount)"
+            UIView.transition(with: label,
+                              duration: 0.5,
+                              options: .transitionFlipFromTop,
+                              animations: {
+                                self.label.text = "\(self.likeCount)"
+            })
         isPressed = true
     }
 }
