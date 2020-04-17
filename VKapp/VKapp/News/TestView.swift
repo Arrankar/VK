@@ -29,13 +29,15 @@ class TestView: UIView {
                     if picX > Int(bounds.width) {
                         picX = 0
                         picY = picHeight + picY + 10
-                    } else {
-                        let imageView = UIImageView(image: UIImage(named: element))
-                        imageView.frame = CGRect(x: picX, y: picY, width: Int(bounds.width), height: Int(bounds.height))
-                        addSubview(imageView)
                     }
+                }
+                else {
+                    let imageView = UIImageView(image: UIImage(named: element))
+                    imageView.frame = CGRect(x: picX, y: picY, width: Int(bounds.width), height: Int(bounds.height))
+                    addSubview(imageView)
                 }
             }
         }
     }
 }
+
