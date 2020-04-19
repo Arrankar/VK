@@ -8,56 +8,139 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UITextFieldDelegate {
-    @IBOutlet weak var searchImage: UIImage!
+class SearchViewController: UIViewController {
+    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var titleView: UIImageView!
     
-    @IBOutlet weak var searchTextFieldLeading: NSLayoutConstraint!
-    @IBOutlet weak var cancelButtonWIdth: NSLayoutConstraint!
-    @IBOutlet weak var searchImageConstrait: NSLayoutConstraint!
-    @IBOutlet weak var searchTextField: UITextField!
-   
+    var images = [String]()
+    var i = 0
+    var interactiveAnimator = UIViewPropertyAnimator()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        cancelButtonWIdth.constant = 0
-        searchTextField.delegate = self
+        image.isUserInteractionEnabled = true
+        image.layer.cornerRadius = 30
+        
+        guard images.count > 0 else { return
+            image.image = UIImage(named: "noPhoto")
+        }
+        image.image = UIImage(named: images[i])
+        
+        
+    }
+
+    
+    func imageSwipe(animations: @escaping () -> Void) {
+        UIView.animateKeyframes(withDuration: 0.5,
+                                delay: 0,
+                                options: [],
+                                animations: {
+                                    UIView.addKeyframe(withRelativeStartTime: 0,
+                                                       relativeDuration: 0.2,
+                                                       animations: {
+                                                        animations()
+                                                        
+                                    })
+                                    UIView.addKeyframe(withRelativeStartTime: 0.2,
+                                                       relativeDuration: 0.2,
+                                                       animations: {
+                                                        self.image.alpha = 0
+                                                        
+                                    })
+                                    UIView.addKeyframe(withRelativeStartTime: 0.4,
+                                                       relativeDuration: 0.2,
+                                                       animations: {
+                                                        self.image.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+                                                        
+                                    })
+                                    UIView.addKeyframe(withRelativeStartTime: 0.6,
+                                                       relativeDuration: 0.2,
+                                                       animations: {
+                                                        self.image.center = CGPoint(x: self.view.bounds.width / 2, y: self.view.bounds.height / 2)
+                                                        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.3, execute: {
+                                                            self.image.image = UIImage(named: self.images[self.i])
+                                                        })
+                                    })
+                                    UIView.addKeyframe(withRelativeStartTime: 0.8,
+                                                       relativeDuration: 0.2,
+                                                       animations: {
+                                                        self.image.alpha = 1
+                                                        self.image.transform = CGAffineTransform(scaleX: 1, y: 1)
+                                    })
+        },
+                                completion: nil)
+        
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        
-        
-        self.view.layoutIfNeeded()
-        UIView.animate(withDuration: 0.25, animations: {
-            self.cancelButtonWIdth.constant = 50
-            self.view.layoutIfNeeded()
+    func dumpingAnimate() {
+        interactiveAnimator = UIViewPropertyAnimator(duration: 0.5,
+                                                     dampingRatio: 0.5,
+                                                     animations: {
+                                                        self.image.center = CGPoint(x: self.view.bounds.width / 2, y: self.view.bounds.height / 2)
         })
-        
-        UIView.animate(withDuration: 1,
-                       delay: 0,
-                       usingSpringWithDamping: 0.7,
-                       initialSpringVelocity: 0.3,
-                       options: [],
-                       animations: {
-                        self.searchImageConstrait.constant = 70
-                        self.view.layoutIfNeeded()
-        })
+        interactiveAnimator.startAnimation()
     }
     
-    @IBAction func cancelPressed(_ sender: UIButton) {
-        self.view.layoutIfNeeded()
-        UIView.animate(withDuration: 0.25, animations: {
-            self.cancelButtonWIdth.constant = 0
-            self.view.layoutIfNeeded()
-        })
+    
+    @IBAction func handlePan(recognizer:UIPanGestureRecognizer) {
+        let translation = recognizer.translation(in: self.view)
+        let centerView = self.view.bounds.width / 2
+        if let view = recognizer.view {
+            view.center = CGPoint(x:view.center.x + translation.x,
+                                  y:view.center.y)
+        }
+        recognizer.setTranslation(.zero, in: self.view)
+        let imageCenterX = image.center.x
         
-        UIView.animate(withDuration: 1,
-                       delay: 0,
-                       usingSpringWithDamping: 0.5,
-                       initialSpringVelocity: 0.3,
-                       options: [],
-                       animations: {
-                        self.searchImageConstrait.constant = 200
-                        self.view.layoutIfNeeded()
-        })
-        searchTextField.endEditing(true)
+        if recognizer.state == .ended {
+            
+            switch i {
+                
+            case 0:
+                if images.count > 1 {
+                   
+                    if imageCenterX < centerView {
+                        imageSwipe {
+                            self.image.frame.origin.x = -300
+                            self.i += 1
+                        }
+                    } else {
+                        dumpingAnimate()
+                    }
+                    
+                } else {
+                    if imageCenterX > centerView || imageCenterX < centerView {
+                        dumpingAnimate()
+                    }
+                }
+                
+            case 1..<images.count - 1:
+                
+                imageSwipe {
+                    if imageCenterX > centerView {
+                        self.image.frame.origin.x = 400
+                        self.i -= 1
+                    } else {
+                        self.image.frame.origin.x = -300
+                        self.i += 1
+                    }
+                }
+                
+            case images.count - 1:
+                
+                if imageCenterX > centerView {
+                    imageSwipe {
+                        self.image.frame.origin.x = 400
+                        self.i -= 1
+                    }
+                } else {
+                    dumpingAnimate()
+                }
+                
+            default:
+                break
+            }
+        }
     }
 }
+
