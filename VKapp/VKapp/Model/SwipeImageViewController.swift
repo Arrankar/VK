@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SwipeImageViewController: UIViewController {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var titleView: UIImageView!
     
