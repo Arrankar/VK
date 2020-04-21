@@ -275,7 +275,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d4l-Mh-Hw3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1615" y="1663"/>
+            <point key="canvasLocation" x="1616" y="1904"/>
         </scene>
         <!--Groups-->
         <scene sceneID="7y1-dB-edJ">
@@ -292,7 +292,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5j5-qf-Qm2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="820" y="1663"/>
+            <point key="canvasLocation" x="819" y="1904"/>
         </scene>
         <!--News-->
         <scene sceneID="Zm9-0Z-zlc">
@@ -428,12 +428,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HU5-iC-9c6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="818.84057971014499" y="2623.6607142857142"/>
+            <point key="canvasLocation" x="-239" y="2213"/>
         </scene>
         <!--Friends-->
         <scene sceneID="1Zt-hZ-zkz">
             <objects>
-                <navigationController id="ES1-AF-2rm" sceneMemberID="viewController">
+                <navigationController id="ES1-AF-2rm" customClass="CustomNavigationController" customModule="VKapp" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Friends" image="person.2.fill" catalog="system" id="bl7-M7-pbf"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kKn-45-sdi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -567,12 +567,12 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Sg-7W-7dj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="YOL-Pk-LrR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2502" y="1663"/>
+            <point key="canvasLocation" x="2432" y="1904"/>
         </scene>
-        <!--Test View-->
+        <!--Cloud View-->
         <scene sceneID="Xot-8X-cXp">
             <objects>
-                <viewController id="dYV-8K-WkS" customClass="TestView" customModule="VKapp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="dYV-8K-WkS" customClass="CloudView" customModule="VKapp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="T5t-Zq-A9d">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -585,7 +585,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aun-Jo-tYb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1165" y="764"/>
+            <point key="canvasLocation" x="-239" y="751"/>
         </scene>
         <!--Swipe Image View Controller-->
         <scene sceneID="nkw-ca-Pou">
@@ -636,7 +636,7 @@
                     </connections>
                 </panGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2501" y="919"/>
+            <point key="canvasLocation" x="2432" y="919"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

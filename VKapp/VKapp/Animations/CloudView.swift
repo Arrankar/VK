@@ -8,14 +8,13 @@
 
 import UIKit
 
-class TestView: UIViewController {
+class CloudView: UIViewController {
     
    let layer = CAShapeLayer()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewWillAppear(false)
        
-        
         let bezierPath = UIBezierPath()
         bezierPath.move(to: CGPoint(x: 28.3*3, y: 31.35*3))
         bezierPath.addLine(to: CGPoint(x: 29.809*3, y: 30.283*3))
@@ -88,7 +87,7 @@ class TestView: UIViewController {
 
         layer.path = bezierPath.cgPath
         layer.strokeColor = UIColor.red.cgColor
-        layer.fillColor = UIColor.white.cgColor
+        layer.fillColor = UIColor.green.cgColor
         layer.lineWidth = 10
         layer.lineCap = .round
         layer.position.x = 50
@@ -116,20 +115,7 @@ class TestView: UIViewController {
         DispatchQueue.main.asyncAfter(wallDeadline: .now() + 3, execute: {
             self.performSegue(withIdentifier: "animationComplete", sender: self)
         })
-        
-        
-        
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
-
-
-        
-       
-        
+     
     }
 
     
