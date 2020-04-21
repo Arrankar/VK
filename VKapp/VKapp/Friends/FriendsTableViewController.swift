@@ -19,10 +19,15 @@ class FriendsTableViewController: UITableViewController {
     @IBOutlet weak var buttonWidth: NSLayoutConstraint!
     @IBOutlet weak var buttonConstraint: NSLayoutConstraint!
     
-    var friends = [User(name: "Алексей", surname: "Приходько", photo: "1.jpg", images: ["4", "6", "nauka", "1"]),
-                   User(name: "Валерий", surname: "Иванов", photo: "4.jpg", images: ["6","1"]),
-                   User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),
-                   User(name: "Харольд", surname: "Алексеев", photo: "4", images: ["6"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"]),User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: ["4", "6", "nauka"])
+    var friends = [User(name: "Алексей", surname: "Приходько", photo: "1.jpg", images: []),
+                   User(name: "Валерий", surname: "Иванов", photo: "4.jpg", images: ["6", "flower","nauka", "1"]),
+                   User(name: "Угон", surname: "Харлеев", photo: "6.jpg", images: []),
+                   User(name: "Вероника", surname: "Иванова", photo: "4", images: ["cake", "1"]),
+                   User(name: "Кристина", surname: "Петрова", photo: "4", images: ["nauka", "1", "hotel"]),
+                   User(name: "Дмитрий", surname: "Медведев", photo: "4", images: ["jeep"]),
+                   User(name: "Александр", surname: "Пушкин", photo: "4", images: ["flower"]),
+                   User(name: "Владимир", surname: "Путин", photo: "4", images: []),
+                   User(name: "Людмила", surname: "Фролова", photo: "4", images: ["hotel", "flower", "cake"])
     ]
     
     var friendSection = [Section]()
@@ -79,8 +84,8 @@ class FriendsTableViewController: UITableViewController {
         if segue.identifier == "imagesSegue" {
             
             if let indexPath = tableView.indexPathForSelectedRow {
-                let imagesVC = segue.destination as! ImagesCollectionViewController
-                imagesVC.friendsImages = friendSection[indexPath.section].items[indexPath.row].images
+                let imagesVC = segue.destination as! SwipeImageViewController
+                imagesVC.images = friendSection[indexPath.section].items[indexPath.row].images
             }
         }
     }
