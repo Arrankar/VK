@@ -26,24 +26,27 @@ final class CustomPushAnimator: NSObject, UIViewControllerAnimatedTransitioning 
         let translation = CGAffineTransform(translationX: source.view.frame.width, y: 0)
         destination.view.transform = rotation.concatenating(translation)
         
-        UIView.animateKeyframes(withDuration: duration,
-                                delay: 0,
-                                options: .calculationModePaced,
-                                animations: {
-                                    UIView.addKeyframe(withRelativeStartTime: 0,
-                                                       relativeDuration: 0.5,
-                                                       animations: {
-                                                        
-                                                        let rotation = CGAffineTransform(rotationAngle: 45)
-                                                              let translation = CGAffineTransform(translationX: -source.view.frame.width, y: 0)
-                                                              source.view.transform = rotation.concatenating(translation)
-                                    })
-                               
-                                    UIView.addKeyframe(withRelativeStartTime: 0.5,
-                                                       relativeDuration: 0.5,
-                                                       animations: {
-                                                        destination.view.transform = .identity
-                                    })
+        UIView.animateKeyframes(
+            withDuration: duration,
+            delay: 0,
+            options: .calculationModePaced,
+            animations: {
+                UIView.addKeyframe(
+                    withRelativeStartTime: 0,
+                    relativeDuration: 0.5,
+                    animations: {
+                        
+                        let rotation = CGAffineTransform(rotationAngle: 45)
+                        let translation = CGAffineTransform(translationX: -source.view.frame.width, y: 0)
+                        source.view.transform = rotation.concatenating(translation)
+                })
+                
+                UIView.addKeyframe(
+                    withRelativeStartTime: 0.5,
+                    relativeDuration: 0.5,
+                    animations: {
+                        destination.view.transform = .identity
+                })
         }) { finished in
             if finished && !transitionContext.transitionWasCancelled {
                 source.view.transform = .identity

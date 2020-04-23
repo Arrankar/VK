@@ -31,6 +31,7 @@ class FriendsTableViewController: UITableViewController {
     ]
     
     var friendSection = [Section]()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

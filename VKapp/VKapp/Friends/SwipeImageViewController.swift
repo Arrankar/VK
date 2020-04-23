@@ -26,9 +26,20 @@ class SwipeImageViewController: UIViewController {
         }
         image.image = UIImage(named: images[i])
         
-        
+    
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segue.destination.transitioningDelegate = self
+        if segue.identifier == "reveal" {
+            let fullImageVC = segue.destination as! FullImageViewController
+            fullImageVC.currentPhoto = UIImage(named: images[i])
+        }
     }
 
+    @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
+        performSegue(withIdentifier: "reveal", sender: nil)
+    }
     
     func imageSwipe(animations: @escaping () -> Void) {
         UIView.animateKeyframes(withDuration: 0.5,
@@ -97,6 +108,7 @@ class SwipeImageViewController: UIViewController {
             switch i {
                 
             case 0:
+                
                 if images.count > 1 {
                    
                     if imageCenterX < centerView {
@@ -141,6 +153,25 @@ class SwipeImageViewController: UIViewController {
                 break
             }
         }
+    }
+}
+
+
+extension SwipeImageViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(
+        forPresented presented: UIViewController,
+        presenting: UIViewController,
+        source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return FlipPresentAnimationController(originFrame: image.frame)
+    }
+        
+      func animationController(forDismissed dismissed: UIViewController)
+      -> UIViewControllerAnimatedTransitioning? {
+      guard let _ = dismissed as? FullImageViewController else {
+        return nil
+      }
+      return FlipDismissAnimationController(destinationFrame: image.frame)
     }
 }
 
