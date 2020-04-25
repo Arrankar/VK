@@ -11,9 +11,6 @@ import UIKit
 class AvatarView: UIView {
     
     @IBOutlet weak var avatar: UIImageView!
-    
-
-    
 
     @IBInspectable
     var shadowOpacity: Float = 0.0 {
@@ -39,9 +36,6 @@ class AvatarView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-
-        
         avatar.layer.cornerRadius = bounds.height / 2
         layer.cornerRadius = bounds.height / 2
         layer.shadowOffset = CGSize(width: 10, height: 5)
