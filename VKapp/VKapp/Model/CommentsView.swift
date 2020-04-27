@@ -1,21 +1,21 @@
 //
-//  likeControl.swift
+//  CommentsView.swift
 //  VKapp
 //
-//  Created by Александр on 04.04.2020.
+//  Created by Александр on 25.04.2020.
 //  Copyright © 2020 Александр. All rights reserved.
 //
 
 import UIKit
-
 @available(iOS 13.0, *)
-class LikeButton: UIView {
-
+class CommentsView: UIView {
+    
+    
+    
     var stackView: UIStackView!
-    var likeCount = 10
+    var commentsCount = 4
     var button = UIButton()
     var label = UILabel()
-    var isPressed = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,12 +29,10 @@ class LikeButton: UIView {
     
     private func setupView() {
         label.textColor = .cyan
-        label.text = "\(likeCount)"
-        
-    
+        label.text = "\(commentsCount)"
         
         button.addTarget(self, action: #selector(like(_:)), for: .touchUpInside)
-        button.setImage(UIImage(systemName: "heart"), for: .normal)
+        button.setImage(UIImage(systemName: "text.bubble"), for: .normal)
         
         stackView = UIStackView(arrangedSubviews: [button, label])
         
@@ -51,28 +49,8 @@ class LikeButton: UIView {
     }
     
     @objc private func like(_ sender: UIButton) {
-        if  isPressed {
-            likeCount -= 1
-            UIView.transition(with: label,
-                              duration: 0.5,
-                              options: .transitionCurlUp,
-                              animations: {
-                                self.label.text = "\(self.likeCount)"
-            })
-            button.setImage(UIImage(systemName: "heart"), for: .normal)
-            isPressed = false
-        } else {
-        button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        likeCount += 1
-            UIView.transition(with: label,
-                              duration: 0.5,
-                              options: .transitionFlipFromTop,
-                              animations: {
-                                self.label.text = "\(self.likeCount)"
-            })
-        isPressed = true
+        
     }
-}
     override func layoutSubviews() {
         super.layoutSubviews()
         stackView.frame = bounds

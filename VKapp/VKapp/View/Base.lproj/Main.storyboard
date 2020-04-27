@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dYV-8K-WkS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ikL-Ll-yhQ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -364,7 +364,7 @@
                                                         <constraint firstAttribute="width" constant="30" id="RRV-Gc-BsH"/>
                                                         <constraint firstAttribute="height" constant="20" id="q2L-uI-zAq"/>
                                                     </constraints>
-                                                    <state key="normal" image="text.bubble" catalog="system"/>
+                                                    <state key="normal" image="text.bubble"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yng-yy-g9X">
                                                     <rect key="frame" x="170" y="459" width="20" height="20"/>
@@ -374,35 +374,36 @@
                                                     </constraints>
                                                     <state key="normal" image="arrowshape.turn.up.right" catalog="system"/>
                                                 </button>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V3Q-VU-jL8">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dej-4Q-igT" customClass="MoreImagesView" customModule="VKapp" customModuleProvider="target">
                                                     <rect key="frame" x="20" y="110.5" width="374" height="338.5"/>
-                                                </imageView>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Dej-4Q-igT" secondAttribute="trailing" id="2Ti-H0-EGD"/>
                                                 <constraint firstItem="P4C-NC-edk" firstAttribute="leading" secondItem="L07-A9-Pks" secondAttribute="leading" constant="10" id="6qf-Dk-xnp"/>
                                                 <constraint firstItem="Qos-GS-drq" firstAttribute="leading" secondItem="AzI-ik-2dM" secondAttribute="trailing" constant="10" id="Bkc-dI-ggU"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="N2q-Xw-KAc" secondAttribute="bottom" constant="10" id="Ddy-fy-K3K"/>
-                                                <constraint firstItem="V3Q-VU-jL8" firstAttribute="leading" secondItem="L07-A9-Pks" secondAttribute="leadingMargin" id="FB1-A7-goa"/>
                                                 <constraint firstItem="P4C-NC-edk" firstAttribute="top" secondItem="AzI-ik-2dM" secondAttribute="bottom" constant="20" id="GfH-90-Vwu"/>
                                                 <constraint firstAttribute="trailing" secondItem="P4C-NC-edk" secondAttribute="trailing" constant="10" id="Jaq-wK-Zn2"/>
-                                                <constraint firstItem="V3Q-VU-jL8" firstAttribute="trailing" secondItem="L07-A9-Pks" secondAttribute="trailingMargin" id="PYu-Ao-uPa"/>
                                                 <constraint firstItem="Qos-GS-drq" firstAttribute="top" secondItem="L07-A9-Pks" secondAttribute="top" constant="10" id="RQj-LJ-oVt"/>
                                                 <constraint firstItem="N2q-Xw-KAc" firstAttribute="leading" secondItem="L07-A9-Pks" secondAttribute="leadingMargin" constant="10" id="T1C-yw-gCL"/>
-                                                <constraint firstItem="N2q-Xw-KAc" firstAttribute="top" secondItem="V3Q-VU-jL8" secondAttribute="bottom" constant="10" id="TjT-K5-ePh"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="HuF-1x-dNj" secondAttribute="bottom" constant="9" id="V5Q-AW-3wl"/>
+                                                <constraint firstItem="Dej-4Q-igT" firstAttribute="leading" secondItem="L07-A9-Pks" secondAttribute="leadingMargin" id="Yko-oc-dvO"/>
                                                 <constraint firstItem="LzE-3n-iWL" firstAttribute="leading" secondItem="L07-A9-Pks" secondAttribute="leading" constant="70" id="a1o-6W-vIw"/>
+                                                <constraint firstItem="Dej-4Q-igT" firstAttribute="top" secondItem="P4C-NC-edk" secondAttribute="bottom" constant="10" id="aTC-ze-tzc"/>
                                                 <constraint firstItem="AzI-ik-2dM" firstAttribute="top" secondItem="L07-A9-Pks" secondAttribute="top" constant="10" id="d3S-3l-H7E"/>
                                                 <constraint firstItem="LzE-3n-iWL" firstAttribute="top" secondItem="Qos-GS-drq" secondAttribute="bottom" constant="5" id="g54-Zz-zsu"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="yng-yy-g9X" secondAttribute="bottom" constant="10" id="gNa-7D-opL"/>
                                                 <constraint firstItem="AzI-ik-2dM" firstAttribute="leading" secondItem="L07-A9-Pks" secondAttribute="leading" constant="10" id="lZj-OB-IQt"/>
-                                                <constraint firstItem="V3Q-VU-jL8" firstAttribute="top" secondItem="P4C-NC-edk" secondAttribute="bottom" constant="10" id="mY9-6Y-1XZ"/>
+                                                <constraint firstItem="yng-yy-g9X" firstAttribute="top" secondItem="Dej-4Q-igT" secondAttribute="bottom" constant="10" id="oqT-6u-my9"/>
                                                 <constraint firstItem="yng-yy-g9X" firstAttribute="leading" secondItem="HuF-1x-dNj" secondAttribute="trailing" constant="30" id="vQw-MX-aod"/>
                                                 <constraint firstItem="HuF-1x-dNj" firstAttribute="leading" secondItem="N2q-Xw-KAc" secondAttribute="trailing" constant="30" id="w43-BZ-2j4"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="moreImageView" destination="Dej-4Q-igT" id="8n4-MR-R6Y"/>
                                             <outlet property="newsDateLabel" destination="LzE-3n-iWL" id="BcV-s1-oV9"/>
-                                            <outlet property="newsImage" destination="V3Q-VU-jL8" id="CO1-qV-cjf"/>
                                             <outlet property="newsSourseImage" destination="AzI-ik-2dM" id="7xs-cT-iaM"/>
                                             <outlet property="newsSourseLabel" destination="Qos-GS-drq" id="1Gc-Vq-wap"/>
                                             <outlet property="newsTextLabel" destination="P4C-NC-edk" id="3wA-LZ-kTX"/>
@@ -429,6 +430,65 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HU5-iC-9c6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-239" y="2213"/>
+        </scene>
+        <!--News Feed View Controller-->
+        <scene sceneID="UHz-49-Hsa">
+            <objects>
+                <viewController id="ikL-Ll-yhQ" customClass="NewsFeedViewController" customModule="VKapp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BtR-wH-7LM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xa6-QE-mur">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="9Rk-Ms-rgo" firstAttribute="trailing" secondItem="xa6-QE-mur" secondAttribute="trailing" id="YTO-Mw-N7W"/>
+                            <constraint firstItem="9Rk-Ms-rgo" firstAttribute="bottom" secondItem="xa6-QE-mur" secondAttribute="bottom" id="cZS-Xy-nCc"/>
+                            <constraint firstItem="xa6-QE-mur" firstAttribute="leading" secondItem="9Rk-Ms-rgo" secondAttribute="leading" id="nU9-ta-2kq"/>
+                            <constraint firstItem="xa6-QE-mur" firstAttribute="top" secondItem="9Rk-Ms-rgo" secondAttribute="top" id="rES-Ug-tMg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9Rk-Ms-rgo"/>
+                    </view>
+                    <connections>
+                        <outlet property="newsFeedTableView" destination="xa6-QE-mur" id="I4y-EH-6KO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9we-Bc-G1u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1020" y="2656"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Y3I-OP-uUf">
+            <objects>
+                <viewController id="Tvw-N7-DFF" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aF9-Tw-fFM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rwz-wS-rGb" customClass="MoreImagesView" customModule="VKapp" customModuleProvider="target">
+                                <rect key="frame" x="57" y="298" width="300" height="300"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="6lL-k0-LUb"/>
+                                    <constraint firstAttribute="height" constant="300" id="w1Q-hN-0HQ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Rwz-wS-rGb" firstAttribute="centerY" secondItem="aF9-Tw-fFM" secondAttribute="centerY" id="gqh-xS-IPk"/>
+                            <constraint firstItem="Rwz-wS-rGb" firstAttribute="centerX" secondItem="aF9-Tw-fFM" secondAttribute="centerX" id="yAg-vP-Evd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sth-Et-fUM"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="em8-Tv-XjC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1973" y="2653"/>
         </scene>
         <!--Friends-->
         <scene sceneID="1Zt-hZ-zkz">
@@ -631,7 +691,7 @@
         <image name="magnifyingglass.circle" catalog="system" width="128" height="121"/>
         <image name="person.2.fill" catalog="system" width="128" height="80"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <image name="text.bubble" catalog="system" width="128" height="110"/>
+        <image name="text.bubble" width="128" height="110"/>
         <image name="text.justify" catalog="system" width="128" height="100"/>
     </resources>
 </document>
