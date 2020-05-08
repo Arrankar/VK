@@ -19,6 +19,24 @@ class LoginViewController: UIViewController {
         webView2.navigationDelegate = self
         webView2.load(ApiWrapper.authRequest)
     }
+    
+    
+    func getGroups() {
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "api.vk.com"
+        components.path = "/method/groups.get"
+        components.queryItems = [
+            URLQueryItem(name: "user_ids", value: "2718669"),
+            URLQueryItem(name: "access_token", value: ApiWrapper.token),
+            URLQueryItem(name: "extended", value: "1"),
+            URLQueryItem(name: "v", value: "5.68")
+        ]
+    
+        AF.request(components.url!).responseJSON { response in
+                print(response.value)
+            }
+    }
 }
     
     extension LoginViewController: WKNavigationDelegate {
@@ -43,6 +61,8 @@ class LoginViewController: UIViewController {
         
         ApiWrapper.token = params["access_token"]!
         decisionHandler(.cancel)
-        performSegue(withIdentifier: "authSuccessed", sender: self)
+        getGroups()
+        
+//        performSegue(withIdentifier: "authSuccessed", sender: self)
     }
 }
