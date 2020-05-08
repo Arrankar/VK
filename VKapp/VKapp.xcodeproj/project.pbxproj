@@ -19,9 +19,7 @@
 		1F068C6D2455868500715DD3 /* ImagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F068C6B2455868500715DD3 /* ImagesCollectionViewCell.swift */; };
 		1F068C6E2455868500715DD3 /* ImagesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F068C6C2455868500715DD3 /* ImagesCollectionViewCell.xib */; };
 		1F068C7024559E7B00715DD3 /* GalleryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F068C6F24559E7B00715DD3 /* GalleryCollectionView.swift */; };
-		1F564D032441ED9800728620 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564D022441ED9800728620 /* NewsTableViewCell.swift */; };
 		1F564D072442028700728620 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564D062442028700728620 /* News.swift */; };
-		1F564D0B244218C300728620 /* CloudView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564D0A244218C300728620 /* CloudView.swift */; };
 		1F564D162445C16D00728620 /* DotsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564D152445C16D00728620 /* DotsView.swift */; };
 		1F564D1824473DE300728620 /* SwipeImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F564D1724473DE300728620 /* SwipeImageViewController.swift */; };
 		1F5A8D81244F0A400002A3D5 /* CustomPushAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5A8D80244F0A400002A3D5 /* CustomPushAnimator.swift */; };
@@ -33,7 +31,6 @@
 		1F8628E82428DE8800B19754 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F8628E62428DE8800B19754 /* Main.storyboard */; };
 		1F8628EA2428DE8A00B19754 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F8628E92428DE8A00B19754 /* Assets.xcassets */; };
 		1F8628ED2428DE8A00B19754 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F8628EB2428DE8A00B19754 /* LaunchScreen.storyboard */; };
-		1F86C3452441D7EA0095B677 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F86C3442441D7EA0095B677 /* NewsViewController.swift */; };
 		1F8F182F2434A64100CEDCB1 /* AllGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F182E2434A64100CEDCB1 /* AllGroupsTableViewController.swift */; };
 		1F8F18312434A68C00CEDCB1 /* AllGroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8F18302434A68C00CEDCB1 /* AllGroupsTableViewCell.swift */; };
 		1F9BAF682434AF910043931B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9BAF672434AF910043931B /* User.swift */; };
@@ -48,9 +45,11 @@
 		1FDE2717243492D000032313 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE2716243492D000032313 /* FriendsTableViewCell.swift */; };
 		1FDE27192434931F00032313 /* GroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE27182434931F00032313 /* GroupsTableViewCell.swift */; };
 		1FDE271B2434935800032313 /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE271A2434935800032313 /* GroupsTableViewController.swift */; };
+		D9D83E7DB3767AF4FD20FDEC /* Pods_VKapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0DA937B73F1953CA63AECC7 /* Pods_VKapp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0623A2CE34E4380631E10BF0 /* Pods-VKapp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKapp.debug.xcconfig"; path = "Target Support Files/Pods-VKapp/Pods-VKapp.debug.xcconfig"; sourceTree = "<group>"; };
 		1F068C53244F4D5300715DD3 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		1F068C59245045E200715DD3 /* FlipAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipAnimation.swift; sourceTree = "<group>"; };
 		1F068C5D2450512B00715DD3 /* DismissAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissAnimation.swift; sourceTree = "<group>"; };
@@ -63,9 +62,7 @@
 		1F068C6B2455868500715DD3 /* ImagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesCollectionViewCell.swift; sourceTree = "<group>"; };
 		1F068C6C2455868500715DD3 /* ImagesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImagesCollectionViewCell.xib; sourceTree = "<group>"; };
 		1F068C6F24559E7B00715DD3 /* GalleryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionView.swift; sourceTree = "<group>"; };
-		1F564D022441ED9800728620 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		1F564D062442028700728620 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
-		1F564D0A244218C300728620 /* CloudView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudView.swift; sourceTree = "<group>"; };
 		1F564D152445C16D00728620 /* DotsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotsView.swift; sourceTree = "<group>"; };
 		1F564D1724473DE300728620 /* SwipeImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeImageViewController.swift; sourceTree = "<group>"; };
 		1F5A8D80244F0A400002A3D5 /* CustomPushAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPushAnimator.swift; sourceTree = "<group>"; };
@@ -79,7 +76,6 @@
 		1F8628E92428DE8A00B19754 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F8628EC2428DE8A00B19754 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F8628EE2428DE8A00B19754 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1F86C3442441D7EA0095B677 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		1F8F182E2434A64100CEDCB1 /* AllGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AllGroupsTableViewController.swift; path = VKapp/Groups/AllGroupsTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		1F8F18302434A68C00CEDCB1 /* AllGroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AllGroupsTableViewCell.swift; path = VKapp/Groups/AllGroupsTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		1F9BAF672434AF910043931B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -94,6 +90,8 @@
 		1FDE2716243492D000032313 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
 		1FDE27182434931F00032313 /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewCell.swift; sourceTree = "<group>"; };
 		1FDE271A2434935800032313 /* GroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
+		A0DA937B73F1953CA63AECC7 /* Pods_VKapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC313D4529F35A50209842A0 /* Pods-VKapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKapp.release.xcconfig"; path = "Target Support Files/Pods-VKapp/Pods-VKapp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +100,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F9BAF88243E41480043931B /* WebKit.framework in Frameworks */,
+				D9D83E7DB3767AF4FD20FDEC /* Pods_VKapp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,7 +110,6 @@
 		1F564D0C2443180500728620 /* NewsCell */ = {
 			isa = PBXGroup;
 			children = (
-				1F564D022441ED9800728620 /* NewsTableViewCell.swift */,
 				1F068C61245441ED00715DD3 /* NewsFeedTableViewCell.swift */,
 				1F068C62245441ED00715DD3 /* NewsFeedTableViewCell.xib */,
 				1F068C6B2455868500715DD3 /* ImagesCollectionViewCell.swift */,
@@ -124,7 +122,7 @@
 		1F5A8D7F244F084F0002A3D5 /* Animations */ = {
 			isa = PBXGroup;
 			children = (
-				1F564D0A244218C300728620 /* CloudView.swift */,
+				1F564D152445C16D00728620 /* DotsView.swift */,
 				1F5A8D80244F0A400002A3D5 /* CustomPushAnimator.swift */,
 				1F5A8D82244F0B870002A3D5 /* CustomPopAnimator.swift */,
 				1F5A8D84244F0CB40002A3D5 /* CustomNavigationController.swift */,
@@ -142,6 +140,7 @@
 				1F8628DF2428DE8800B19754 /* VKapp */,
 				1F8628DE2428DE8800B19754 /* Products */,
 				1F9BAF86243E41480043931B /* Frameworks */,
+				343E66073DD90C26B04CAC93 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -173,7 +172,6 @@
 		1F86C3432441D7B30095B677 /* News */ = {
 			isa = PBXGroup;
 			children = (
-				1F86C3442441D7EA0095B677 /* NewsViewController.swift */,
 				1F068C5F2454412300715DD3 /* NewsFeedViewController.swift */,
 				1F564D0C2443180500728620 /* NewsCell */,
 			);
@@ -206,8 +204,21 @@
 			isa = PBXGroup;
 			children = (
 				1F9BAF87243E41480043931B /* WebKit.framework */,
+				A0DA937B73F1953CA63AECC7 /* Pods_VKapp.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1FB033B8246560A000066211 /* CustomControls */ = {
+			isa = PBXGroup;
+			children = (
+				1F9BAF722438A17D0043931B /* AvatarImage.swift */,
+				1F9BAF742438E1880043931B /* likeControl.swift */,
+				1F068C6524544E1600715DD3 /* CommentsView.swift */,
+				1F068C69245451F800715DD3 /* ViewsView.swift */,
+				1F068C67245450C600715DD3 /* RepostView.swift */,
+			);
+			path = CustomControls;
 			sourceTree = "<group>";
 		};
 		1FDE2720243494BB00032313 /* View */ = {
@@ -222,19 +233,24 @@
 			isa = PBXGroup;
 			children = (
 				1F9BAF672434AF910043931B /* User.swift */,
+				1F564D062442028700728620 /* News.swift */,
 				1F9BAF692434B00C0043931B /* Group.swift */,
 				1F8628E42428DE8800B19754 /* LoginViewController.swift */,
-				1F9BAF722438A17D0043931B /* AvatarImage.swift */,
-				1F9BAF742438E1880043931B /* likeControl.swift */,
+				1FB033B8246560A000066211 /* CustomControls */,
 				1F9BAF84243E3D550043931B /* ApiWrapper.swift */,
-				1F564D062442028700728620 /* News.swift */,
-				1F564D152445C16D00728620 /* DotsView.swift */,
-				1F068C6524544E1600715DD3 /* CommentsView.swift */,
-				1F068C67245450C600715DD3 /* RepostView.swift */,
-				1F068C69245451F800715DD3 /* ViewsView.swift */,
 				1FB033B6245DA08300066211 /* Session.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		343E66073DD90C26B04CAC93 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				0623A2CE34E4380631E10BF0 /* Pods-VKapp.debug.xcconfig */,
+				CC313D4529F35A50209842A0 /* Pods-VKapp.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,9 +260,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1F8628F12428DE8A00B19754 /* Build configuration list for PBXNativeTarget "VKapp" */;
 			buildPhases = (
+				42C9C2873F1085F4D7F207FD /* [CP] Check Pods Manifest.lock */,
 				1F8628D92428DE8800B19754 /* Sources */,
 				1F8628DA2428DE8800B19754 /* Frameworks */,
 				1F8628DB2428DE8800B19754 /* Resources */,
+				ABE1DB38D6EA6B22B4C46159 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -305,13 +323,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		42C9C2873F1085F4D7F207FD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VKapp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ABE1DB38D6EA6B22B4C46159 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VKapp/Pods-VKapp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VKapp/Pods-VKapp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VKapp/Pods-VKapp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1F8628D92428DE8800B19754 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				1F068C5A245045E200715DD3 /* FlipAnimation.swift in Sources */,
-				1F564D0B244218C300728620 /* CloudView.swift in Sources */,
 				1F068C68245450C600715DD3 /* RepostView.swift in Sources */,
 				1F068C6624544E1600715DD3 /* CommentsView.swift in Sources */,
 				1FDE27192434931F00032313 /* GroupsTableViewCell.swift in Sources */,
@@ -328,7 +387,6 @@
 				1F564D072442028700728620 /* News.swift in Sources */,
 				1F9BAF85243E3D560043931B /* ApiWrapper.swift in Sources */,
 				1F8628E12428DE8800B19754 /* AppDelegate.swift in Sources */,
-				1F564D032441ED9800728620 /* NewsTableViewCell.swift in Sources */,
 				1F564D1824473DE300728620 /* SwipeImageViewController.swift in Sources */,
 				1F068C7024559E7B00715DD3 /* GalleryCollectionView.swift in Sources */,
 				1FDE27152434927400032313 /* FriendsTableViewController.swift in Sources */,
@@ -340,7 +398,6 @@
 				1F068C5E2450512B00715DD3 /* DismissAnimation.swift in Sources */,
 				1FDE2717243492D000032313 /* FriendsTableViewCell.swift in Sources */,
 				1FDE271B2434935800032313 /* GroupsTableViewController.swift in Sources */,
-				1F86C3452441D7EA0095B677 /* NewsViewController.swift in Sources */,
 				1F9BAF682434AF910043931B /* User.swift in Sources */,
 				1F5A8D81244F0A400002A3D5 /* CustomPushAnimator.swift in Sources */,
 				1F068C602454412300715DD3 /* NewsFeedViewController.swift in Sources */,
@@ -486,6 +543,7 @@
 		};
 		1F8628F22428DE8A00B19754 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0623A2CE34E4380631E10BF0 /* Pods-VKapp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -505,6 +563,7 @@
 		};
 		1F8628F32428DE8A00B19754 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC313D4529F35A50209842A0 /* Pods-VKapp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
