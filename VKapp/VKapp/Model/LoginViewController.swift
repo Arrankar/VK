@@ -34,7 +34,15 @@ class LoginViewController: UIViewController {
         ]
     
         AF.request(components.url!).responseJSON { response in
-                print(response.value)
+               
+            guard let data = response.value else { return }
+                
+                do {
+                    let users = try JSONDecoder().decode([Groups].self, from: data as! Data)
+                    print(users)
+                } catch {
+                    print(error)
+                }
             }
     }
 }

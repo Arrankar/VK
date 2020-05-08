@@ -24,3 +24,23 @@ struct Section {
     let title: String
     var items: [User]
 }
+
+
+struct Users: Codable {
+    var response: Response
+}
+
+struct Response: Codable {
+    var count: Int
+    var items: [Items]
+}
+
+struct Items: Codable {
+//    var id: Int
+    var name: String
+}
+
+struct Groups: Codable {
+    var response: Response
+}
+
