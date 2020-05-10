@@ -10,10 +10,10 @@ import UIKit
 
 class GroupsTableViewController: UITableViewController {
     
-    var groups = [Group]()
+    var groups = [UsersVK]()
     
     override func viewDidLoad() {
-        super.viewDidLoad()        
+        super.viewDidLoad()
     }
 
 
@@ -30,38 +30,36 @@ class GroupsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupsTableViewCell", for: indexPath) as! GroupsTableViewCell
         
-        cell.groupName.text = groups[indexPath.row].groupName
-        cell.groupImage.image = UIImage(named: groups[indexPath.row].groupImage)
         return cell
     }
     
     
-    @IBAction func addGroup(segue: UIStoryboardSegue) {
-        
-        if segue.identifier == "addGroup" {
-        
-            guard let allGroupsTableViewController = segue.source as? AllGroupsTableViewController  else { return }
-            
-            if let indexPath = allGroupsTableViewController.tableView.indexPathForSelectedRow {
-                
-                var group: Group
-                
-                if allGroupsTableViewController.searching {
-                    group = allGroupsTableViewController.filteredGroups[indexPath.row]
-                   
-                } else {
-                    group = allGroupsTableViewController.groups[indexPath.row]
-                }
-             
-                if !groups.contains(group) {
-                    groups.append(group)
-                    
-                    tableView.reloadData()
-                }
-            }
-        }
-        
-    }
+//    @IBAction func addGroup(segue: UIStoryboardSegue) {
+//        
+//        if segue.identifier == "addGroup" {
+//        
+//            guard let allGroupsTableViewController = segue.source as? AllGroupsTableViewController  else { return }
+//            
+//            if let indexPath = allGroupsTableViewController.tableView.indexPathForSelectedRow {
+//                
+//                var group: Group
+//                
+//                if allGroupsTableViewController.searching {
+//                    group = allGroupsTableViewController.filteredGroups[indexPath.row]
+//                   
+//                } else {
+//                    group = allGroupsTableViewController.groups[indexPath.row]
+//                }
+//             
+//                if !groups.contains(group) {
+//                    groups.append(group)
+//                    
+//                    tableView.reloadData()
+//                }
+//            }
+//        }
+//        
+//    }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         

@@ -13,18 +13,14 @@ class AllGroupsTableViewController: UITableViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var groups = [Group(groupName: "Наука", groupImage: "nauka.jpeg"),
-                  Group(groupName: "Техника", groupImage: "1.jpeg"),
-    Group(groupName: "Здоровье", groupImage: "6.jpeg"),
-    Group(groupName: "Красота", groupImage: "4.jpeg"),
-    Group(groupName: "Технологии", groupImage: "nauka.jpeg")]
+    var groups = [Groups]()
     
-    var filteredGroups = [Group]()
+    var filteredGroups = [Groups]()
     var searching = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchBar.delegate = self
+//        searchBar.delegate = self
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -41,7 +37,7 @@ class AllGroupsTableViewController: UITableViewController {
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AllGroupsTableViewCell", for: indexPath) as! AllGroupsTableViewCell
-        var group: Group
+        var group: Groups
         
         if searching {
             group = filteredGroups[indexPath.row]
@@ -49,25 +45,25 @@ class AllGroupsTableViewController: UITableViewController {
             group = groups[indexPath.row]
         }
         
-        cell.allGroupsName.text = group.groupName
-        cell.allGroupsImage.image = UIImage(named: group.groupImage)
+//        cell.allGroupsName.text = group.groupName
+//        cell.allGroupsImage.image = UIImage(named: group.groupImage)
         return cell
     }
     
    
 }
 
-extension AllGroupsTableViewController: UISearchBarDelegate {
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchText.isEmpty {
-            filteredGroups = groups
-        } else {
-        filteredGroups = groups.filter({ (group: Group) -> Bool in
-            return group.groupName.lowercased().contains(searchText.lowercased())
-        })
-        searching = true
-        }
-        tableView.reloadData()
-    }
-}
+//extension AllGroupsTableViewController: UISearchBarDelegate {
+//
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        if searchText.isEmpty {
+//            filteredGroups = groups
+//        } else {
+//        filteredGroups = groups.filter({ (group: Groups) -> Bool in
+//            return group.groupName.lowercased().contains(searchText.lowercased())
+//        })
+//        searching = true
+//        }
+//        tableView.reloadData()
+//    }
+//}
