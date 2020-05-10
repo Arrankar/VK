@@ -31,13 +31,15 @@ struct Users: Codable {
 }
 
 struct Response: Codable {
-    var count: Int
+//    var count: Int
     var items: [Items]
 }
 
 struct Items: Codable {
 //    var id: Int
-    var name: String
+//    var name: String
+    var first_name: String
+    var last_name: String
 }
 
 struct Groups: Codable {
