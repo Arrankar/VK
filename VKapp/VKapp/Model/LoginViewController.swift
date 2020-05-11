@@ -44,11 +44,10 @@ class LoginViewController: UIViewController {
         
         session.token = params["access_token"]!
         decisionHandler(.cancel)
-        ApiWrapper.getGroups()
-        ApiWrapper.getFriends()
-        ApiWrapper.groupSearch()
-        ApiWrapper.getPhoto()
-        
-//        performSegue(withIdentifier: "authSuccessed", sender: self)
+//        ApiWrapper.getGroups()
+//        ApiWrapper.groupSearch()
+//        ApiWrapper.getPhoto()
+     
+        performSegue(withIdentifier: "authSuccessed", sender: self)
     }
 }

@@ -49,7 +49,7 @@ struct ApiWrapper {
         }
     }
     
-    static func getFriends() {
+    static func getFriends(completion: @escaping ([User]) -> Void) {
         var components = URLComponents()
         components.scheme = "https"
         components.host = "api.vk.com"
@@ -57,12 +57,14 @@ struct ApiWrapper {
         components.queryItems = [
             URLQueryItem(name: "user_ids", value: "7398838"),
             URLQueryItem(name: "access_token", value: Session.instance.token),
-            URLQueryItem(name: "fields", value: "domain"),
+            URLQueryItem(name: "fields", value: "domain, photo_200_orig"),
             URLQueryItem(name: "v", value: "5.68")
         ]
         
-        AF.request(components.url!).responseJSON { response in
-            print(response)
+        AF.request(components.url!).responseData { response in
+            guard let data = response.value else { return }
+            let users = try! JSONDecoder().decode(UserResponse.self, from: data).response.items
+            completion(users)
         }
     }
     

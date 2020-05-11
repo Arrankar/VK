@@ -13,9 +13,9 @@ class AllGroupsTableViewController: UITableViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var groups = [Groups]()
+    var groups = [String]()
     
-    var filteredGroups = [Groups]()
+    var filteredGroups = [String]()
     var searching = false
     
     override func viewDidLoad() {
@@ -37,12 +37,12 @@ class AllGroupsTableViewController: UITableViewController {
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AllGroupsTableViewCell", for: indexPath) as! AllGroupsTableViewCell
-        var group: Groups
+        
         
         if searching {
-            group = filteredGroups[indexPath.row]
+//            group = filteredGroups[indexPath.row]
         } else {
-            group = groups[indexPath.row]
+//            group = groups[indexPath.row]
         }
         
 //        cell.allGroupsName.text = group.groupName

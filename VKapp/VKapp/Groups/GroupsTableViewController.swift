@@ -10,7 +10,7 @@ import UIKit
 
 class GroupsTableViewController: UITableViewController {
     
-    var groups = [UsersVK]()
+    var groups = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
