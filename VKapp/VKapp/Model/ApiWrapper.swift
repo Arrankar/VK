@@ -32,7 +32,7 @@ struct ApiWrapper {
         
     }
     
-    static func getGroups() {
+    static func getGroups(completion: @escaping ([GroupResponse.Group]) -> Void) {
         var components = URLComponents()
         components.scheme = "https"
         components.host = "api.vk.com"
@@ -41,15 +41,18 @@ struct ApiWrapper {
             URLQueryItem(name: "user_ids", value: "7398838"),
             URLQueryItem(name: "access_token", value: Session.instance.token),
             URLQueryItem(name: "extended", value: "1"),
+            URLQueryItem(name: "fields", value: "members_count"),
             URLQueryItem(name: "v", value: "5.68")
         ]
         
-        AF.request(components.url!).responseJSON { response in
-                   print(response)
+        AF.request(components.url!).responseData { response in
+            guard let data = response.value else { return }
+            let groups = try! JSONDecoder().decode(GroupResponse.self, from: data).response.items
+            completion(groups)
         }
     }
     
-    static func getFriends(completion: @escaping ([User]) -> Void) {
+    static func getFriends(completion: @escaping ([UserResponse.User]) -> Void) {
         var components = URLComponents()
         components.scheme = "https"
         components.host = "api.vk.com"
@@ -85,19 +88,21 @@ struct ApiWrapper {
         }
     }
     
-    static func getPhoto() {
+    static func getPhoto(ownerId: Int, completion: @escaping ([PhotoResponse.Photo]) -> Void) {
         var components = URLComponents()
         components.scheme = "https"
         components.host = "api.vk.com"
         components.path = "/method/photos.getAll"
         components.queryItems = [
             URLQueryItem(name: "access_token", value: Session.instance.token),
-            URLQueryItem(name: "owner_id", value: "523842492"),
+            URLQueryItem(name: "owner_id", value: "\(ownerId)"),
             URLQueryItem(name: "v", value: "5.68")
         ]
         
-        AF.request(components.url!).responseJSON { response in
-            print(response)
+        AF.request(components.url!).responseData { response in
+            guard let data = response.value else { return }
+            let photos = try! JSONDecoder().decode(PhotoResponse.self, from: data).response.items
+            completion(photos)
         }
     }
 }

@@ -19,7 +19,7 @@ class FriendsTableViewController: UITableViewController {
     @IBOutlet weak var buttonWidth: NSLayoutConstraint!
     @IBOutlet weak var buttonConstraint: NSLayoutConstraint!
     
-    var friends = [User]()
+    var friends = [UserResponse.User]()
     
     //    var friendSection = [Section]()
     
@@ -36,90 +36,91 @@ class FriendsTableViewController: UITableViewController {
             self?.tableView.reloadData()
         }
     }
-
-
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        return friendSection.count
-//    }
-//
-//    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        return friendSection[section].title
-//    }
-//
+    
+    
+    //    override func numberOfSections(in tableView: UITableView) -> Int {
+    //        return friendSection.count
+    //    }
+    //
+    //    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    //        return friendSection[section].title
+    //    }
+    //
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return friends.count
     }
-
-
-override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "FriendsTableViewCell", for: indexPath) as! FriendsTableViewCell
     
-    cell.contentView.alpha = 0
     
-    UIView.animate(withDuration: 1,
-                   delay: 0,
-                   usingSpringWithDamping: 0.5,
-                   initialSpringVelocity: 0.3,
-                   options: [],
-                   animations: {
-                    cell.frame.origin.x -= 100
-    })
-    cell.friendName.text = friends[indexPath.row].firstName
-    cell.friendSurname.text = friends[indexPath.row].lastName
-    cell.friendImage.avatar.image = UIImage(named: friends[indexPath.row].image)
-    //        cell.friendName.text = friendSection[indexPath.section].items[indexPath.row].name
-    //        cell.friendSurname.text = friendSection[indexPath.section].items[indexPath.row].surname
-    //        cell.friendImage.avatar.image = UIImage(named: friendSection[indexPath.section].items[indexPath.row].photo)
-    return cell
-}
-
-override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-    let cell = cell as! FriendsTableViewCell
-    UIView.animate(withDuration: 1, animations: {
-        cell.contentView.alpha = 1
-    })
-}
-
-override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "imagesSegue" {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FriendsTableViewCell", for: indexPath) as! FriendsTableViewCell
         
-        if let indexPath = tableView.indexPathForSelectedRow {
-            let imagesVC = segue.destination as! SwipeImageViewController
-            //                imagesVC.images = friendSection[indexPath.section].items[indexPath.row].images
-            //            }
+        cell.contentView.alpha = 0
+        
+        UIView.animate(withDuration: 1,
+                       delay: 0,
+                       usingSpringWithDamping: 0.5,
+                       initialSpringVelocity: 0.3,
+                       options: [],
+                       animations: {
+                        cell.frame.origin.x -= 100
+        })
+        cell.friendName.text = friends[indexPath.row].firstName
+        cell.friendSurname.text = friends[indexPath.row].lastName
+        let url = URL(string: friends[indexPath.row].image)
+        cell.friendImage.avatar.image = UIImage(data: try! Data(contentsOf: url!))!
+        
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let cell = cell as! FriendsTableViewCell
+        UIView.animate(withDuration: 1, animations: {
+            cell.contentView.alpha = 1
+        })
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "imagesSegue" {
+            
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let imagesVC = segue.destination as! SwipeImageViewController
+                imagesVC.friendId = friends[indexPath.row].id
+            }
         }
     }
-    
-    func sortedFriends(friends: [User]) {
-        //        let userDictionary = Dictionary.init(grouping: friends)
-        //        { $0.surname.prefix(1) }
-        //        friendSection = userDictionary.map {Section(title: String($0.key), items: $0.value)}
-        //        friendSection.sort {$0.title < $1.title }
-    }
-    //    @IBAction func cancelButtonPressed(_ sender: UIButton) {
-    //        self.view.layoutIfNeeded()
-    //        UIView.animate(withDuration: 0.25, animations: {
-    //            self.buttonWidth.constant = 0
-    //            self.view.layoutIfNeeded()
-    //        })
-    //
-    //                UIView.animate(withDuration: 1,
-    //                               delay: 0,
-    //                               usingSpringWithDamping: 0.5,
-    //                               initialSpringVelocity: 0.3,
-    //                               options: [],
-    //                               animations: {
-    //                                self.imageConstraint.constant = 10 +  self.searchTextField.frame.width / 2
-    //                                self.textFieldConstraint.constant = 10
-    //                                self.view.layoutIfNeeded()
-    //                })
-    //        searchTextField.text = ""
-    //        sortedFriends(friends: friends)
-    //        searchTextField.endEditing(true)
-    //        tableView.reloadData()
-    //        }
-    //    }
 }
+
+
+//        func sortedFriends(friends: [User]) {
+//        let userDictionary = Dictionary.init(grouping: friends)
+//        { $0.surname.prefix(1) }
+//        friendSection = userDictionary.map {Section(title: String($0.key), items: $0.value)}
+//        friendSection.sort {$0.title < $1.title }
+//        }
+//    @IBAction func cancelButtonPressed(_ sender: UIButton) {
+//        self.view.layoutIfNeeded()
+//        UIView.animate(withDuration: 0.25, animations: {
+//            self.buttonWidth.constant = 0
+//            self.view.layoutIfNeeded()
+//        })
+//
+//                UIView.animate(withDuration: 1,
+//                               delay: 0,
+//                               usingSpringWithDamping: 0.5,
+//                               initialSpringVelocity: 0.3,
+//                               options: [],
+//                               animations: {
+//                                self.imageConstraint.constant = 10 +  self.searchTextField.frame.width / 2
+//                                self.textFieldConstraint.constant = 10
+//                                self.view.layoutIfNeeded()
+//                })
+//        searchTextField.text = ""
+//        sortedFriends(friends: friends)
+//        searchTextField.endEditing(true)
+//        tableView.reloadData()
+//        }
+//    }
+//    }
 //@available(iOS 13.0, *)
 //extension FriendsTableViewController: UITextFieldDelegate {
 //
@@ -163,4 +164,4 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        return true
 //    }
 //}
-}
+//}

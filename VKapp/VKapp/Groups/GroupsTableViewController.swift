@@ -10,10 +10,14 @@ import UIKit
 
 class GroupsTableViewController: UITableViewController {
     
-    var groups = [String]()
+    var groups = [GroupResponse.Group]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ApiWrapper.getGroups { [weak self] groups in
+            self?.groups = groups
+            self?.tableView.reloadData()
+        }
     }
 
 
@@ -29,7 +33,10 @@ class GroupsTableViewController: UITableViewController {
    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupsTableViewCell", for: indexPath) as! GroupsTableViewCell
-        
+        cell.groupName.text = groups[indexPath.row].groupName
+        cell.membersCount.text = String(groups[indexPath.row].membersCount)
+        let url = URL(string: groups[indexPath.row].image)
+        cell.groupImage.image = UIImage(data: try! Data(contentsOf: url!))!
         return cell
     }
     
