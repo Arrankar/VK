@@ -13,14 +13,13 @@ class AllGroupsTableViewController: UITableViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var groups = [String]()
-    
-    var filteredGroups = [String]()
+    var groups = [GroupResponse.Group]()
+    var filteredGroups = [GroupResponse.Group]()
     var searching = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        searchBar.delegate = self
+        searchBar.delegate = self
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -38,32 +37,30 @@ class AllGroupsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AllGroupsTableViewCell", for: indexPath) as! AllGroupsTableViewCell
         
+        let group = filteredGroups[indexPath.row]
+        cell.allGroupsName.text = group.groupName
+        cell.membersLabel.text = String(group.membersCount)
+        let url = URL(string: group.image)
+        cell.allGroupsImage.image = UIImage(data: try! Data(contentsOf: url!))!
         
-        if searching {
-//            group = filteredGroups[indexPath.row]
-        } else {
-//            group = groups[indexPath.row]
-        }
-        
-//        cell.allGroupsName.text = group.groupName
-//        cell.allGroupsImage.image = UIImage(named: group.groupImage)
         return cell
     }
     
    
 }
 
-//extension AllGroupsTableViewController: UISearchBarDelegate {
-//
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        if searchText.isEmpty {
-//            filteredGroups = groups
-//        } else {
-//        filteredGroups = groups.filter({ (group: Groups) -> Bool in
-//            return group.groupName.lowercased().contains(searchText.lowercased())
-//        })
-//        searching = true
-//        }
-//        tableView.reloadData()
-//    }
-//}
+extension AllGroupsTableViewController: UISearchBarDelegate {
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            filteredGroups = groups
+        } else {
+        ApiWrapper.groupSearch(searchText: searchText) { [weak self] filteredGroups in
+            self?.filteredGroups = filteredGroups
+            self?.tableView.reloadData()
+        }
+        searching = true
+        }
+        tableView.reloadData()
+    }
+}

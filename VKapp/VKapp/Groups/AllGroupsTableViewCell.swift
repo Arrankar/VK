@@ -12,10 +12,11 @@ class AllGroupsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var allGroupsImage: UIImageView!
     @IBOutlet weak var allGroupsName: UILabel!
+    @IBOutlet weak var membersLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-     
+        allGroupsImage.layer.cornerRadius = 50
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
