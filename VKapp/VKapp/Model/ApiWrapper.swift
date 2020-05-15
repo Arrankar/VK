@@ -117,7 +117,7 @@ struct ApiWrapper {
         components.path = "/method/newsfeed.get"
         components.queryItems = [
             URLQueryItem(name: "access_token", value: Session.instance.token),
-            URLQueryItem(name: "filters", value: "post,photo,photo_tag, wall_photo"),
+            URLQueryItem(name: "filters", value: "post"),
             URLQueryItem(name: "count", value: "50"),
             URLQueryItem(name: "v", value: "5.68")
         ]

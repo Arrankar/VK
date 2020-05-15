@@ -44,6 +44,7 @@ class LoginViewController: UIViewController {
         
         session.token = params["access_token"]!
         decisionHandler(.cancel)
+        print(session.token)
         performSegue(withIdentifier: "authSuccessed", sender: self)
     }
 }

@@ -13,7 +13,7 @@ class ViewsView: UIView {
 
 
    var stackView: UIStackView!
-   var viewsCount = 212
+
    var button = UIButton()
    var label = UILabel()
    
@@ -28,18 +28,14 @@ class ViewsView: UIView {
    }
    
    private func setupView() {
-       label.textColor = .cyan
-       label.text = "\(viewsCount)"
-       
        button.addTarget(self, action: #selector(like(_:)), for: .touchUpInside)
        button.setImage(UIImage(systemName: "eye"), for: .normal)
-       
        stackView = UIStackView(arrangedSubviews: [button, label])
        
        self.addSubview(stackView)
        
        stackView.spacing = 5
-       stackView.widthAnchor.constraint(equalToConstant: self.bounds.width).isActive = true
+      
        stackView.heightAnchor.constraint(equalToConstant: self.bounds.height).isActive = true
        
        stackView.axis = .horizontal

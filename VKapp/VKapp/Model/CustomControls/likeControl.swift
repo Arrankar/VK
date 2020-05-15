@@ -12,7 +12,6 @@ import UIKit
 class LikeButton: UIView {
 
     var stackView: UIStackView!
-    var likeCount = 10
     var button = UIButton()
     var label = UILabel()
     var isPressed = false
@@ -28,12 +27,7 @@ class LikeButton: UIView {
     }
     
     private func setupView() {
-        label.textColor = .cyan
-        label.text = "\(likeCount)"
-        
-    
-        
-        button.addTarget(self, action: #selector(like(_:)), for: .touchUpInside)
+//        button.addTarget(self, action: #selector(like(_:)), for: .touchUpInside)
         button.setImage(UIImage(systemName: "heart"), for: .normal)
         
         stackView = UIStackView(arrangedSubviews: [button, label])
@@ -50,29 +44,29 @@ class LikeButton: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    @objc private func like(_ sender: UIButton) {
-        if  isPressed {
-            likeCount -= 1
-            UIView.transition(with: label,
-                              duration: 0.5,
-                              options: .transitionCurlUp,
-                              animations: {
-                                self.label.text = "\(self.likeCount)"
-            })
-            button.setImage(UIImage(systemName: "heart"), for: .normal)
-            isPressed = false
-        } else {
-        button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        likeCount += 1
-            UIView.transition(with: label,
-                              duration: 0.5,
-                              options: .transitionFlipFromTop,
-                              animations: {
-                                self.label.text = "\(self.likeCount)"
-            })
-        isPressed = true
-    }
-}
+//    @objc private func like(_ sender: UIButton) {
+//        if  isPressed {
+//            likeCount -= 1
+//            UIView.transition(with: label,
+//                              duration: 0.5,
+//                              options: .transitionCurlUp,
+//                              animations: {
+//                                self.label.text = "\(self.likeCount)"
+//            })
+//            button.setImage(UIImage(systemName: "heart"), for: .normal)
+//            isPressed = false
+//        } else {
+//        button.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+//        likeCount += 1
+//            UIView.transition(with: label,
+//                              duration: 0.5,
+//                              options: .transitionFlipFromTop,
+//                              animations: {
+//                                self.label.text = "\(self.likeCount)"
+//            })
+//        isPressed = true
+//    }
+
     override func layoutSubviews() {
         super.layoutSubviews()
         stackView.frame = bounds

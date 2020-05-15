@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,7 +20,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BhV-8m-TZ4" userLabel="CardView">
                         <rect key="frame" x="5" y="5" width="310" height="397"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2L7-kM-LYK">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2L7-kM-LYK">
                                 <rect key="frame" x="5" y="60" width="305" height="20.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -30,30 +30,50 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cVI-Rq-cuH" userLabel="BottomView">
                                 <rect key="frame" x="0.0" y="337" width="310" height="60"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gL1-ri-Cew" customClass="LikeButton" customModule="VKapp" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="8" width="48" height="45"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gL1-ri-Cew" customClass="LikeButton" customModule="VKapp" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="8" width="60" height="45"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="88o-8Q-f9N"/>
+                                        </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u9A-Lz-1nM" customClass="CommentsView" customModule="VKapp" customModuleProvider="target">
-                                        <rect key="frame" x="57" y="8" width="48" height="45"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9A-Lz-1nM" customClass="CommentsView" customModule="VKapp" customModuleProvider="target">
+                                        <rect key="frame" x="69" y="8" width="60" height="45"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="Mnt-kh-2q1"/>
+                                        </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="97k-cY-eGx" customClass="RepostView" customModule="VKapp" customModuleProvider="target">
-                                        <rect key="frame" x="107" y="8" width="48" height="45"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="97k-cY-eGx" customClass="RepostView" customModule="VKapp" customModuleProvider="target">
+                                        <rect key="frame" x="131" y="8" width="60" height="45"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="xSt-yZ-rOH"/>
+                                        </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KTe-1k-rXD" customClass="ViewsView" customModule="VKapp" customModuleProvider="target">
-                                        <rect key="frame" x="242" y="8" width="60" height="45"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KTe-1k-rXD" customClass="ViewsView" customModule="VKapp" customModuleProvider="target">
+                                        <rect key="frame" x="235" y="8" width="60" height="45"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="UDU-d5-yq3"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="KTe-1k-rXD" secondAttribute="trailing" constant="15" id="5l7-QF-L75"/>
+                                    <constraint firstAttribute="bottom" secondItem="KTe-1k-rXD" secondAttribute="bottom" constant="7" id="HcY-m0-5cn"/>
+                                    <constraint firstItem="gL1-ri-Cew" firstAttribute="leading" secondItem="cVI-Rq-cuH" secondAttribute="leading" constant="8" id="NYo-GL-wRf"/>
+                                    <constraint firstItem="u9A-Lz-1nM" firstAttribute="leading" secondItem="gL1-ri-Cew" secondAttribute="trailing" constant="1" id="RH5-yv-9l5"/>
+                                    <constraint firstItem="97k-cY-eGx" firstAttribute="top" secondItem="cVI-Rq-cuH" secondAttribute="top" constant="8" id="U9h-3P-kRl"/>
+                                    <constraint firstAttribute="bottom" secondItem="gL1-ri-Cew" secondAttribute="bottom" constant="7" id="WCv-aD-4Zr"/>
+                                    <constraint firstItem="KTe-1k-rXD" firstAttribute="top" secondItem="cVI-Rq-cuH" secondAttribute="top" constant="8" id="YXS-pV-kgM"/>
+                                    <constraint firstAttribute="bottom" secondItem="97k-cY-eGx" secondAttribute="bottom" constant="7" id="b2h-hV-ruE"/>
+                                    <constraint firstAttribute="bottom" secondItem="u9A-Lz-1nM" secondAttribute="bottom" constant="7" id="dge-x5-DkX"/>
                                     <constraint firstAttribute="height" constant="60" id="ds7-3p-dSu"/>
+                                    <constraint firstItem="97k-cY-eGx" firstAttribute="leading" secondItem="u9A-Lz-1nM" secondAttribute="trailing" constant="2" id="mTm-xh-EBy"/>
+                                    <constraint firstItem="u9A-Lz-1nM" firstAttribute="top" secondItem="cVI-Rq-cuH" secondAttribute="top" constant="8" id="w1M-AQ-WJt"/>
+                                    <constraint firstItem="gL1-ri-Cew" firstAttribute="top" secondItem="cVI-Rq-cuH" secondAttribute="top" constant="8" id="x30-7z-0QQ"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="Fpd-CE-vhc" userLabel="Top View">
@@ -96,7 +116,7 @@
                                 </collectionViewFlowLayout>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray4Color" red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="MiH-Wv-KGL" firstAttribute="top" secondItem="2L7-kM-LYK" secondAttribute="bottom" constant="8" id="61I-B0-ctG"/>
                             <constraint firstAttribute="trailing" secondItem="2L7-kM-LYK" secondAttribute="trailing" id="8JT-W2-8IX"/>

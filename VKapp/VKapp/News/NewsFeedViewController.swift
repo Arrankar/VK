@@ -24,11 +24,12 @@ class NewsFeedViewController: UIViewController {
         newsFeedTableView.register(UINib(nibName: "NewsFeedTableViewCell", bundle: nil), forCellReuseIdentifier: "NewsFeedTableViewCell")
         newsFeedTableView.separatorStyle = .none
         newsFeedTableView.backgroundColor = .clear
-        view.backgroundColor = #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0.7681049705, green: 1, blue: 0.9786186814, alpha: 1)
         
-        ApiWrapper.getNews { [weak self] news in
-            self?.newsArray = news
-        }
+//        ApiWrapper.getNews { [weak self] news in
+//            self?.newsArray = news
+//            self?.newsFeedTableView.reloadData()
+//        }
     }
 }
 
@@ -44,6 +45,10 @@ extension NewsFeedViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsFeedTableViewCell", for: indexPath) as! NewsFeedTableViewCell
         let news = newsArray[indexPath.row]
         cell.postTextLabel.text = news.text
+        cell.commentsVIew.label.text = String(news.commentsCount)
+        cell.likeView.label.text = String(news.likesCount)
+        cell.repostView.label.text = String(news.repostsCount)
+        cell.viewsView.label.text = String(news.viewsCount)
         return cell
     }
     
