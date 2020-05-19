@@ -38,7 +38,7 @@ struct ApiWrapper {
         components.host = "api.vk.com"
         components.path = "/method/groups.get"
         components.queryItems = [
-            URLQueryItem(name: "user_ids", value: "7398838"),
+            URLQueryItem(name: "user_ids", value: "\(Session.instance.userId)"),
             URLQueryItem(name: "access_token", value: Session.instance.token),
             URLQueryItem(name: "extended", value: "1"),
             URLQueryItem(name: "fields", value: "members_count"),
@@ -58,7 +58,7 @@ struct ApiWrapper {
         components.host = "api.vk.com"
         components.path = "/method/friends.get"
         components.queryItems = [
-            URLQueryItem(name: "user_ids", value: "7398838"),
+            URLQueryItem(name: "user_ids", value: "\(Session.instance.userId)"),
             URLQueryItem(name: "access_token", value: Session.instance.token),
             URLQueryItem(name: "fields", value: "domain, photo_200_orig"),
             URLQueryItem(name: "v", value: "5.68")
@@ -77,7 +77,7 @@ struct ApiWrapper {
         components.host = "api.vk.com"
         components.path = "/method/groups.search"
         components.queryItems = [
-            URLQueryItem(name: "user_ids", value: "7398838"),
+            URLQueryItem(name: "user_ids", value: "\(Session.instance.userId)"),
             URLQueryItem(name: "access_token", value: Session.instance.token),
             URLQueryItem(name: "extended", value: "1"),
             URLQueryItem(name: "fields", value: "members_count"),
