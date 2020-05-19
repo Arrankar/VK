@@ -13,7 +13,7 @@ class CommentsView: UIView {
     
     
     var stackView: UIStackView!
-    var commentsCount = 4
+
     var button = UIButton()
     var label = UILabel()
     
@@ -28,9 +28,6 @@ class CommentsView: UIView {
     }
     
     private func setupView() {
-        label.textColor = .cyan
-        label.text = "\(commentsCount)"
-        
         button.addTarget(self, action: #selector(like(_:)), for: .touchUpInside)
         button.setImage(UIImage(systemName: "text.bubble"), for: .normal)
         

@@ -12,30 +12,37 @@ class SwipeImageViewController: UIViewController {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var titleView: UIImageView!
     
-    var images = [String]()
+    var images = [PhotoResponse.Photo]()
+    var friendId = 0
     var i = 0
     var interactiveAnimator = UIViewPropertyAnimator()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         image.isUserInteractionEnabled = true
         image.layer.cornerRadius = 30
         
-        guard images.count > 0 else { return
-            image.image = UIImage(named: "noPhoto")
+        ApiWrapper.getPhoto(ownerId: friendId) { [weak self] photos in
+            self?.images = photos
+            guard self!.images.count > 0 else { return
+                self!.image.image = UIImage(named: "noPhoto")
+            }
+            let url = URL(string: (self?.images[self!.i].image)!)
+            self?.image.image = UIImage(data: try! Data(contentsOf: url!))!
         }
-        image.image = UIImage(named: images[i])
         
-    
+
+
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        segue.destination.transitioningDelegate = self
-        if segue.identifier == "reveal" {
-            let fullImageVC = segue.destination as! FullImageViewController
-            fullImageVC.currentPhoto = UIImage(named: images[i])
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        segue.destination.transitioningDelegate = self
+//        if segue.identifier == "reveal" {
+//            let fullImageVC = segue.destination as! FullImageViewController
+//            fullImageVC.currentPhoto = UIImage(named: images[i])
+//        }
+//    }
 
     @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
         performSegue(withIdentifier: "reveal", sender: nil)
@@ -68,8 +75,10 @@ class SwipeImageViewController: UIViewController {
                                                        relativeDuration: 0.2,
                                                        animations: {
                                                         self.image.center = CGPoint(x: self.view.bounds.width / 2, y: self.view.bounds.height / 2)
-                                                        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.3, execute: {
-                                                            self.image.image = UIImage(named: self.images[self.i])
+                                                        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.1, execute: {
+                                                            let url = URL(string: self.images[self.i].image)
+                                                            self.image.image = UIImage(data: try! Data(contentsOf: url!))!
+                                                           
                                                         })
                                     })
                                     UIView.addKeyframe(withRelativeStartTime: 0.8,

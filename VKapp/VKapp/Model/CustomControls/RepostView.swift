@@ -12,7 +12,6 @@ import UIKit
 class RepostView: UIView {
 
       var stackView: UIStackView!
-      var repostCount = 7
       var button = UIButton()
       var label = UILabel()
       
@@ -27,9 +26,6 @@ class RepostView: UIView {
       }
       
       private func setupView() {
-          label.textColor = .cyan
-          label.text = "\(repostCount)"
-          
           button.addTarget(self, action: #selector(like(_:)), for: .touchUpInside)
           button.setImage(UIImage(systemName: "arrowshape.turn.up.right"), for: .normal)
           

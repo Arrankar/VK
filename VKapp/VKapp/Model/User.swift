@@ -8,41 +8,34 @@
 
 import UIKit
 
-struct User {
-    var name: String
-    var surname: String
-    var photo: String
-    var images: [String]
-    var fullName: String {
-        get {
-            return "\(name) \(surname)"
+struct UserResponse: Decodable {
+    let response: Response
+    
+    
+    struct Response: Decodable {
+        let items: [User]
+    }
+    
+    class User: Decodable {
+        dynamic var id = 0
+        dynamic var firstName = ""
+        dynamic var lastName = ""
+        dynamic var image = ""
+        
+        enum ItemsKeys: String, CodingKey {
+            case id = "id"
+            case firstName = "first_name"
+            case lastNmae = "last_name"
+            case image = "photo_200_orig"
+        }
+        
+        convenience required init(from decoder: Decoder) throws {
+            self.init()
+            let values = try decoder.container(keyedBy: ItemsKeys.self)
+            self.id = try values.decode(Int.self, forKey: .id)
+            self.firstName = try values.decode(String.self, forKey: .firstName)
+            self.lastName = try values.decode(String.self, forKey: .lastNmae)
+            self.image = try values.decode(String.self, forKey: .image)
         }
     }
 }
-
-struct Section {
-    let title: String
-    var items: [User]
-}
-
-
-struct Users: Codable {
-    var response: Response
-}
-
-struct Response: Codable {
-//    var count: Int
-    var items: [Items]
-}
-
-struct Items: Codable {
-//    var id: Int
-//    var name: String
-    var first_name: String
-    var last_name: String
-}
-
-struct Groups: Codable {
-    var response: Response
-}
-
