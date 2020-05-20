@@ -12,18 +12,18 @@ class SwipeImageViewController: UIViewController {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var titleView: UIImageView!
     
-    var images = [PhotoResponse.Photo]()
+    var images = [Photo]()
     var friendId = 0
     var i = 0
     var interactiveAnimator = UIViewPropertyAnimator()
-    
+    let apiWapper = ApiWrapper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         image.isUserInteractionEnabled = true
         image.layer.cornerRadius = 30
         
-        ApiWrapper.getPhoto(ownerId: friendId) { [weak self] photos in
+        apiWapper.getPhoto(ownerId: friendId) { [weak self] photos in
             self?.images = photos
             guard self!.images.count > 0 else { return
                 self!.image.image = UIImage(named: "noPhoto")

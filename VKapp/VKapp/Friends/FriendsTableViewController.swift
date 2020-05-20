@@ -19,8 +19,8 @@ class FriendsTableViewController: UITableViewController {
     @IBOutlet weak var buttonWidth: NSLayoutConstraint!
     @IBOutlet weak var buttonConstraint: NSLayoutConstraint!
     
-    var friends = [UserResponse.User]()
-    
+    var friends = [User]()
+    let apiWapper = ApiWrapper()
     //    var friendSection = [Section]()
     
     
@@ -31,10 +31,11 @@ class FriendsTableViewController: UITableViewController {
         self.buttonWidth.constant = 0
         self.imageConstraint.constant = 10 + searchTextField.frame.width / 2
         
-        ApiWrapper.getFriends { [weak self] friends in
+        apiWapper.getFriends { [weak self] friends in
             self?.friends = friends
             self?.tableView.reloadData()
         }
+        
     }
     
     

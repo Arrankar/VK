@@ -10,11 +10,12 @@ import UIKit
 
 class GroupsTableViewController: UITableViewController {
     
-    var groups = [GroupResponse.Group]()
+    var groups = [Group]()
+    let apiWapper = ApiWrapper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ApiWrapper.getGroups { [weak self] groups in
+        apiWapper.getGroups { [weak self] groups in
             self?.groups = groups
             self?.tableView.reloadData()
         }

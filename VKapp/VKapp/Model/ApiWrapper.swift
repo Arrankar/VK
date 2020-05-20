@@ -8,10 +8,11 @@
 
 import Foundation
 import Alamofire
+import RealmSwift
 
-struct ApiWrapper {
+class ApiWrapper {
     
-    static let baseUrl = "https://api.vk.com/method"
+     let baseUrl = "https://api.vk.com/method"
     
     static var authRequest: URLRequest {
         var components = URLComponents()
@@ -32,7 +33,7 @@ struct ApiWrapper {
         
     }
     
-    static func getGroups(completion: @escaping ([GroupResponse.Group]) -> Void) {
+      func getGroups(completion: @escaping ([Group]) -> Void) {
         
         let methodUrl = "/groups.get"
         let url = baseUrl + methodUrl
@@ -51,7 +52,7 @@ struct ApiWrapper {
         }
     }
     
-    static func getFriends(completion: @escaping ([UserResponse.User]) -> Void) {
+      func getFriends(completion: @escaping ([User]) -> Void) {
         let methodUrl = "/friends.get"
         let url = baseUrl + methodUrl
         let parameters: Parameters = [
@@ -61,14 +62,16 @@ struct ApiWrapper {
             "v" : "5.68"
         ]
         
-        AF.request(url, method: .get, parameters: parameters).responseData { response in
+        AF.request(url, method: .get, parameters: parameters).responseData { [weak self] response in
             guard let data = response.value else { return }
             let users = try! JSONDecoder().decode(UserResponse.self, from: data).response.items
+            self?.saveUsersData(users)
+            print(Realm.Configuration.defaultConfiguration.fileURL!)
             completion(users)
         }
     }
     
-    static func groupSearch(searchText: String, completion: @escaping ([GroupResponse.Group]) -> ()) {
+     func groupSearch(searchText: String, completion: @escaping ([Group]) -> ()) {
         
         let methodUrl = "/groups.search"
         let url = baseUrl + methodUrl
@@ -88,7 +91,7 @@ struct ApiWrapper {
         }
     }
     
-    static func getPhoto(ownerId: Int, completion: @escaping ([PhotoResponse.Photo]) -> Void) {
+     func getPhoto(ownerId: Int, completion: @escaping ([Photo]) -> Void) {
         
         let methodUrl = "/photos.getAll"
         let url = baseUrl + methodUrl
@@ -107,7 +110,7 @@ struct ApiWrapper {
         }
     }
     
-    static func getNews(completion: @escaping ([NewsResponse.News]) -> Void) {
+     func getNews(completion: @escaping ([NewsResponse.News]) -> Void) {
         
         let methodUrl = "/newsfeed.get"
         let url = baseUrl + methodUrl
@@ -126,7 +129,7 @@ struct ApiWrapper {
         }
     }
     
-    static func getGroupInfo(groupId: Int, completion: @escaping ([GroupInfoResponse.GroupInfo]) -> Void) {
+     func getGroupInfo(groupId: Int, completion: @escaping ([GroupInfoResponse.GroupInfo]) -> Void) {
         
         let methodUrl = "/groups.getById"
         let url = baseUrl + methodUrl
@@ -142,4 +145,17 @@ struct ApiWrapper {
             completion(groupInfo)
         }
     }
+    
+    
+         func saveUsersData(_ users: [User]) {
+            do {
+                let realm = try Realm()
+                realm.beginWrite()
+                realm.add(users)
+                try realm.commitWrite()
+            } catch {
+                print(error)
+            }
+        }
+
 }
