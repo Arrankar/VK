@@ -13,9 +13,10 @@ class AllGroupsTableViewController: UITableViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var groups = [GroupResponse.Group]()
-    var filteredGroups = [GroupResponse.Group]()
+    var groups = [Group]()
+    var filteredGroups = [Group]()
     var searching = false
+    let apiWapper = ApiWrapper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +56,7 @@ extension AllGroupsTableViewController: UISearchBarDelegate {
         if searchText.isEmpty {
             filteredGroups = groups
         } else {
-        ApiWrapper.groupSearch(searchText: searchText) { [weak self] filteredGroups in
+        apiWapper.groupSearch(searchText: searchText) { [weak self] filteredGroups in
             self?.filteredGroups = filteredGroups
             self?.tableView.reloadData()
         }

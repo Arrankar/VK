@@ -43,8 +43,8 @@ class LoginViewController: UIViewController {
         }
         
         session.token = params["access_token"]!
+        session.userId = Int(params["user_id"]!)!
         decisionHandler(.cancel)
-        print(session.token)
         performSegue(withIdentifier: "authSuccessed", sender: self)
     }
 }

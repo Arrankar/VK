@@ -15,16 +15,9 @@ struct GroupInfoResponse: Decodable {
         dynamic var groupName = ""
         dynamic var image = ""
         
-        enum ItemsKeys: String, CodingKey {
+        enum CodingKeys: String, CodingKey {
             case groupName = "name"
             case image = "photo_200"
-        }
-        
-        convenience required init(from decoder: Decoder) throws {
-            self.init()
-            let values = try decoder.container(keyedBy: ItemsKeys.self)
-            self.groupName = try values.decode(String.self, forKey: .groupName)
-            self.image = try values.decode(String.self, forKey: .image)
         }
     }
 }

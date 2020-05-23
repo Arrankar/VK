@@ -47,7 +47,7 @@
 		1FDE2717243492D000032313 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE2716243492D000032313 /* FriendsTableViewCell.swift */; };
 		1FDE27192434931F00032313 /* GroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE27182434931F00032313 /* GroupsTableViewCell.swift */; };
 		1FDE271B2434935800032313 /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE271A2434935800032313 /* GroupsTableViewController.swift */; };
-		D9D83E7DB3767AF4FD20FDEC /* Pods_VKapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0DA937B73F1953CA63AECC7 /* Pods_VKapp.framework */; };
+		4BA320B73076F7C18AEA22EE /* libPods-VKapp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 488C614E3B089FD11FF96C82 /* libPods-VKapp.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,7 +94,7 @@
 		1FDE2716243492D000032313 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
 		1FDE27182434931F00032313 /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewCell.swift; sourceTree = "<group>"; };
 		1FDE271A2434935800032313 /* GroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
-		A0DA937B73F1953CA63AECC7 /* Pods_VKapp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VKapp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		488C614E3B089FD11FF96C82 /* libPods-VKapp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VKapp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC313D4529F35A50209842A0 /* Pods-VKapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKapp.release.xcconfig"; path = "Target Support Files/Pods-VKapp/Pods-VKapp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,7 +104,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F9BAF88243E41480043931B /* WebKit.framework in Frameworks */,
-				D9D83E7DB3767AF4FD20FDEC /* Pods_VKapp.framework in Frameworks */,
+				4BA320B73076F7C18AEA22EE /* libPods-VKapp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,7 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				1F9BAF87243E41480043931B /* WebKit.framework */,
-				A0DA937B73F1953CA63AECC7 /* Pods_VKapp.framework */,
+				488C614E3B089FD11FF96C82 /* libPods-VKapp.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -269,7 +269,6 @@
 				1F8628D92428DE8800B19754 /* Sources */,
 				1F8628DA2428DE8800B19754 /* Frameworks */,
 				1F8628DB2428DE8800B19754 /* Resources */,
-				ABE1DB38D6EA6B22B4C46159 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -349,23 +348,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		ABE1DB38D6EA6B22B4C46159 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VKapp/Pods-VKapp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VKapp/Pods-VKapp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VKapp/Pods-VKapp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
