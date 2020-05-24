@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class GroupsTableViewController: UITableViewController {
     
@@ -15,9 +16,10 @@ class GroupsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        apiWapper.getGroups { [weak self] groups in
-            self?.groups = groups
-            self?.tableView.reloadData()
+        loadData()
+        apiWapper.getGroups { [weak self] in
+            self?.loadData()
+           
         }
     }
 
@@ -74,6 +76,17 @@ class GroupsTableViewController: UITableViewController {
         if editingStyle == .delete {
             groups.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    func loadData() {
+        do {
+            let realm = try Realm()
+            let groups = realm.objects(Group.self)
+            self.groups = Array(groups)
+            tableView.reloadData()
+        } catch {
+            print(error)
         }
     }
 }
