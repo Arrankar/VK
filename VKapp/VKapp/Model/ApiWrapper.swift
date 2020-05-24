@@ -99,7 +99,6 @@ class ApiWrapper {
             "user_ids" : "\(Session.instance.userId)",
             "access_token" : Session.instance.token,
             "owner_id" : "\(ownerId)",
-            "fields" : "domain, photo_200_orig",
             "v" : "5.68"
         ]
         
