@@ -80,13 +80,13 @@
 		1F8628E92428DE8A00B19754 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F8628EC2428DE8A00B19754 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F8628EE2428DE8A00B19754 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1F8F182E2434A64100CEDCB1 /* AllGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AllGroupsTableViewController.swift; path = VKapp/Groups/AllGroupsTableViewController.swift; sourceTree = SOURCE_ROOT; };
-		1F8F18302434A68C00CEDCB1 /* AllGroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AllGroupsTableViewCell.swift; path = VKapp/Groups/AllGroupsTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		1F8F182E2434A64100CEDCB1 /* AllGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AllGroupsTableViewController.swift; path = VKapp/Controllers/Groups/AllGroupsTableViewController.swift; sourceTree = SOURCE_ROOT; };
+		1F8F18302434A68C00CEDCB1 /* AllGroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AllGroupsTableViewCell.swift; path = VKapp/Controllers/Groups/AllGroupsTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		1F9BAF672434AF910043931B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1F9BAF692434B00C0043931B /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		1F9BAF722438A17D0043931B /* AvatarImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImage.swift; sourceTree = "<group>"; };
 		1F9BAF742438E1880043931B /* likeControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = likeControl.swift; sourceTree = "<group>"; };
-		1F9BAF7A243CAFEB0043931B /* FullImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FullImageViewController.swift; path = VKapp/Friends/FullImageViewController.swift; sourceTree = SOURCE_ROOT; };
+		1F9BAF7A243CAFEB0043931B /* FullImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FullImageViewController.swift; path = VKapp/Controllers/Friends/FullImageViewController.swift; sourceTree = SOURCE_ROOT; };
 		1F9BAF84243E3D550043931B /* ApiWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiWrapper.swift; sourceTree = "<group>"; };
 		1F9BAF87243E41480043931B /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		1FB033B6245DA08300066211 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
@@ -111,6 +111,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F38FA80247D5A69009DE412 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				1F9BAF78243B2CA10043931B /* Friends */,
+				1F9BAF79243B2CC70043931B /* Groups */,
+				1F86C3432441D7B30095B677 /* News */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		1F564D0C2443180500728620 /* NewsCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +151,7 @@
 		1F5E62F1247A77FB00130D3E /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				1F8628E42428DE8800B19754 /* LoginViewController.swift */,
 				1FB033B6245DA08300066211 /* Session.swift */,
 				1F9BAF84243E3D550043931B /* ApiWrapper.swift */,
 			);
@@ -168,11 +179,9 @@
 		1F8628DF2428DE8800B19754 /* VKapp */ = {
 			isa = PBXGroup;
 			children = (
+				1F38FA80247D5A69009DE412 /* Controllers */,
 				1F5E62F1247A77FB00130D3E /* Services */,
 				1F5A8D7F244F084F0002A3D5 /* Animations */,
-				1F86C3432441D7B30095B677 /* News */,
-				1F9BAF79243B2CC70043931B /* Groups */,
-				1F9BAF78243B2CA10043931B /* Friends */,
 				1FDE2721243494CC00032313 /* Model */,
 				1FDE2720243494BB00032313 /* View */,
 				1F8628E02428DE8800B19754 /* AppDelegate.swift */,
@@ -252,7 +261,6 @@
 				1F9BAF692434B00C0043931B /* Group.swift */,
 				1F34403C246C2A42008E8708 /* Photo.swift */,
 				1F4D44A5246D686300180F6D /* GroupInfo.swift */,
-				1F8628E42428DE8800B19754 /* LoginViewController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -546,7 +554,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J62CZ5FJSR;
 				INFOPLIST_FILE = VKapp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -554,7 +562,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = arrankar.VKapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -566,7 +574,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = J62CZ5FJSR;
 				INFOPLIST_FILE = VKapp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -574,7 +582,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = arrankar.VKapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

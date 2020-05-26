@@ -100,7 +100,7 @@ class FriendsTableViewController: UITableViewController {
             print(error)
         }
     }
-}
+
 
 
 //        func sortedFriends(friends: [User]) {
@@ -109,71 +109,72 @@ class FriendsTableViewController: UITableViewController {
 //        friendSection = userDictionary.map {Section(title: String($0.key), items: $0.value)}
 //        friendSection.sort {$0.title < $1.title }
 //        }
-//    @IBAction func cancelButtonPressed(_ sender: UIButton) {
-//        self.view.layoutIfNeeded()
-//        UIView.animate(withDuration: 0.25, animations: {
-//            self.buttonWidth.constant = 0
-//            self.view.layoutIfNeeded()
-//        })
-//
-//                UIView.animate(withDuration: 1,
-//                               delay: 0,
-//                               usingSpringWithDamping: 0.5,
-//                               initialSpringVelocity: 0.3,
-//                               options: [],
-//                               animations: {
-//                                self.imageConstraint.constant = 10 +  self.searchTextField.frame.width / 2
-//                                self.textFieldConstraint.constant = 10
-//                                self.view.layoutIfNeeded()
-//                })
-//        searchTextField.text = ""
+    @IBAction func cancelButtonPressed(_ sender: UIButton) {
+        self.view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.25, animations: {
+            self.buttonWidth.constant = 0
+            self.view.layoutIfNeeded()
+        })
+
+                UIView.animate(withDuration: 1,
+                               delay: 0,
+                               usingSpringWithDamping: 0.5,
+                               initialSpringVelocity: 0.3,
+                               options: [],
+                               animations: {
+                                self.imageConstraint.constant = 10 +  self.searchTextField.frame.width / 2
+                                self.textFieldConstraint.constant = 10
+                                self.view.layoutIfNeeded()
+                })
+        searchTextField.text = ""
 //        sortedFriends(friends: friends)
-//        searchTextField.endEditing(true)
-//        tableView.reloadData()
-//        }
-//    }
-//    }
-//@available(iOS 13.0, *)
-//extension FriendsTableViewController: UITextFieldDelegate {
-//
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//
-//        self.view.layoutIfNeeded()
-//        UIView.animate(withDuration: 0.25, animations: {
-//            self.buttonWidth.constant = 50
-//            self.textFieldConstraint.constant = 15 + self.searchImage.frame.width
-//            self.view.layoutIfNeeded()
-//        })
-//
-//                    UIView.animate(withDuration: 1,
-//                                   delay: 0,
-//                                   usingSpringWithDamping: 0.7,
-//                                   initialSpringVelocity: 0.3,
-//                                   options: [],
-//                                   animations: {
-//                                    self.imageConstraint.constant = 10
-//
-//                                    self.view.layoutIfNeeded()
-//                    })
-//    }
-//
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        let text = self.searchTextField.text
-//
-//        if searchTextField.text == "" {
+        searchTextField.endEditing(true)
+        tableView.reloadData()
+        }
+    }
+
+@available(iOS 13.0, *)
+extension FriendsTableViewController: UITextFieldDelegate {
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+
+        self.view.layoutIfNeeded()
+        UIView.animate(withDuration: 0.25, animations: {
+            self.buttonWidth.constant = 50
+            self.textFieldConstraint.constant = 15 + self.searchImage.frame.width
+            self.view.layoutIfNeeded()
+        })
+
+                    UIView.animate(withDuration: 1,
+                                   delay: 0,
+                                   usingSpringWithDamping: 0.7,
+                                   initialSpringVelocity: 0.3,
+                                   options: [],
+                                   animations: {
+                                    self.imageConstraint.constant = 10
+
+                                    self.view.layoutIfNeeded()
+                    })
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let text = self.searchTextField.text
+
+        if searchTextField.text == "" {
 //            sortedFriends(friends: friends)
-//        } else {
-//            if let fieldText = text {
-//                let filteredUsers = friends.filter({ (friend: User) -> Bool in
+        } else {
+            if let fieldText = text {
+                let filteredUsers = friends.filter({ (friend: User) -> Bool in
 //                    return friend.fullName.lowercased().contains(fieldText.lowercased())
-//                })
+                    return true
+                })
 //                sortedFriends(friends: filteredUsers)
-//            }
-//
-//            tableView.reloadData()
-//            searchTextField.endEditing(true)
-//        }
-//        return true
-//    }
-//}
-//}
+            }
+
+            tableView.reloadData()
+            searchTextField.endEditing(true)
+        }
+        return true
+    }
+}
+

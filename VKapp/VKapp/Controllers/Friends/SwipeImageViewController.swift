@@ -32,9 +32,6 @@ class SwipeImageViewController: UIViewController {
             let url = URL(string: (self?.images[self!.i].image)!)
             self?.image.image = UIImage(data: try! Data(contentsOf: url!))!
         }
-        
-
-
     }
     
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
