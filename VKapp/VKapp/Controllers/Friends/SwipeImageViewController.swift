@@ -26,22 +26,32 @@ class SwipeImageViewController: UIViewController {
         loadData()
         apiWapper.getPhoto(ownerId: friendId) { [weak self] in
             self?.loadData()
-            guard self!.images.count > 0 else { return
-                self!.image.image = UIImage(named: "noPhoto")
+            
+            if self?.images != nil {
+                if self?.images.count == 0 {
+                    self!.image.image = UIImage(named: "noPhoto")
+                }
+                if let url = URL(string: (self?.images[self!.i].image)!) {
+                    do {
+                        let image = try UIImage(data: Data(contentsOf: url))
+                        self?.image.image = image
+                    } catch {
+                        print(error)
+                    }
+                }
             }
-            let url = URL(string: (self?.images[self!.i].image)!)
-            self?.image.image = UIImage(data: try! Data(contentsOf: url!))!
         }
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        segue.destination.transitioningDelegate = self
-//        if segue.identifier == "reveal" {
-//            let fullImageVC = segue.destination as! FullImageViewController
-//            fullImageVC.currentPhoto = UIImage(named: images[i])
-//        }
-//    }
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        segue.destination.transitioningDelegate = self
+        if segue.identifier == "reveal" {
+            let fullImageVC = segue.destination as! FullImageViewController
+            let url = URL(string: (images[i].image))
+            fullImageVC.currentPhoto = UIImage(data: try! Data(contentsOf: url!))!
+        }
+    }
+    
     @IBAction func imageTapped(_ sender: UITapGestureRecognizer) {
         performSegue(withIdentifier: "reveal", sender: nil)
     }
@@ -76,7 +86,7 @@ class SwipeImageViewController: UIViewController {
                                                         DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.1, execute: {
                                                             let url = URL(string: self.images[self.i].image)
                                                             self.image.image = UIImage(data: try! Data(contentsOf: url!))!
-                                                           
+                                                            
                                                         })
                                     })
                                     UIView.addKeyframe(withRelativeStartTime: 0.8,
@@ -117,7 +127,7 @@ class SwipeImageViewController: UIViewController {
             case 0:
                 
                 if images.count > 1 {
-                   
+                    
                     if imageCenterX < centerView {
                         imageSwipe {
                             self.image.frame.origin.x = -300
@@ -182,13 +192,13 @@ extension SwipeImageViewController: UIViewControllerTransitioningDelegate {
         source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return FlipPresentAnimationController(originFrame: image.frame)
     }
-        
-      func animationController(forDismissed dismissed: UIViewController)
-      -> UIViewControllerAnimatedTransitioning? {
-      guard let _ = dismissed as? FullImageViewController else {
-        return nil
-      }
-      return FlipDismissAnimationController(destinationFrame: image.frame)
+    
+    func animationController(forDismissed dismissed: UIViewController)
+        -> UIViewControllerAnimatedTransitioning? {
+            guard let _ = dismissed as? FullImageViewController else {
+                return nil
+            }
+            return FlipDismissAnimationController(destinationFrame: image.frame)
     }
 }
 

@@ -21,20 +21,22 @@ class FullImageViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         fullImage.layer.cornerRadius = 40
-       fullImage.isUserInteractionEnabled = true
-       fullImage.image = currentPhoto
-       let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
-       swipeDown.direction = .down
-       fullImage.addGestureRecognizer(swipeDown)
+        fullImage.isUserInteractionEnabled = true
+        let transform = CGAffineTransform(rotationAngle: -.pi/2)
+        fullImage.layer.setAffineTransform(transform)
+        fullImage.image = currentPhoto
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeDown.direction = .down
+        fullImage.addGestureRecognizer(swipeDown)
         
         
     }
     
-
+    
     
 }
 
