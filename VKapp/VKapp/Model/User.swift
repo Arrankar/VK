@@ -18,15 +18,18 @@ struct UserResponse: Decodable {
     }
 }
 class User: Object, Decodable {
-       @objc dynamic var id = 0
-       @objc dynamic var firstName = ""
-       @objc dynamic var lastName = ""
-       @objc dynamic var image = ""
-        
-        enum CodingKeys: String, CodingKey {
-            case id
-            case firstName = "first_name"
-            case lastName = "last_name"
-            case image = "photo_200_orig"
-        }
+    @objc dynamic var id = 0
+    @objc dynamic var firstName = ""
+    @objc dynamic var lastName = ""
+    @objc dynamic var image = ""
+    var fullName: String {
+        return firstName + lastName
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case firstName = "first_name"
+        case lastName = "last_name"
+        case image = "photo_200_orig"
+    }
 }
