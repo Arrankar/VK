@@ -27,9 +27,12 @@
   + UITableView
   + UICollectionView
   + UITabbar
+  + UINavigationController
   + UISearchBar
   + UIImage
-
+  + UILabel
+  
+- AutoLayout
 - Работа с API ВКонтакте
 - ALamofire
 - Codable Protocol
