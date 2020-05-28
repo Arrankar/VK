@@ -6,13 +6,13 @@
 //  Copyright © 2020 Александр. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import Alamofire
 import RealmSwift
 
 class ApiWrapper {
     
-     let baseUrl = "https://api.vk.com/method"
+    let baseUrl = "https://api.vk.com/method"
     
     static var authRequest: URLRequest {
         var components = URLComponents()
@@ -33,7 +33,7 @@ class ApiWrapper {
         
     }
     
-      func getGroups(completion: @escaping ([Group]) -> Void) {
+    func getGroups(completion: @escaping () -> Void) {
         
         let methodUrl = "/groups.get"
         let url = baseUrl + methodUrl
@@ -45,14 +45,15 @@ class ApiWrapper {
             "v" : "5.68"
         ]
         
-        AF.request(url, method: .get, parameters: parameters).responseData { response in
+        AF.request(url, method: .get, parameters: parameters).responseData { [weak self] response in
             guard let data = response.value else { return }
             let groups = try! JSONDecoder().decode(GroupResponse.self, from: data).response.items
-            completion(groups)
+            self?.saveData(data: groups)
+            completion()
         }
     }
     
-      func getFriends(completion: @escaping ([User]) -> Void) {
+    func getFriends(completion: @escaping () -> Void) {
         let methodUrl = "/friends.get"
         let url = baseUrl + methodUrl
         let parameters: Parameters = [
@@ -65,13 +66,13 @@ class ApiWrapper {
         AF.request(url, method: .get, parameters: parameters).responseData { [weak self] response in
             guard let data = response.value else { return }
             let users = try! JSONDecoder().decode(UserResponse.self, from: data).response.items
-            self?.saveUsersData(users)
+            self?.saveData(data: users)
             print(Realm.Configuration.defaultConfiguration.fileURL!)
-            completion(users)
+            completion()
         }
     }
     
-     func groupSearch(searchText: String, completion: @escaping ([Group]) -> ()) {
+    func groupSearch(searchText: String, completion: @escaping ([Group]) -> ()) {
         
         let methodUrl = "/groups.search"
         let url = baseUrl + methodUrl
@@ -91,7 +92,7 @@ class ApiWrapper {
         }
     }
     
-     func getPhoto(ownerId: Int, completion: @escaping ([Photo]) -> Void) {
+    func getPhoto(ownerId: Int, completion: @escaping () -> Void) {
         
         let methodUrl = "/photos.getAll"
         let url = baseUrl + methodUrl
@@ -99,18 +100,18 @@ class ApiWrapper {
             "user_ids" : "\(Session.instance.userId)",
             "access_token" : Session.instance.token,
             "owner_id" : "\(ownerId)",
-            "fields" : "domain, photo_200_orig",
             "v" : "5.68"
         ]
         
-        AF.request(url, method: .get, parameters: parameters).responseData { response in
+        AF.request(url, method: .get, parameters: parameters).responseData { [weak self] response in
             guard let data = response.value else { return }
             let photos = try! JSONDecoder().decode(PhotoResponse.self, from: data).response.items
-            completion(photos)
+            self?.saveData(data: photos)
+            completion()
         }
     }
     
-     func getNews(completion: @escaping ([NewsResponse.News]) -> Void) {
+    func getNews(completion: @escaping ([NewsResponse.News]) -> Void) {
         
         let methodUrl = "/newsfeed.get"
         let url = baseUrl + methodUrl
@@ -129,16 +130,16 @@ class ApiWrapper {
         }
     }
     
-     func getGroupInfo(groupId: Int, completion: @escaping ([GroupInfoResponse.GroupInfo]) -> Void) {
+    func getGroupInfo(groupId: Int, completion: @escaping ([GroupInfoResponse.GroupInfo]) -> Void) {
         
         let methodUrl = "/groups.getById"
         let url = baseUrl + methodUrl
         let parameters: Parameters = [
             "access_token" : Session.instance.token,
-             "group_id" : "\(groupId)",
+            "group_id" : "\(groupId)",
             "v" : "5.68"
         ]
-
+        
         AF.request(url, method: .get, parameters: parameters).responseData { response in
             guard let data = response.value else { return }
             let groupInfo = try! JSONDecoder().decode(GroupInfoResponse.self, from: data).response
@@ -146,16 +147,16 @@ class ApiWrapper {
         }
     }
     
-    
-         func saveUsersData(_ users: [User]) {
-            do {
-                let realm = try Realm()
-                realm.beginWrite()
-                realm.add(users)
-                try realm.commitWrite()
-            } catch {
-                print(error)
-            }
+    func saveData<T: Object>(data: [T]) {
+        do {
+            let realm = try Realm()
+            let oldData = realm.objects(T.self)
+            realm.beginWrite()
+            realm.delete(oldData)
+            realm.add(data)
+            try realm.commitWrite()
+        } catch {
+            print(error)
         }
-
+    }
 }

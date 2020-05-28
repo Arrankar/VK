@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -138,6 +138,15 @@
 			path = Animations;
 			sourceTree = "<group>";
 		};
+		1F5E62F1247A77FB00130D3E /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				1FB033B6245DA08300066211 /* Session.swift */,
+				1F9BAF84243E3D550043931B /* ApiWrapper.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		1F8628D42428DE8800B19754 = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +168,7 @@
 		1F8628DF2428DE8800B19754 /* VKapp */ = {
 			isa = PBXGroup;
 			children = (
+				1F5E62F1247A77FB00130D3E /* Services */,
 				1F5A8D7F244F084F0002A3D5 /* Animations */,
 				1F86C3432441D7B30095B677 /* News */,
 				1F9BAF79243B2CC70043931B /* Groups */,
@@ -243,8 +253,6 @@
 				1F34403C246C2A42008E8708 /* Photo.swift */,
 				1F4D44A5246D686300180F6D /* GroupInfo.swift */,
 				1F8628E42428DE8800B19754 /* LoginViewController.swift */,
-				1F9BAF84243E3D550043931B /* ApiWrapper.swift */,
-				1FB033B6245DA08300066211 /* Session.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";

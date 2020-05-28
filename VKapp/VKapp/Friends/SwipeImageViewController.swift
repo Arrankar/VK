@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class SwipeImageViewController: UIViewController {
     @IBOutlet weak var image: UIImageView!
@@ -22,9 +23,9 @@ class SwipeImageViewController: UIViewController {
         super.viewDidLoad()
         image.isUserInteractionEnabled = true
         image.layer.cornerRadius = 30
-        
-        apiWapper.getPhoto(ownerId: friendId) { [weak self] photos in
-            self?.images = photos
+        loadData()
+        apiWapper.getPhoto(ownerId: friendId) { [weak self] in
+            self?.loadData()
             guard self!.images.count > 0 else { return
                 self!.image.image = UIImage(named: "noPhoto")
             }
@@ -161,6 +162,16 @@ class SwipeImageViewController: UIViewController {
             default:
                 break
             }
+        }
+    }
+    
+    func loadData() {
+        do {
+            let realm = try Realm()
+            let photos = realm.objects(Photo.self)
+            self.images = Array(photos)
+        } catch {
+            print(error)
         }
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @available(iOS 13.0, *)
 
@@ -30,10 +31,9 @@ class FriendsTableViewController: UITableViewController {
         //        sortedFriends(friends: friends)
         self.buttonWidth.constant = 0
         self.imageConstraint.constant = 10 + searchTextField.frame.width / 2
-        
-        apiWapper.getFriends { [weak self] friends in
-            self?.friends = friends
-            self?.tableView.reloadData()
+        loadData()
+        apiWapper.getFriends { [weak self] in
+            self?.loadData()
         }
         
     }
@@ -87,6 +87,17 @@ class FriendsTableViewController: UITableViewController {
                 let imagesVC = segue.destination as! SwipeImageViewController
                 imagesVC.friendId = friends[indexPath.row].id
             }
+        }
+    }
+    
+    func loadData() {
+        do {
+            let realm = try Realm()
+            let users = realm.objects(User.self)
+            self.friends = Array(users)
+            tableView.reloadData()
+        } catch {
+            print(error)
         }
     }
 }

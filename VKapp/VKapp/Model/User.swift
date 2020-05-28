@@ -17,7 +17,7 @@ struct UserResponse: Decodable {
         let items: [User]
     }
 }
-    class User: Object, Decodable {
+class User: Object, Decodable {
        @objc dynamic var id = 0
        @objc dynamic var firstName = ""
        @objc dynamic var lastName = ""
@@ -29,5 +29,4 @@ struct UserResponse: Decodable {
             case lastName = "last_name"
             case image = "photo_200_orig"
         }
-    }
-
+}

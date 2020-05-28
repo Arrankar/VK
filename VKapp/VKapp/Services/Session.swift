@@ -6,7 +6,8 @@
 //  Copyright © 2020 Александр. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
 
 class Session {
     
@@ -17,3 +18,6 @@ class Session {
     var token = ""
     var userId = 0
 }
+
+
+
