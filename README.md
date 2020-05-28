@@ -37,4 +37,4 @@
 - CoreAnimation
 
 
-Сслыка на следующий проект: [Exchanger](https://github.com/Arrankar/Examples)
+Сслыка на другой проект: [Exchanger](https://github.com/Arrankar/Examples)
