@@ -142,7 +142,7 @@ class ApiWrapper {
         
         AF.request(url, method: .get, parameters: parameters).responseData { response in
             guard let data = response.value else { return }
-            let groupInfo = try! JSONDecoder().decode(GroupInfoResponse.self, from: data).response
+            let groupInfo = try! JSONDecoder().decode(GroupInfoResponse.self, from: data).response.items
             completion(groupInfo)
         }
     }
