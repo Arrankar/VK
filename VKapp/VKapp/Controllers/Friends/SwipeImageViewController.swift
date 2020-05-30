@@ -24,17 +24,18 @@ class SwipeImageViewController: UIViewController {
         super.viewDidLoad()
         image.isUserInteractionEnabled = true
         image.layer.cornerRadius = 30
+ 
         apiWapper.getPhoto(ownerId: friendId) {
-            self.loadRealm()
             if let url = URL(string: (self.images[self.i].image)) {
                 do {
-                    let photo = try UIImage(data: Data(contentsOf: url))
-                    self.image.image = photo
+                    let image = try UIImage(data: Data(contentsOf: url))
+                    self.image.image = image
                 } catch {
                     print(error)
                 }
             }
         }
+        loadRealm()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
