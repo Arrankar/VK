@@ -24,12 +24,8 @@ class SwipeImageViewController: UIViewController {
         super.viewDidLoad()
         image.isUserInteractionEnabled = true
         image.layer.cornerRadius = 30
-        apiWapper.getPhoto(ownerId: friendId)
-        pairTableAndRealm()
-        
-        guard images.count != 0 else { return image.image = UIImage(named: "noPhoto") }
-        
-        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.3, execute: {
+        apiWapper.getPhoto(ownerId: friendId) {
+            self.loadRealm()
             if let url = URL(string: (self.images[self.i].image)) {
                 do {
                     let photo = try UIImage(data: Data(contentsOf: url))
@@ -38,7 +34,7 @@ class SwipeImageViewController: UIViewController {
                     print(error)
                 }
             }
-        })
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -192,20 +188,9 @@ extension SwipeImageViewController: UIViewControllerTransitioningDelegate {
 
 extension SwipeImageViewController {
     
-    func pairTableAndRealm() {
+    func loadRealm() {
         guard let realm = try? Realm() else { return }
         images = realm.objects(Photo.self)
-        token = images.observe { changes in
-            
-            switch changes {
-            case .initial(let results):
-                print(results)
-            case let .update(results,  deletions, insertions, modifications):
-                print(results, deletions, insertions, modifications)
-            case .error(let error):
-                print(error.localizedDescription)
-            }
-        }
     }
 }
 

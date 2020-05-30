@@ -90,7 +90,7 @@ class ApiWrapper {
         }
     }
     
-    func getPhoto(ownerId: Int) {
+    func getPhoto(ownerId: Int, completion: @escaping () -> Void) {
         
         let methodUrl = "/photos.getAll"
         let url = baseUrl + methodUrl
@@ -105,6 +105,7 @@ class ApiWrapper {
             guard let data = response.value else { return }
             let photos = try! JSONDecoder().decode(PhotoResponse.self, from: data).response.items
             self?.saveData(data: photos)
+            completion()
         }
     }
     
