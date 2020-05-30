@@ -14,13 +14,13 @@ import RealmSwift
 class FriendsTableViewController: UITableViewController {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var textFieldConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var searchImage: UIImageView!
     @IBOutlet weak var imageConstraint: NSLayoutConstraint!
     @IBOutlet weak var buttonWidth: NSLayoutConstraint!
     @IBOutlet weak var buttonConstraint: NSLayoutConstraint!
     
-    var friends = [User]()
+    var friends: Results<User>!
+    var token: NotificationToken?
     var filteredFriends = [User]()
     let apiWapper = ApiWrapper()
     var isSearching = false
@@ -28,18 +28,14 @@ class FriendsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         searchTextField.delegate = self
-        
         self.buttonWidth.constant = 0
         self.imageConstraint.constant = 10 + searchTextField.frame.width / 2
-        loadData()
-        apiWapper.getFriends { [weak self] in
-            self?.loadData()
-        }
+        apiWapper.getFriends()
+        pairTableAndRealm()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearching {
-            print(filteredFriends)
             return filteredFriends.count
         }
         return friends.count
@@ -69,7 +65,6 @@ class FriendsTableViewController: UITableViewController {
             let url = URL(string: filteredFriends[indexPath.row].image)
             cell.friendImage.avatar.image = UIImage(data: try! Data(contentsOf: url!))!
         }
-        
         return cell
     }
     
@@ -86,17 +81,6 @@ class FriendsTableViewController: UITableViewController {
                 let imagesVC = segue.destination as! SwipeImageViewController
                 imagesVC.friendId = friends[indexPath.row].id
             }
-        }
-    }
-    
-    func loadData() {
-        do {
-            let realm = try Realm()
-            let users = realm.objects(User.self)
-            self.friends = Array(users)
-            tableView.reloadData()
-        } catch {
-            print(error)
         }
     }
     
@@ -119,6 +103,7 @@ class FriendsTableViewController: UITableViewController {
         })
         searchTextField.text = ""
         searchTextField.endEditing(true)
+        isSearching = false
         tableView.reloadData()
     }
 }
@@ -149,7 +134,7 @@ extension FriendsTableViewController: UITextFieldDelegate {
         let text = self.searchTextField.text
         
         if searchTextField.text == "" {
-            filteredFriends = friends
+            filteredFriends = Array(friends)
             tableView.reloadData()
             isSearching = false
         } else {
@@ -157,14 +142,36 @@ extension FriendsTableViewController: UITextFieldDelegate {
                 let filteredUsers = friends.filter({ (friend: User) -> Bool in
                     return friend.fullName.lowercased().contains(fieldText.lowercased())
                 })
-                filteredFriends = filteredUsers
+                filteredFriends = Array(filteredUsers)
             }
             isSearching = true
             tableView.reloadData()
             searchTextField.endEditing(true)
-            
         }
         return true
+    }
+}
+
+extension FriendsTableViewController {
+    
+    func pairTableAndRealm() {
+        guard let realm = try? Realm() else { return }
+        friends = realm.objects(User.self)
+        token = friends.observe { [weak self] changes in
+            guard let tableView = self?.tableView else { return }
+            switch changes {
+            case .initial:
+                tableView.reloadData()
+            case let .update(_,  deletions, insertions, modifications):
+                tableView.beginUpdates()
+                tableView.insertRows(at: insertions.map(    { IndexPath(row: $0, section: 0)}), with: .none)
+                tableView.deleteRows(at: deletions.map(     { IndexPath(row: $0, section: 0)}), with: .none)
+                tableView.reloadRows(at: modifications.map( { IndexPath(row: $0, section: 0)}), with: .none)
+                tableView.endUpdates()
+            case .error(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }
 

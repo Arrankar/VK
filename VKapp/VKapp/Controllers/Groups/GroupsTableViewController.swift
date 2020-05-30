@@ -11,26 +11,23 @@ import RealmSwift
 
 class GroupsTableViewController: UITableViewController {
     
-    var groups = [Group]()
     let apiWapper = ApiWrapper()
+    var groups: Results<Group>!
+    var token: NotificationToken?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
-        apiWapper.getGroups { [weak self] in
-            self?.loadData()
-           
-        }
+        apiWapper.getGroups()
+        pairTableAndRealm()
     }
 
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       
-        return groups.count
+        groups.count
     }
 
    
@@ -42,51 +39,27 @@ class GroupsTableViewController: UITableViewController {
         cell.groupImage.image = UIImage(data: try! Data(contentsOf: url!))!
         return cell
     }
+}
+
+extension GroupsTableViewController {
     
-    
-//    @IBAction func addGroup(segue: UIStoryboardSegue) {
-//        
-//        if segue.identifier == "addGroup" {
-//        
-//            guard let allGroupsTableViewController = segue.source as? AllGroupsTableViewController  else { return }
-//            
-//            if let indexPath = allGroupsTableViewController.tableView.indexPathForSelectedRow {
-//                
-//                var group: Group
-//                
-//                if allGroupsTableViewController.searching {
-//                    group = allGroupsTableViewController.filteredGroups[indexPath.row]
-//                   
-//                } else {
-//                    group = allGroupsTableViewController.groups[indexPath.row]
-//                }
-//             
-//                if !groups.contains(group) {
-//                    groups.append(group)
-//                    
-//                    tableView.reloadData()
-//                }
-//            }
-//        }
-//        
-//    }
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
-        if editingStyle == .delete {
-            groups.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-    }
-    
-    func loadData() {
-        do {
-            let realm = try Realm()
-            let groups = realm.objects(Group.self)
-            self.groups = Array(groups)
-            tableView.reloadData()
-        } catch {
-            print(error)
+    func pairTableAndRealm() {
+        guard let realm = try? Realm() else { return }
+        groups = realm.objects(Group.self)
+        token = groups.observe { [weak self] changes in
+            guard let tableView = self?.tableView else { return }
+            switch changes {
+            case .initial:
+                tableView.reloadData()
+            case let .update(_,  deletions, insertions, modifications):
+                tableView.beginUpdates()
+                tableView.insertRows(at: insertions.map(    { IndexPath(row: $0, section: 0)}), with: .none)
+                tableView.deleteRows(at: deletions.map(     { IndexPath(row: $0, section: 0)}), with: .none)
+                tableView.reloadRows(at: modifications.map( { IndexPath(row: $0, section: 0)}), with: .none)
+                tableView.endUpdates()
+            case .error(let error):
+                print(error.localizedDescription)
+            }
         }
     }
 }

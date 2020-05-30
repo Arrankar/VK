@@ -33,7 +33,7 @@ class ApiWrapper {
         
     }
     
-    func getGroups(completion: @escaping () -> Void) {
+    func getGroups() {
         
         let methodUrl = "/groups.get"
         let url = baseUrl + methodUrl
@@ -49,11 +49,10 @@ class ApiWrapper {
             guard let data = response.value else { return }
             let groups = try! JSONDecoder().decode(GroupResponse.self, from: data).response.items
             self?.saveData(data: groups)
-            completion()
         }
     }
     
-    func getFriends(completion: @escaping () -> Void) {
+    func getFriends() {
         let methodUrl = "/friends.get"
         let url = baseUrl + methodUrl
         let parameters: Parameters = [
@@ -68,7 +67,6 @@ class ApiWrapper {
             let users = try! JSONDecoder().decode(UserResponse.self, from: data).response.items
             self?.saveData(data: users)
             print(Realm.Configuration.defaultConfiguration.fileURL!)
-            completion()
         }
     }
     
