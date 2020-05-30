@@ -13,7 +13,8 @@ class SwipeImageViewController: UIViewController {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var titleView: UIImageView!
     
-    var images = [Photo]()
+    var images: Results<Photo>!
+    var token: NotificationToken?
     var friendId = 0
     var i = 0
     var interactiveAnimator = UIViewPropertyAnimator()
@@ -23,24 +24,21 @@ class SwipeImageViewController: UIViewController {
         super.viewDidLoad()
         image.isUserInteractionEnabled = true
         image.layer.cornerRadius = 30
-        loadData()
-        apiWapper.getPhoto(ownerId: friendId) { [weak self] in
-            self?.loadData()
-            
-            if self?.images != nil {
-                if self?.images.count == 0 {
-                    self!.image.image = UIImage(named: "noPhoto")
-                }
-                if let url = URL(string: (self?.images[self!.i].image)!) {
-                    do {
-                        let image = try UIImage(data: Data(contentsOf: url))
-                        self?.image.image = image
-                    } catch {
-                        print(error)
-                    }
+        apiWapper.getPhoto(ownerId: friendId)
+        pairTableAndRealm()
+        
+        guard images.count != 0 else { return image.image = UIImage(named: "noPhoto") }
+        
+        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.3, execute: {
+            if let url = URL(string: (self.images[self.i].image)) {
+                do {
+                    let photo = try UIImage(data: Data(contentsOf: url))
+                    self.image.image = photo
+                } catch {
+                    print(error)
                 }
             }
-        }
+        })
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -57,46 +55,47 @@ class SwipeImageViewController: UIViewController {
     }
     
     func imageSwipe(animations: @escaping () -> Void) {
-        UIView.animateKeyframes(withDuration: 0.5,
-                                delay: 0,
-                                options: [],
-                                animations: {
-                                    UIView.addKeyframe(withRelativeStartTime: 0,
-                                                       relativeDuration: 0.2,
-                                                       animations: {
-                                                        animations()
-                                                        
+        UIView.animateKeyframes(
+            withDuration: 0.5,
+            delay: 0,
+            options: [],
+            animations: {
+                UIView.addKeyframe(withRelativeStartTime: 0,
+                                   relativeDuration: 0.2,
+                                   animations: {
+                                    animations()
+                                    
+                })
+                UIView.addKeyframe(withRelativeStartTime: 0.2,
+                                   relativeDuration: 0.2,
+                                   animations: {
+                                    self.image.alpha = 0
+                                    
+                })
+                UIView.addKeyframe(withRelativeStartTime: 0.4,
+                                   relativeDuration: 0.2,
+                                   animations: {
+                                    self.image.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+                                    
+                })
+                UIView.addKeyframe(withRelativeStartTime: 0.6,
+                                   relativeDuration: 0.2,
+                                   animations: {
+                                    self.image.center = CGPoint(x: self.view.bounds.width / 2, y: self.view.bounds.height / 2)
+                                    DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.1, execute: {
+                                        let url = URL(string: self.images[self.i].image)
+                                        self.image.image = UIImage(data: try! Data(contentsOf: url!))!
+                                        
                                     })
-                                    UIView.addKeyframe(withRelativeStartTime: 0.2,
-                                                       relativeDuration: 0.2,
-                                                       animations: {
-                                                        self.image.alpha = 0
-                                                        
-                                    })
-                                    UIView.addKeyframe(withRelativeStartTime: 0.4,
-                                                       relativeDuration: 0.2,
-                                                       animations: {
-                                                        self.image.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
-                                                        
-                                    })
-                                    UIView.addKeyframe(withRelativeStartTime: 0.6,
-                                                       relativeDuration: 0.2,
-                                                       animations: {
-                                                        self.image.center = CGPoint(x: self.view.bounds.width / 2, y: self.view.bounds.height / 2)
-                                                        DispatchQueue.main.asyncAfter(wallDeadline: .now() + 0.1, execute: {
-                                                            let url = URL(string: self.images[self.i].image)
-                                                            self.image.image = UIImage(data: try! Data(contentsOf: url!))!
-                                                            
-                                                        })
-                                    })
-                                    UIView.addKeyframe(withRelativeStartTime: 0.8,
-                                                       relativeDuration: 0.2,
-                                                       animations: {
-                                                        self.image.alpha = 1
-                                                        self.image.transform = CGAffineTransform(scaleX: 1, y: 1)
-                                    })
+                })
+                UIView.addKeyframe(withRelativeStartTime: 0.8,
+                                   relativeDuration: 0.2,
+                                   animations: {
+                                    self.image.alpha = 1
+                                    self.image.transform = CGAffineTransform(scaleX: 1, y: 1)
+                })
         },
-                                completion: nil)
+            completion: nil)
         
     }
     
@@ -171,18 +170,7 @@ class SwipeImageViewController: UIViewController {
             }
         }
     }
-    
-    func loadData() {
-        do {
-            let realm = try Realm()
-            let photos = realm.objects(Photo.self)
-            self.images = Array(photos)
-        } catch {
-            print(error)
-        }
-    }
 }
-
 
 extension SwipeImageViewController: UIViewControllerTransitioningDelegate {
     
@@ -199,6 +187,25 @@ extension SwipeImageViewController: UIViewControllerTransitioningDelegate {
                 return nil
             }
             return FlipDismissAnimationController(destinationFrame: image.frame)
+    }
+}
+
+extension SwipeImageViewController {
+    
+    func pairTableAndRealm() {
+        guard let realm = try? Realm() else { return }
+        images = realm.objects(Photo.self)
+        token = images.observe { changes in
+            
+            switch changes {
+            case .initial(let results):
+                print(results)
+            case let .update(results,  deletions, insertions, modifications):
+                print(results, deletions, insertions, modifications)
+            case .error(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
 }
 
