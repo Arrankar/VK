@@ -26,6 +26,7 @@ class SwipeImageViewController: UIViewController {
         image.layer.cornerRadius = 30
  
         apiWapper.getPhoto(ownerId: friendId) {
+            self.loadRealm()
             if let url = URL(string: (self.images[self.i].image)) {
                 do {
                     let image = try UIImage(data: Data(contentsOf: url))
@@ -35,7 +36,6 @@ class SwipeImageViewController: UIViewController {
                 }
             }
         }
-        loadRealm()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -192,6 +192,7 @@ extension SwipeImageViewController {
     func loadRealm() {
         guard let realm = try? Realm() else { return }
         images = realm.objects(Photo.self)
+        print("КАРТИНОК: \(images.count)")
     }
 }
 
