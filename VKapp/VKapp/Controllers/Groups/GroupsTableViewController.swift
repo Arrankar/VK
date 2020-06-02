@@ -39,12 +39,31 @@ class GroupsTableViewController: UITableViewController {
         cell.groupImage.image = UIImage(data: try! Data(contentsOf: url!))!
         return cell
     }
+    
+    @IBAction func addGroup(segue: UIStoryboardSegue) {
+            
+            if segue.identifier == "addGroup" {
+                let allGroupsVC = segue.source as! AllGroupsTableViewController
+                if let indexPath = allGroupsVC.tableView.indexPathForSelectedRow {
+//                    let group = allGroupsVC.groups[indexPath.row]
+//                    Database.database().reference().child("New Group Added").setValue(group.name)
+                    
+//                    if !(myGroupList.contains(where: { $0.id == group.id} )) {
+//
+//                        ApiWrapper.addGroup(groupId: group.id)
+//                        Realm.addDataToRealm(objects: [group])
+//                    }
+                }
+            }
+        }
+    
 }
 
 extension GroupsTableViewController {
     
     func pairTableAndRealm() {
-        guard let realm = try? Realm() else { return }
+        let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
+        guard let realm = try? Realm(configuration: config) else { return }
         groups = realm.objects(Group.self)
         token = groups.observe { [weak self] changes in
             guard let tableView = self?.tableView else { return }

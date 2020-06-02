@@ -9,10 +9,14 @@
 import UIKit
 import WebKit
 import Alamofire
+import Firebase
 
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var webView2: WKWebView!
+    
+    private var users = [AuthUsers]()
+
  
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +48,14 @@ class LoginViewController: UIViewController {
         
         session.token = params["access_token"]!
         session.userId = Int(params["user_id"]!)!
-        print(session.token)
+     
+        let currentDateTime = Date()
+        let formatter = DateFormatter()
+        formatter.timeStyle = .medium
+        formatter.dateStyle = .long
+        let dateTimeString = formatter.string(from: currentDateTime)
+        
+        Database.database().reference(withPath: "Authenticated users").child(params["user_id"]!).setValue("\(dateTimeString)")
         decisionHandler(.cancel)
         performSegue(withIdentifier: "authSuccessed", sender: self)
     }

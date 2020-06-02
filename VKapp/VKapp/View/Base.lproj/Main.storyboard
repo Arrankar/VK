@@ -282,7 +282,8 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="KjG-LQ-lTy"/>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="v7z-rr-xtJ">
                             <connections>
-                                <segue destination="R7v-JZ-Y4z" kind="show" id="VwJ-ko-dOp"/>
+                                <action selector="addGroupWithSegue:" destination="kfK-k4-3T2" id="4wW-F7-lxP"/>
+                                <segue destination="R7v-JZ-Y4z" kind="show" identifier="addGroup" id="VwJ-ko-dOp"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -451,7 +452,6 @@
                                     <outlet property="allGroupsImage" destination="k20-tg-WKl" id="LZh-0Z-I9Y"/>
                                     <outlet property="allGroupsName" destination="EfX-yW-bpx" id="Xjp-Kd-T2Q"/>
                                     <outlet property="membersLabel" destination="fhS-G5-dF7" id="9VX-8L-7Kt"/>
-                                    <segue destination="YOL-Pk-LrR" kind="unwind" identifier="addGroup" unwindAction="addGroupWithSegue:" id="qX2-4H-0jm"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -466,7 +466,6 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Sg-7W-7dj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="YOL-Pk-LrR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2432" y="1904"/>
         </scene>
