@@ -33,5 +33,12 @@ class Group: Object, Decodable {
         case membersCount = "members_count"
         case image = "photo_200"
     }
+    
+    func toAnyObject() -> [String: Any] {
+        return [
+            "name": groupName,
+            "Count of members": membersCount
+        ]
+    }
 }
 

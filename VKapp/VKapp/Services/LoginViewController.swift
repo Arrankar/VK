@@ -14,10 +14,7 @@ import Firebase
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var webView2: WKWebView!
-    
-    private var users = [AuthUsers]()
 
- 
     override func viewDidLoad() {
         super.viewDidLoad()
         webView2.navigationDelegate = self
@@ -55,7 +52,7 @@ class LoginViewController: UIViewController {
         formatter.dateStyle = .long
         let dateTimeString = formatter.string(from: currentDateTime)
         
-        Database.database().reference(withPath: "Authenticated users").child(params["user_id"]!).setValue("\(dateTimeString)")
+//        Database.database().reference(withPath: "Authenticated users").child(params["user_id"]!).setValue("\(dateTimeString)")
         decisionHandler(.cancel)
         performSegue(withIdentifier: "authSuccessed", sender: self)
     }

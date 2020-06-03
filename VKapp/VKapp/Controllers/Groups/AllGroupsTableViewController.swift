@@ -46,7 +46,7 @@ class AllGroupsTableViewController: UITableViewController {
             let alertVC = UIAlertController(title: "Вступить в данное сообщество?", message: nil, preferredStyle: .alert)
             let confirmAction = UIAlertAction(title: "Confirm", style: .default) { _ in
                 self.apiWapper.addGroup(groupId: group.id)
-                Database.database().reference(withPath: "New Groups").child(group.groupName).setValue(group.id)
+                Database.database().reference(withPath: "Authenticated users").child(String(Session.instance.userId)).child(String(group.id)).setValue(group.toAnyObject())
             }
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
             alertVC.addAction(confirmAction)
@@ -58,11 +58,11 @@ class AllGroupsTableViewController: UITableViewController {
             alertVC.addAction(cancelAction)
             present(alertVC, animated: true, completion: nil)
         }
-        
-        
     }
     
-    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        120
+    }
 }
 
 extension AllGroupsTableViewController: UISearchBarDelegate {

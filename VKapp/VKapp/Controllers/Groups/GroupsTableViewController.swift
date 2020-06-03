@@ -21,7 +21,6 @@ class GroupsTableViewController: UITableViewController {
         pairTableAndRealm()
     }
 
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
@@ -30,7 +29,6 @@ class GroupsTableViewController: UITableViewController {
         groups.count
     }
 
-   
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupsTableViewCell", for: indexPath) as! GroupsTableViewCell
         cell.groupName.text = groups[indexPath.row].groupName
@@ -40,23 +38,9 @@ class GroupsTableViewController: UITableViewController {
         return cell
     }
     
-    @IBAction func addGroup(segue: UIStoryboardSegue) {
-            
-            if segue.identifier == "addGroup" {
-                let allGroupsVC = segue.source as! AllGroupsTableViewController
-                if let indexPath = allGroupsVC.tableView.indexPathForSelectedRow {
-//                    let group = allGroupsVC.groups[indexPath.row]
-//                    Database.database().reference().child("New Group Added").setValue(group.name)
-                    
-//                    if !(myGroupList.contains(where: { $0.id == group.id} )) {
-//
-//                        ApiWrapper.addGroup(groupId: group.id)
-//                        Realm.addDataToRealm(objects: [group])
-//                    }
-                }
-            }
-        }
-    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        120
+    }
 }
 
 extension GroupsTableViewController {

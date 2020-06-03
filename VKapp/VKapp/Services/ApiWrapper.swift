@@ -167,7 +167,6 @@ class ApiWrapper {
             realm.delete(oldData)
             realm.add(data)
             try realm.commitWrite()
-            print(realm.configuration.fileURL)
         } catch {
             print(error)
         }
