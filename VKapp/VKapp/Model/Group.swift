@@ -7,8 +7,26 @@
 //
 
 import UIKit
+import RealmSwift
 
-struct Group: Equatable {
-    let groupName: String
-    let groupImage: String
+struct GroupResponse: Decodable {
+    let response: Response
+    
+    
+    struct Response: Decodable {
+        let items: [Group]
+    }
 }
+
+class Group: Object, Decodable {
+    @objc dynamic var groupName = ""
+    @objc dynamic var membersCount = 0
+    @objc dynamic var image = ""
+    
+    enum CodingKeys: String, CodingKey {
+        case groupName = "name"
+        case membersCount = "members_count"
+        case image = "photo_200"
+    }
+}
+

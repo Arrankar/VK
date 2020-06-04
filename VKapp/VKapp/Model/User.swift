@@ -7,20 +7,29 @@
 //
 
 import UIKit
+import RealmSwift
 
-struct User {
-    var name: String
-    var surname: String
-    var photo: String
-    var images: [String]
-    var fullName: String {
-        get {
-            return "\(name) \(surname)"
-        }
+struct UserResponse: Decodable {
+    let response: Response
+    
+    
+    struct Response: Decodable {
+        let items: [User]
     }
 }
-
-struct Section {
-    let title: String
-    var items: [User]
+class User: Object, Decodable {
+    @objc dynamic var id = 0
+    @objc dynamic var firstName = ""
+    @objc dynamic var lastName = ""
+    @objc dynamic var image = ""
+    var fullName: String {
+        return firstName + lastName
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case firstName = "first_name"
+        case lastName = "last_name"
+        case image = "photo_200_orig"
+    }
 }
