@@ -14,7 +14,9 @@ class NewsFeedViewController: UIViewController {
     @IBOutlet weak var newsFeedTableView: UITableView!
     
     var newsArray = [NewsResponse.News]()
-    
+    var sourseIdArray = [Int]()
+    let apiWrapper = ApiWrapper()
+    var groupsInfoArray = [GroupInfoResponse.GroupInfo]()
     
     
     override func viewDidLoad() {
@@ -26,10 +28,11 @@ class NewsFeedViewController: UIViewController {
         newsFeedTableView.backgroundColor = .clear
         view.backgroundColor = #colorLiteral(red: 0.7681049705, green: 1, blue: 0.9786186814, alpha: 1)
         
-//        ApiWrapper.getNews { [weak self] news in
-//            self?.newsArray = news
-//            self?.newsFeedTableView.reloadData()
-//        }
+        apiWrapper.getNews { [weak self] news in
+            self?.newsArray = news
+            self?.newsFeedTableView.reloadData()
+            self?.sourseIdArray = news.map { $0.sourceId }
+        }
     }
 }
 
@@ -49,6 +52,14 @@ extension NewsFeedViewController: UITableViewDelegate, UITableViewDataSource {
         cell.likeView.label.text = String(news.likesCount)
         cell.repostView.label.text = String(news.repostsCount)
         cell.viewsView.label.text = String(news.viewsCount)
+        
+//        apiWrapper.getGroupInfo(groupId: sourseIdArray[indexPath.row]) { [weak self] groups in
+//             self?.groupsInfoArray = groups
+//            print(groups)
+//        }
+        
+//        cell.newsNameLabel.text = groupsInfoArray[indexPath.row].groupName
+        
         return cell
     }
     

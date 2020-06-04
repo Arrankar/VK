@@ -16,7 +16,7 @@ class FriendsTableViewCell: UITableViewCell {
     
     let scale = CGAffineTransform(scaleX: 0.5, y: 0.5)
     let scale2 = CGAffineTransform(scaleX: 1, y: 1)
-
+    
     @objc func animateImage(sender: UITapGestureRecognizer) {
         
         UIView.animate(withDuration: 0.5, animations: {
@@ -30,7 +30,7 @@ class FriendsTableViewCell: UITableViewCell {
                        options: [],
                        animations: {
                         self.friendImage.transform = self.scale2
-
+                        
         })
     }
     

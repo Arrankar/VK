@@ -9,11 +9,15 @@
 import Foundation
 
 struct GroupInfoResponse: Decodable {
-    let response: [GroupInfo]
+    let response: Response
+    
+    struct Response: Decodable {
+        let items: [GroupInfo]
+    }
 
      class GroupInfo: Decodable {
-        dynamic var groupName = ""
-        dynamic var image = ""
+         var groupName = ""
+         var image = ""
         
         enum CodingKeys: String, CodingKey {
             case groupName = "name"
