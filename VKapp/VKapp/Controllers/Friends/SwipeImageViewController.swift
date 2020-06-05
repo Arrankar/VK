@@ -192,7 +192,6 @@ extension SwipeImageViewController {
     func loadRealm() {
         guard let realm = try? Realm() else { return }
         images = realm.objects(Photo.self)
-        print("КАРТИНОК: \(images.count)")
     }
 }
 

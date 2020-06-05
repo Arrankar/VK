@@ -66,7 +66,6 @@ class ApiWrapper {
             guard let data = response.value else { return }
             let users = try! JSONDecoder().decode(UserResponse.self, from: data).response.items
             self?.saveData(data: users)
-            print(Realm.Configuration.defaultConfiguration.fileURL!)
         }
     }
     
@@ -145,9 +144,24 @@ class ApiWrapper {
         }
     }
     
+     func addGroup(groupId: Int) {
+        
+        let methodUrl = "/groups.join"
+        let url = baseUrl + methodUrl
+        let parameters: Parameters = [
+            "access_token" : Session.instance.token,
+            "group_id" : "\(groupId)",
+            "v" : "5.68"
+        ]
+        
+         AF.request(url, method: .get, parameters: parameters).responseData { response in
+        }
+    }
+    
     func saveData<T: Object>(data: [T]) {
         do {
-            let realm = try Realm()
+            let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
+            let realm = try Realm(configuration: config)
             let oldData = realm.objects(T.self)
             realm.beginWrite()
             realm.delete(oldData)

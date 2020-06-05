@@ -21,7 +21,6 @@ class GroupsTableViewController: UITableViewController {
         pairTableAndRealm()
     }
 
-
     override func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
@@ -30,7 +29,6 @@ class GroupsTableViewController: UITableViewController {
         groups.count
     }
 
-   
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupsTableViewCell", for: indexPath) as! GroupsTableViewCell
         cell.groupName.text = groups[indexPath.row].groupName
@@ -39,12 +37,17 @@ class GroupsTableViewController: UITableViewController {
         cell.groupImage.image = UIImage(data: try! Data(contentsOf: url!))!
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        120
+    }
 }
 
 extension GroupsTableViewController {
     
     func pairTableAndRealm() {
-        guard let realm = try? Realm() else { return }
+        let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
+        guard let realm = try? Realm(configuration: config) else { return }
         groups = realm.objects(Group.self)
         token = groups.observe { [weak self] changes in
             guard let tableView = self?.tableView else { return }

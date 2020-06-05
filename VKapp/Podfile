@@ -3,8 +3,12 @@
 
 target 'VKapp' do
 
+  use_frameworks!
 	pod 'Alamofire', '~> 5.1'
-	pod 'Realm', '~> 5.0.0', :modular_headers => true
-	pod 'RealmSwift', '~> 5.0.0', :modular_headers => true
+	pod 'Realm'
+	pod 'RealmSwift'
+  pod 'Firebase/Core'
+  pod 'Firebase/Database'
+  
 	
 end

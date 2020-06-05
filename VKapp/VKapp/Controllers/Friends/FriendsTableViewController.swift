@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import Realm
 
 @available(iOS 13.0, *)
 
@@ -38,6 +39,7 @@ class FriendsTableViewController: UITableViewController {
         if isSearching {
             return filteredFriends.count
         }
+       
         return friends.count
     }
     
@@ -155,7 +157,10 @@ extension FriendsTableViewController: UITextFieldDelegate {
 extension FriendsTableViewController {
     
     func pairTableAndRealm() {
-        guard let realm = try? Realm() else { return }
+        let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
+        guard let realm = try? Realm(configuration: config) else { return }
+        
+       
         friends = realm.objects(User.self)
         token = friends.observe { [weak self] changes in
             guard let tableView = self?.tableView else { return }
