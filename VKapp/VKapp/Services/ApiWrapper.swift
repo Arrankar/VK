@@ -123,6 +123,7 @@ class ApiWrapper {
         AF.request(url, method: .get, parameters: parameters).responseData { response in
             guard let data = response.value else { return }
             let news = try! JSONDecoder().decode(NewsResponse.self, from: data).response.items
+            print(news[0].height)
             completion(news)
         }
     }

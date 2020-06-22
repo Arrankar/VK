@@ -21,6 +21,7 @@ class NewsFeedTableViewCell: UITableViewCell {
     @IBOutlet weak var commentsVIew: CommentsView!
     @IBOutlet weak var repostView: RepostView!
     @IBOutlet weak var viewsView: ViewsView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -51,5 +52,6 @@ class NewsFeedTableViewCell: UITableViewCell {
         super.layoutSubviews()
         imagesCollection.reloadData()
         imagesCollection.layer.cornerRadius = 10
+
     }
 }

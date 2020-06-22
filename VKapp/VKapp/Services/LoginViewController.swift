@@ -45,14 +45,7 @@ class LoginViewController: UIViewController {
         
         session.token = params["access_token"]!
         session.userId = Int(params["user_id"]!)!
-     
-        let currentDateTime = Date()
-        let formatter = DateFormatter()
-        formatter.timeStyle = .medium
-        formatter.dateStyle = .long
-        let dateTimeString = formatter.string(from: currentDateTime)
-        
-//        Database.database().reference(withPath: "Authenticated users").child(params["user_id"]!).setValue("\(dateTimeString)")
+        print(session.token)
         decisionHandler(.cancel)
         performSegue(withIdentifier: "authSuccessed", sender: self)
     }
