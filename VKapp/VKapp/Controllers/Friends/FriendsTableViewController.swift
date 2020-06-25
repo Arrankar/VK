@@ -57,15 +57,11 @@ class FriendsTableViewController: UITableViewController {
                         cell.frame.origin.x -= 100
         })
         if !isSearching {
-            cell.friendName.text = friends[indexPath.row].firstName
-            cell.friendSurname.text = friends[indexPath.row].lastName
-            let url = URL(string: friends[indexPath.row].image)
-            cell.friendImage.avatar.image = UIImage(data: try! Data(contentsOf: url!))!
+            let users = friends[indexPath.row]
+            cell.configure(with: users)
         } else {
-            cell.friendName.text = filteredFriends[indexPath.row].firstName
-            cell.friendSurname.text = filteredFriends[indexPath.row].lastName
-            let url = URL(string: filteredFriends[indexPath.row].image)
-            cell.friendImage.avatar.image = UIImage(data: try! Data(contentsOf: url!))!
+            let filteredUsers = filteredFriends[indexPath.row]
+            cell.configure(with: filteredUsers)
         }
         return cell
     }

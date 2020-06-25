@@ -11,17 +11,17 @@ import UIKit
 @available(iOS 13.0, *)
 class NewsFeedTableViewCell: UITableViewCell {
    
-    @IBOutlet weak var imagesCollection: GalleryCollectionView!
-    @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var newsImage: UIImageView!
-    @IBOutlet weak var newsNameLabel: UILabel!
-    @IBOutlet weak var newsDateLabel: UILabel!
-    @IBOutlet weak var postTextLabel: UILabel!
-    @IBOutlet weak var likeView: LikeButton!
-    @IBOutlet weak var commentsVIew: CommentsView!
-    @IBOutlet weak var repostView: RepostView!
-    @IBOutlet weak var viewsView: ViewsView!
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet private weak var imagesCollection: GalleryCollectionView!
+    @IBOutlet private weak var cardView: UIView!
+    @IBOutlet private weak var newsImage: UIImageView!
+    @IBOutlet private weak var newsNameLabel: UILabel!
+    @IBOutlet private weak var newsDateLabel: UILabel!
+    @IBOutlet private weak var postTextLabel: UILabel!
+    @IBOutlet private weak var likeView: LikeButton!
+    @IBOutlet private weak var commentsVIew: CommentsView!
+    @IBOutlet private weak var repostView: RepostView!
+    @IBOutlet private weak var viewsView: ViewsView!
+    @IBOutlet private weak var scrollView: UIScrollView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -53,5 +53,13 @@ class NewsFeedTableViewCell: UITableViewCell {
         imagesCollection.reloadData()
         imagesCollection.layer.cornerRadius = 10
 
+    }
+    
+    func configure(with news: News) {
+        postTextLabel.text = news.text
+        viewsView.label.text = String(news.viewsCount)
+        repostView.label.text = String(news.repostsCount)
+        commentsVIew.label.text = String(news.commentsCount)
+        likeView.label.text = String(news.likesCount)
     }
 }

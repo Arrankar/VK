@@ -31,10 +31,7 @@ class AllGroupsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AllGroupsTableViewCell", for: indexPath) as! AllGroupsTableViewCell
         
         let group = groups[indexPath.row]
-        cell.allGroupsName.text = group.groupName
-        cell.membersLabel.text = String(group.membersCount)
-        let url = URL(string: group.image)
-        cell.allGroupsImage.image = UIImage(data: try! Data(contentsOf: url!))!
+        cell.configure(with: group)
         
         return cell
     }

@@ -13,7 +13,7 @@ class NewsFeedViewController: UIViewController {
     
     @IBOutlet weak var newsFeedTableView: UITableView!
     
-    var newsArray = [NewsResponse.News]()
+    var newsArray = [News]()
     var sourseIdArray = [Int]()
     let apiWrapper = ApiWrapper()
     var groupsInfoArray = [GroupInfoResponse.GroupInfo]()
@@ -30,8 +30,9 @@ class NewsFeedViewController: UIViewController {
         
         apiWrapper.getNews { [weak self] news in
             self?.newsArray = news
+            DispatchQueue.main.async {
             self?.newsFeedTableView.reloadData()
-            self?.sourseIdArray = news.map { $0.sourceId }
+            }
         }
     }
 }
@@ -47,18 +48,7 @@ extension NewsFeedViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsFeedTableViewCell", for: indexPath) as! NewsFeedTableViewCell
         let news = newsArray[indexPath.row]
-        cell.postTextLabel.text = news.text
-        cell.commentsVIew.label.text = String(news.commentsCount)
-        cell.likeView.label.text = String(news.likesCount)
-        cell.repostView.label.text = String(news.repostsCount)
-        cell.viewsView.label.text = String(news.viewsCount)
-        
-//        apiWrapper.getGroupInfo(groupId: sourseIdArray[indexPath.row]) { [weak self] groups in
-//             self?.groupsInfoArray = groups
-//            print(groups)
-//        }
-        
-//        cell.newsNameLabel.text = groupsInfoArray[indexPath.row].groupName
+        cell.configure(with: news)
         
         return cell
     }

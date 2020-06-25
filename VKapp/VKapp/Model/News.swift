@@ -14,8 +14,8 @@ struct NewsResponse: Decodable {
 
 struct Response: Decodable {
     let items: [News]
+    }
 }
-
  class News: Decodable {
      var date = 0.0
      var text = ""
@@ -25,8 +25,6 @@ struct Response: Decodable {
      var repostsCount = 0
      var viewsCount = 0
      var image = ""
-     var type = ""
-     var height = 0
     
     enum CodingKeys: String, CodingKey {
         case date
@@ -40,13 +38,12 @@ struct Response: Decodable {
     }
     
     enum AttachmentsKeys: String, CodingKey {
-        case hui
+        case photo
         case type
     }
 
     enum PhotoKeys: String, CodingKey {
-//        case image = "photo_604"
-        case height
+        case image = "photo_604"
     }
 
     enum CommentsKeys: String, CodingKey {
@@ -73,11 +70,9 @@ struct Response: Decodable {
         self.text = try values.decode(String.self, forKey: .text)
         self.sourceId = try values.decode(Int.self, forKey: .sourceId)
         
-        var attachmentsValues = try values.nestedUnkeyedContainer(forKey: .attachments)
-        let firstAttachmentValue = try attachmentsValues.nestedContainer(keyedBy: AttachmentsKeys.self)
-        self.type = try firstAttachmentValue.decode(String.self, forKey: .type)
-        let photoValues = try firstAttachmentValue.nestedContainer(keyedBy: PhotoKeys.self, forKey: .hui)
-        self.height = try photoValues.decode(Int.self, forKey: .height)
+//        var attachmentsValues = try values.nestedUnkeyedContainer(forKey: .attachments)
+//        let firstAttachmentValue = try attachmentsValues.nestedContainer(keyedBy: AttachmentsKeys.self)
+//        let photoValues = try firstAttachmentValue.nestedContainer(keyedBy: PhotoKeys.self, forKey: .photo)
 //        self.image = try photoValues.decode(String.self, forKey: .image)
         
         let commentsValues = try values.nestedContainer(keyedBy: CommentsKeys.self, forKey: .comments)
@@ -93,4 +88,4 @@ struct Response: Decodable {
         self.viewsCount = try viewsVAlues.decode(Int.self, forKey: .count)
         }
     }
-}
+

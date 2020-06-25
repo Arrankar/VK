@@ -10,9 +10,9 @@ import UIKit
 
 class GroupsTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var groupImage: UIImageView!
-    @IBOutlet weak var groupName: UILabel!
-    @IBOutlet weak var membersCount: UILabel!
+    @IBOutlet private weak var groupImage: UIImageView!
+    @IBOutlet private weak var groupName: UILabel!
+    @IBOutlet private weak var membersCount: UILabel!
     
     
     override func awakeFromNib() {
@@ -22,5 +22,12 @@ class GroupsTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    func configure(with group: Group) {
+        groupName.text = group.groupName
+        membersCount.text = String(group.membersCount)
+        let url = URL(string: group.image)
+        groupImage.image = UIImage(data: try! Data(contentsOf: url!))!
     }
 }
