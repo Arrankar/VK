@@ -37,7 +37,7 @@ class Group: Object, Decodable {
     func toAnyObject() -> [String: Any] {
         return [
             "name": groupName,
-            "Count of members": membersCount
+            "CountofMembers": membersCount
         ]
     }
 }

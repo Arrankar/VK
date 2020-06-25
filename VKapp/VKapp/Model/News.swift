@@ -25,8 +25,10 @@ struct Response: Decodable {
      var repostsCount = 0
      var viewsCount = 0
      var image = ""
+     var type = ""
+     var height = 0
     
-    enum ItemsKeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
         case date
         case sourceId = "source_id"
         case text
@@ -38,11 +40,13 @@ struct Response: Decodable {
     }
     
     enum AttachmentsKeys: String, CodingKey {
-        case photo
+        case hui
+        case type
     }
 
     enum PhotoKeys: String, CodingKey {
-        case image = "photo_604"
+//        case image = "photo_604"
+        case height
     }
 
     enum CommentsKeys: String, CodingKey {
@@ -64,27 +68,29 @@ struct Response: Decodable {
     convenience required init(from decoder: Decoder) throws {
         self.init()
         
-        let values = try decoder.container(keyedBy: ItemsKeys.self)
+        let values = try decoder.container(keyedBy: CodingKeys.self)
         self.date = try values.decode(Double.self, forKey: .date)
         self.text = try values.decode(String.self, forKey: .text)
         self.sourceId = try values.decode(Int.self, forKey: .sourceId)
         
-//        var attachmentsValues = try values.nestedUnkeyedContainer(forKey: .attachments)
-//        let firstAttachmentValue = try attachmentsValues.nestedContainer(keyedBy: AttachmentsKeys.self)
-//        let photoValues = try firstAttachmentValue.nestedContainer(keyedBy: PhotoKeys.self, forKey: .photo)
+        var attachmentsValues = try values.nestedUnkeyedContainer(forKey: .attachments)
+        let firstAttachmentValue = try attachmentsValues.nestedContainer(keyedBy: AttachmentsKeys.self)
+        self.type = try firstAttachmentValue.decode(String.self, forKey: .type)
+        let photoValues = try firstAttachmentValue.nestedContainer(keyedBy: PhotoKeys.self, forKey: .hui)
+        self.height = try photoValues.decode(Int.self, forKey: .height)
 //        self.image = try photoValues.decode(String.self, forKey: .image)
-//        
-//        let commentsValues = try values.nestedContainer(keyedBy: CommentsKeys.self, forKey: .comments)
-//        self.commentsCount = try commentsValues.decode(Int.self, forKey: .count)
-//        
-//        let likesValues = try values.nestedContainer(keyedBy: LikesKeys.self, forKey: .likes)
-//        self.likesCount = try likesValues.decode(Int.self, forKey: .count)
-//        
-//        let repostsValues = try values.nestedContainer(keyedBy: RepostsKeys.self, forKey: .reposts)
-//        self.repostsCount = try repostsValues.decode(Int.self, forKey: .count)
-//        
-//        let viewsVAlues = try values.nestedContainer(keyedBy: ViewsKeys.self, forKey: .views)
-//        self.viewsCount = try viewsVAlues.decode(Int.self, forKey: .count)
+        
+        let commentsValues = try values.nestedContainer(keyedBy: CommentsKeys.self, forKey: .comments)
+        self.commentsCount = try commentsValues.decode(Int.self, forKey: .count)
+        
+        let likesValues = try values.nestedContainer(keyedBy: LikesKeys.self, forKey: .likes)
+        self.likesCount = try likesValues.decode(Int.self, forKey: .count)
+        
+        let repostsValues = try values.nestedContainer(keyedBy: RepostsKeys.self, forKey: .reposts)
+        self.repostsCount = try repostsValues.decode(Int.self, forKey: .count)
+        
+        let viewsVAlues = try values.nestedContainer(keyedBy: ViewsKeys.self, forKey: .views)
+        self.viewsCount = try viewsVAlues.decode(Int.self, forKey: .count)
         }
     }
 }
