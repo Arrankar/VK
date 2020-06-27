@@ -28,7 +28,12 @@ class AllGroupsTableViewCell: UITableViewCell {
         allGroupsName.text = group.groupName
         membersLabel.text = String(group.membersCount)
         let url = URL(string: group.image)
-        allGroupsImage.image = UIImage(data: try! Data(contentsOf: url!))!
+        guard let url = URL(string: group.image),
+        let data = try? Data(contentsOf: url)
+        else {
+        return
+        }
+        allGroupsImage.image = UIImage(data: data)
     }
 
 }
