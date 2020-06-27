@@ -55,5 +55,7 @@ class FriendsTableViewCell: UITableViewCell {
         friendSurname.text = user.lastName
         let url = URL(string: user.image)
         friendImage.avatar.image = UIImage(data: try! Data(contentsOf: url!))!
+        
+        
     }
 }
