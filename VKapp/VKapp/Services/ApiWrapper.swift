@@ -45,7 +45,7 @@ class ApiWrapper {
             "v" : "5.68"
         ]
         
-        AF.request(url, method: .get, parameters: parameters).responseData { [weak self] response in
+        AF.request(url, method: .get, parameters: parameters).responseData(queue: DispatchQueue.global()) { [weak self] response in
             guard let data = response.value else { return }
             let groups = try! JSONDecoder().decode(GroupResponse.self, from: data).response.items
             self?.saveData(data: groups)
@@ -62,7 +62,7 @@ class ApiWrapper {
             "v" : "5.68"
         ]
         
-        AF.request(url, method: .get, parameters: parameters).responseData { [weak self] response in
+        AF.request(url, method: .get, parameters: parameters).responseData(queue: DispatchQueue.global()) { [weak self] response in
             guard let data = response.value else { return }
             let users = try! JSONDecoder().decode(UserResponse.self, from: data).response.items
             self?.saveData(data: users)
@@ -82,7 +82,7 @@ class ApiWrapper {
             "v" : "5.73"
         ]
         
-        AF.request(url, method: .get, parameters: parameters).responseData { response in
+        AF.request(url, method: .get, parameters: parameters).responseData(queue: DispatchQueue.global()) { response in
             guard let data = response.value else { return }
             let searchedGroups = try! JSONDecoder().decode(GroupResponse.self, from: data).response.items
             completion(searchedGroups)
@@ -100,7 +100,7 @@ class ApiWrapper {
             "v" : "5.68"
         ]
         
-        AF.request(url, method: .get, parameters: parameters).responseData { [weak self] response in
+        AF.request(url, method: .get, parameters: parameters).responseData(queue: DispatchQueue.global()) { [weak self] response in
             guard let data = response.value else { return }
             let photos = try! JSONDecoder().decode(PhotoResponse.self, from: data).response.items
             self?.saveData(data: photos)
@@ -108,7 +108,7 @@ class ApiWrapper {
         }
     }
     
-    func getNews(completion: @escaping ([NewsResponse.News]) -> Void) {
+    func getNews(completion: @escaping ([News]) -> Void) {
         
         let methodUrl = "/newsfeed.get"
         let url = baseUrl + methodUrl
@@ -120,10 +120,9 @@ class ApiWrapper {
             "v" : "5.68"
         ]
         
-        AF.request(url, method: .get, parameters: parameters).responseData { response in
+        AF.request(url, method: .get, parameters: parameters).responseData(queue: DispatchQueue.global()) { response in
             guard let data = response.value else { return }
             let news = try! JSONDecoder().decode(NewsResponse.self, from: data).response.items
-            print(news[0].height)
             completion(news)
         }
     }
@@ -138,7 +137,7 @@ class ApiWrapper {
             "v" : "5.68"
         ]
         
-        AF.request(url, method: .get, parameters: parameters).responseData { response in
+        AF.request(url, method: .get, parameters: parameters).responseData(queue: DispatchQueue.global()) { response in
             guard let data = response.value else { return }
             let groupInfo = try! JSONDecoder().decode(GroupInfoResponse.self, from: data).response.items
             completion(groupInfo)

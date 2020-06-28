@@ -10,9 +10,9 @@ import UIKit
 
 class FriendsTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var friendImage: AvatarView!
-    @IBOutlet weak var friendName: UILabel!
-    @IBOutlet weak var friendSurname: UILabel!
+    @IBOutlet private weak var friendImage: AvatarView!
+    @IBOutlet private weak var friendName: UILabel!
+    @IBOutlet private weak var friendSurname: UILabel!
     
     let scale = CGAffineTransform(scaleX: 0.5, y: 0.5)
     let scale2 = CGAffineTransform(scaleX: 1, y: 1)
@@ -48,5 +48,12 @@ class FriendsTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
+    }
+    
+    func configure(with user: User) {
+        friendName.text = user.firstName
+        friendSurname.text = user.lastName
+        let url = URL(string: user.image)
+        friendImage.avatar.image = UIImage(data: try! Data(contentsOf: url!))!
     }
 }
