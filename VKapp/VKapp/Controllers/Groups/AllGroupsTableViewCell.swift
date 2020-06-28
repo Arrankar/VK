@@ -27,7 +27,6 @@ class AllGroupsTableViewCell: UITableViewCell {
     func configure(with group: Group) {
         allGroupsName.text = group.groupName
         membersLabel.text = String(group.membersCount)
-        let url = URL(string: group.image)
         guard let url = URL(string: group.image),
         let data = try? Data(contentsOf: url)
         else {

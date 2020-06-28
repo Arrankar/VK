@@ -59,7 +59,5 @@ class FriendsTableViewCell: UITableViewCell {
         return
         }
         friendImage.avatar.image = UIImage(data: data)
-        
-        
     }
 }
