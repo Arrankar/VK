@@ -11,7 +11,6 @@ import RealmSwift
 
 class ParseGroupsData: Operation {
 
-    var outputGroupData: Results<Group>?
     var apiWrapper = ApiWrapper()
     
     override func main() {
@@ -19,8 +18,6 @@ class ParseGroupsData: Operation {
             let data = getDataOperation.data else { return }
         let groups = try! JSONDecoder().decode(GroupResponse.self, from: data).response.items
         apiWrapper.saveData(data: groups)
-        guard let realm = try? Realm() else { return }
-        outputGroupData = realm.objects(Group.self)
     }
 }
 

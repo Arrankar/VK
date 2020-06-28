@@ -53,7 +53,6 @@ class ApiWrapper {
         
         let parseGroupsData = ParseGroupsData()
         parseGroupsData.addDependency(getDataOperation)
-        OperationQueue.main.addOperation(parseGroupsData)
         
         let reloadGroupsTable = ReloadGroupsTable(controller: controller)
         reloadGroupsTable.addDependency(parseGroupsData)

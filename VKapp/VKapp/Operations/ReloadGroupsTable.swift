@@ -7,8 +7,11 @@
 //
 
 import Foundation
+import RealmSwift
 
 class ReloadGroupsTable: Operation {
+    
+    var outputGroupData: Results<Group>?
     var controller: GroupsTableViewController
     
     init(controller: GroupsTableViewController) {
@@ -16,8 +19,9 @@ class ReloadGroupsTable: Operation {
     }
     
     override func main() {
-        guard let parseGroupsData = dependencies.first as? ParseGroupsData else { return }
-        controller.groups = parseGroupsData.outputGroupData
+        guard let realm = try? Realm() else { return }
+        outputGroupData = realm.objects(Group.self)
+        controller.groups = outputGroupData
         controller.tableView.reloadData()
   }
 }
