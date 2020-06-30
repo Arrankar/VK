@@ -39,6 +39,7 @@
 - Realm
 - Firebase
 - CoreAnimation
+- GCD / Operations
 
 
 Сслыка на другой проект: [Exchanger](https://github.com/Arrankar/Examples)
