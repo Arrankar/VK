@@ -17,7 +17,7 @@ class GroupsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        apiWapper.getGroups()
+        apiWapper.getGroups(controller: self)
         pairTableAndRealm()
     }
 

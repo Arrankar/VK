@@ -33,7 +33,7 @@ class ApiWrapper {
         
     }
     
-    func getGroups() {
+    func getGroups(controller: GroupsTableViewController) {
         
         let methodUrl = "/groups.get"
         let url = baseUrl + methodUrl
@@ -45,11 +45,18 @@ class ApiWrapper {
             "v" : "5.68"
         ]
         
-        AF.request(url, method: .get, parameters: parameters).responseData(queue: DispatchQueue.global()) { [weak self] response in
-            guard let data = response.value else { return }
-            let groups = try! JSONDecoder().decode(GroupResponse.self, from: data).response.items
-            self?.saveData(data: groups)
-        }
+        let request = AF.request(url, method: .get, parameters: parameters)
+        let queue = OperationQueue()
+        
+        let getDataOperation = GetDataOperation(request: request)
+        queue.addOperation(getDataOperation)
+        
+        let parseGroupsData = ParseGroupsData()
+        parseGroupsData.addDependency(getDataOperation)
+        
+        let reloadGroupsTable = ReloadGroupsTable(controller: controller)
+        reloadGroupsTable.addDependency(parseGroupsData)
+        OperationQueue.main.addOperation(reloadGroupsTable)
     }
     
     func getFriends() {

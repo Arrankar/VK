@@ -48,6 +48,10 @@
 		1FDE27192434931F00032313 /* GroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE27182434931F00032313 /* GroupsTableViewCell.swift */; };
 		1FDE271B2434935800032313 /* GroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE271A2434935800032313 /* GroupsTableViewController.swift */; };
 		1FE5B35F24867D5400A99419 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FE5B35E24867D5400A99419 /* GoogleService-Info.plist */; };
+		1FEED1E324A8F65D00E3C700 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEED1E224A8F65D00E3C700 /* AsyncOperation.swift */; };
+		1FEED1E524A8F7EC00E3C700 /* GetDataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEED1E424A8F7EC00E3C700 /* GetDataOperation.swift */; };
+		1FEED1E724A8FE8100E3C700 /* ParseGroupsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEED1E624A8FE8100E3C700 /* ParseGroupsData.swift */; };
+		1FEED1E924A8FF9B00E3C700 /* ReloadGroupsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FEED1E824A8FF9B00E3C700 /* ReloadGroupsTable.swift */; };
 		6B88E87627CE3584068AE64A /* Pods_VKapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 044CF4A8D173C40AFAA16B3D /* Pods_VKapp.framework */; };
 /* End PBXBuildFile section */
 
@@ -98,6 +102,10 @@
 		1FDE27182434931F00032313 /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewCell.swift; sourceTree = "<group>"; };
 		1FDE271A2434935800032313 /* GroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewController.swift; sourceTree = "<group>"; };
 		1FE5B35E24867D5400A99419 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1FEED1E224A8F65D00E3C700 /* AsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
+		1FEED1E424A8F7EC00E3C700 /* GetDataOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDataOperation.swift; sourceTree = "<group>"; };
+		1FEED1E624A8FE8100E3C700 /* ParseGroupsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseGroupsData.swift; sourceTree = "<group>"; };
+		1FEED1E824A8FF9B00E3C700 /* ReloadGroupsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReloadGroupsTable.swift; sourceTree = "<group>"; };
 		CC313D4529F35A50209842A0 /* Pods-VKapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VKapp.release.xcconfig"; path = "Target Support Files/Pods-VKapp/Pods-VKapp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -182,6 +190,7 @@
 		1F8628DF2428DE8800B19754 /* VKapp */ = {
 			isa = PBXGroup;
 			children = (
+				1FEED1E124A8F61900E3C700 /* Operations */,
 				1F38FA80247D5A69009DE412 /* Controllers */,
 				1F5E62F1247A77FB00130D3E /* Services */,
 				1F5A8D7F244F084F0002A3D5 /* Animations */,
@@ -268,6 +277,17 @@
 				1F4D44A5246D686300180F6D /* GroupInfo.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		1FEED1E124A8F61900E3C700 /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				1FEED1E224A8F65D00E3C700 /* AsyncOperation.swift */,
+				1FEED1E424A8F7EC00E3C700 /* GetDataOperation.swift */,
+				1FEED1E624A8FE8100E3C700 /* ParseGroupsData.swift */,
+				1FEED1E824A8FF9B00E3C700 /* ReloadGroupsTable.swift */,
+			);
+			path = Operations;
 			sourceTree = "<group>";
 		};
 		343E66073DD90C26B04CAC93 /* Pods */ = {
@@ -398,6 +418,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F068C5A245045E200715DD3 /* FlipAnimation.swift in Sources */,
+				1FEED1E924A8FF9B00E3C700 /* ReloadGroupsTable.swift in Sources */,
 				1F068C68245450C600715DD3 /* RepostView.swift in Sources */,
 				1F068C6624544E1600715DD3 /* CommentsView.swift in Sources */,
 				1FDE27192434931F00032313 /* GroupsTableViewCell.swift in Sources */,
@@ -421,9 +442,12 @@
 				1FDE27152434927400032313 /* FriendsTableViewController.swift in Sources */,
 				1F068C6A245451F800715DD3 /* ViewsView.swift in Sources */,
 				1F5A8D83244F0B870002A3D5 /* CustomPopAnimator.swift in Sources */,
+				1FEED1E324A8F65D00E3C700 /* AsyncOperation.swift in Sources */,
 				1F5A8D85244F0CB40002A3D5 /* CustomNavigationController.swift in Sources */,
+				1FEED1E724A8FE8100E3C700 /* ParseGroupsData.swift in Sources */,
 				1F9BAF7B243CAFEC0043931B /* FullImageViewController.swift in Sources */,
 				1F8F182F2434A64100CEDCB1 /* AllGroupsTableViewController.swift in Sources */,
+				1FEED1E524A8F7EC00E3C700 /* GetDataOperation.swift in Sources */,
 				1F068C5E2450512B00715DD3 /* DismissAnimation.swift in Sources */,
 				1FDE2717243492D000032313 /* FriendsTableViewCell.swift in Sources */,
 				1FDE271B2434935800032313 /* GroupsTableViewController.swift in Sources */,

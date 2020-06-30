@@ -32,11 +32,6 @@ class FullImageViewController: UIViewController, UIGestureRecognizerDelegate {
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeDown.direction = .down
         fullImage.addGestureRecognizer(swipeDown)
-        
-        
     }
-    
-    
-    
 }
 

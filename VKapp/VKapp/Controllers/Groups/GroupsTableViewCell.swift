@@ -27,7 +27,11 @@ class GroupsTableViewCell: UITableViewCell {
     func configure(with group: Group) {
         groupName.text = group.groupName
         membersCount.text = String(group.membersCount)
-        let url = URL(string: group.image)
-        groupImage.image = UIImage(data: try! Data(contentsOf: url!))!
+        guard let url = URL(string: group.image),
+        let data = try? Data(contentsOf: url)
+        else {
+        return
+        }
+        groupImage.image = UIImage(data: data)
     }
 }
