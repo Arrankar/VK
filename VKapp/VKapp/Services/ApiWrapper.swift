@@ -9,6 +9,8 @@
 import UIKit
 import Alamofire
 import RealmSwift
+import PromiseKit
+
 
 class ApiWrapper {
     
