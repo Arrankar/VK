@@ -28,18 +28,24 @@ class FriendsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         searchTextField.delegate = self
         self.buttonWidth.constant = 0
         self.imageConstraint.constant = 10 + searchTextField.frame.width / 2
+        
         apiWapper.getFriends()
-        pairTableAndRealm()
+            .get { [weak self] users in
+                guard let self = self else { return }
+                self.apiWapper.saveData(data: users)
+               
+        }
+         pairTableAndRealm()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearching {
             return filteredFriends.count
         }
-       
         return friends.count
     }
     
@@ -156,7 +162,7 @@ extension FriendsTableViewController {
         let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
         guard let realm = try? Realm(configuration: config) else { return }
         
-       
+        
         friends = realm.objects(User.self)
         token = friends.observe { [weak self] changes in
             guard let tableView = self?.tableView else { return }

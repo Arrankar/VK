@@ -61,7 +61,7 @@ class ApiWrapper {
         OperationQueue.main.addOperation(reloadGroupsTable)
     }
     
-    func getFriends() {
+    func getFriends() -> Promise<[User]> {
         let methodUrl = "/friends.get"
         let url = baseUrl + methodUrl
         let parameters: Parameters = [
@@ -71,12 +71,21 @@ class ApiWrapper {
             "v" : "5.68"
         ]
         
-        AF.request(url, method: .get, parameters: parameters).responseData(queue: DispatchQueue.global()) { [weak self] response in
-            guard let data = response.value else { return }
-            let users = try! JSONDecoder().decode(UserResponse.self, from: data).response.items
-            self?.saveData(data: users)
+        let promise = Promise<[User]> { resolver in
+        AF.request(url, method: .get, parameters: parameters).responseData() { response in
+            switch response.result {
+            case .success(_):
+                guard let data = response.value else { return }
+                let users = try! JSONDecoder().decode(UserResponse.self, from: data).response.items
+                resolver.fulfill(users)
+            case .failure(let error):
+                resolver.reject(error)
+            }
+
         }
     }
+        return promise
+}
     
     func groupSearch(searchText: String, completion: @escaping ([Group]) -> ()) {
         
@@ -153,7 +162,7 @@ class ApiWrapper {
         }
     }
     
-     func addGroup(groupId: Int) {
+    func addGroup(groupId: Int) {
         
         let methodUrl = "/groups.join"
         let url = baseUrl + methodUrl
@@ -163,7 +172,7 @@ class ApiWrapper {
             "v" : "5.68"
         ]
         
-         AF.request(url, method: .get, parameters: parameters).responseData { response in
+        AF.request(url, method: .get, parameters: parameters).responseData { response in
         }
     }
     
