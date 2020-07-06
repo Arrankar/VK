@@ -43,6 +43,7 @@
 		1F9BAF85243E3D560043931B /* ApiWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F9BAF84243E3D550043931B /* ApiWrapper.swift */; };
 		1F9BAF88243E41480043931B /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F9BAF87243E41480043931B /* WebKit.framework */; };
 		1FB033B7245DA08300066211 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB033B6245DA08300066211 /* Session.swift */; };
+		1FB8576924B32D22002CC28B /* PhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FB8576824B32D22002CC28B /* PhotoService.swift */; };
 		1FDE27152434927400032313 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE27142434927400032313 /* FriendsTableViewController.swift */; };
 		1FDE2717243492D000032313 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE2716243492D000032313 /* FriendsTableViewCell.swift */; };
 		1FDE27192434931F00032313 /* GroupsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FDE27182434931F00032313 /* GroupsTableViewCell.swift */; };
@@ -97,6 +98,7 @@
 		1F9BAF84243E3D550043931B /* ApiWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiWrapper.swift; sourceTree = "<group>"; };
 		1F9BAF87243E41480043931B /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		1FB033B6245DA08300066211 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		1FB8576824B32D22002CC28B /* PhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoService.swift; sourceTree = "<group>"; };
 		1FDE27142434927400032313 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
 		1FDE2716243492D000032313 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
 		1FDE27182434931F00032313 /* GroupsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsTableViewCell.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				1F8628E42428DE8800B19754 /* LoginViewController.swift */,
 				1FB033B6245DA08300066211 /* Session.swift */,
 				1F9BAF84243E3D550043931B /* ApiWrapper.swift */,
+				1FB8576824B32D22002CC28B /* PhotoService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -449,6 +452,7 @@
 				1F8F182F2434A64100CEDCB1 /* AllGroupsTableViewController.swift in Sources */,
 				1FEED1E524A8F7EC00E3C700 /* GetDataOperation.swift in Sources */,
 				1F068C5E2450512B00715DD3 /* DismissAnimation.swift in Sources */,
+				1FB8576924B32D22002CC28B /* PhotoService.swift in Sources */,
 				1FDE2717243492D000032313 /* FriendsTableViewCell.swift in Sources */,
 				1FDE271B2434935800032313 /* GroupsTableViewController.swift in Sources */,
 				1F9BAF682434AF910043931B /* User.swift in Sources */,

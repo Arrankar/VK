@@ -54,9 +54,9 @@ class FriendsTableViewCell: UITableViewCell {
         friendName.text = user.firstName
         friendSurname.text = user.lastName
         guard let url = URL(string: user.image),
-        let data = try? Data(contentsOf: url)
-        else {
-        return
+            let data = try? Data(contentsOf: url)
+            else {
+                return
         }
         friendImage.avatar.image = UIImage(data: data)
     }

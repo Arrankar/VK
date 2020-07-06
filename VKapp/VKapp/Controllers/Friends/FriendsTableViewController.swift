@@ -23,7 +23,7 @@ class FriendsTableViewController: UITableViewController {
     var friends: Results<User>!
     var token: NotificationToken?
     var filteredFriends = [User]()
-    let apiWapper = ApiWrapper()
+    let apiWrapper = ApiWrapper()
     var isSearching = false
     
     override func viewDidLoad() {
@@ -33,10 +33,10 @@ class FriendsTableViewController: UITableViewController {
         self.buttonWidth.constant = 0
         self.imageConstraint.constant = 10 + searchTextField.frame.width / 2
         
-        apiWapper.getFriends()
+        apiWrapper.getFriends()
             .get { [weak self] users in
                 guard let self = self else { return }
-                self.apiWapper.saveData(data: users)
+                self.apiWrapper.saveData(data: users)
                
         }
          pairTableAndRealm()
