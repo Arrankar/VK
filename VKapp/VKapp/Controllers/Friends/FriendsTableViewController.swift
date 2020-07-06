@@ -24,6 +24,7 @@ class FriendsTableViewController: UITableViewController {
     var token: NotificationToken?
     var filteredFriends = [User]()
     let apiWrapper = ApiWrapper()
+    var photoService: PhotoService?
     var isSearching = false
     
     override func viewDidLoad() {
@@ -32,14 +33,9 @@ class FriendsTableViewController: UITableViewController {
         searchTextField.delegate = self
         self.buttonWidth.constant = 0
         self.imageConstraint.constant = 10 + searchTextField.frame.width / 2
-        
-        apiWrapper.getFriends()
-            .get { [weak self] users in
-                guard let self = self else { return }
-                self.apiWrapper.saveData(data: users)
-               
-        }
-         pairTableAndRealm()
+    
+        photoService = PhotoService(container: tableView)
+        pairTableAndRealm()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,11 +59,16 @@ class FriendsTableViewController: UITableViewController {
                         cell.frame.origin.x -= 100
         })
         if !isSearching {
-            let users = friends[indexPath.row]
-            cell.configure(with: users)
+            guard let users = friends?[indexPath.row] else { return cell }
+            let url = users.image
+            guard let image = photoService?.photo(atIndexpath: indexPath, byUrl: url) else { return cell }
+            cell.configure(with: users, image: image)
         } else {
             let filteredUsers = filteredFriends[indexPath.row]
-            cell.configure(with: filteredUsers)
+            let url = filteredUsers.image
+            guard let image = photoService?.photo(atIndexpath: indexPath, byUrl: url) else { return cell }
+            cell.configure(with: filteredUsers, image: image)
+            
         }
         return cell
     }
@@ -161,7 +162,6 @@ extension FriendsTableViewController {
     func pairTableAndRealm() {
         let config = Realm.Configuration(deleteRealmIfMigrationNeeded: true)
         guard let realm = try? Realm(configuration: config) else { return }
-        
         
         friends = realm.objects(User.self)
         token = friends.observe { [weak self] changes in
