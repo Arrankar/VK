@@ -15,11 +15,13 @@ class AllGroupsTableViewController: UITableViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     
     var groups = [Group]()
-    let apiWapper = ApiWrapper()
+    var apiWrapper = ApiWrapper()
+    var photoService: PhotoService?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
+        photoService = PhotoService(container: tableView)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -31,8 +33,9 @@ class AllGroupsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AllGroupsTableViewCell", for: indexPath) as! AllGroupsTableViewCell
         
         let group = groups[indexPath.row]
-        cell.configure(with: group)
-        
+        let url = group.image
+        guard let image = photoService?.photo(atIndexpath: indexPath, byUrl: url) else { return cell }
+        cell.configure(with: group, image: image)
         return cell
     }
     
@@ -42,7 +45,7 @@ class AllGroupsTableViewController: UITableViewController {
         if group.isMember != 1 {
             let alertVC = UIAlertController(title: "Вступить в данное сообщество?", message: nil, preferredStyle: .alert)
             let confirmAction = UIAlertAction(title: "Confirm", style: .default) { _ in
-                self.apiWapper.addGroup(groupId: group.id)
+                self.apiWrapper.addGroup(groupId: group.id)
                 Database.database().reference(withPath: "Authenticated users").child(String(Session.instance.userId)).child(String(group.id)).setValue(group.toAnyObject())
             }
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
@@ -69,9 +72,13 @@ extension AllGroupsTableViewController: UISearchBarDelegate {
             groups = [Group]()
             tableView.reloadData()
         } else {
-            apiWapper.groupSearch(searchText: searchText) { [weak self] filteredGroups in
-                self?.groups = filteredGroups
-                self?.tableView.reloadData()
+            DispatchQueue.global().async {
+                self.apiWrapper.groupSearch(searchText: searchText) { [weak self] filteredGroups in
+                    self?.groups = filteredGroups
+                    DispatchQueue.main.async {
+                        self?.tableView.reloadData()
+                    }
+                }
             }
         }
         tableView.reloadData()

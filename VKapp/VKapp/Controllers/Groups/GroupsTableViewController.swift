@@ -14,25 +14,28 @@ class GroupsTableViewController: UITableViewController {
     let apiWapper = ApiWrapper()
     var groups: Results<Group>!
     var token: NotificationToken?
+    var photoService: PhotoService?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        apiWapper.getGroups(controller: self)
+        photoService = PhotoService(container: tableView)
         pairTableAndRealm()
     }
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         groups.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GroupsTableViewCell", for: indexPath) as! GroupsTableViewCell
-        let group = groups[indexPath.row]
-        cell.configure(with: group)
+        guard let group = groups?[indexPath.row] else { return cell }
+        let url = group.image
+        guard let image = photoService?.photo(atIndexpath: indexPath, byUrl: url) else { return cell }
+        cell.configure(with: group, image: image)
         return cell
     }
     

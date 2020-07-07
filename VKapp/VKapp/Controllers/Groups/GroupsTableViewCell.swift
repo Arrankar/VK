@@ -24,14 +24,9 @@ class GroupsTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func configure(with group: Group) {
+    func configure(with group: Group, image: UIImage) {
         groupName.text = group.groupName
         membersCount.text = String(group.membersCount)
-        guard let url = URL(string: group.image),
-        let data = try? Data(contentsOf: url)
-        else {
-        return
-        }
-        groupImage.image = UIImage(data: data)
+        groupImage.image = image
     }
 }

@@ -24,15 +24,10 @@ class AllGroupsTableViewCell: UITableViewCell {
 
     }
     
-    func configure(with group: Group) {
+    func configure(with group: Group, image: UIImage) {
         allGroupsName.text = group.groupName
         membersLabel.text = String(group.membersCount)
-        guard let url = URL(string: group.image),
-        let data = try? Data(contentsOf: url)
-        else {
-        return
-        }
-        allGroupsImage.image = UIImage(data: data)
+        allGroupsImage.image = image
     }
 
 }

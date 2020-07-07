@@ -50,14 +50,9 @@ class FriendsTableViewCell: UITableViewCell {
         
     }
     
-    func configure(with user: User) {
+    func configure(with user: User, image: UIImage) {
         friendName.text = user.firstName
         friendSurname.text = user.lastName
-        guard let url = URL(string: user.image),
-        let data = try? Data(contentsOf: url)
-        else {
-        return
-        }
-        friendImage.avatar.image = UIImage(data: data)
+        friendImage.avatar.image = image
     }
 }
