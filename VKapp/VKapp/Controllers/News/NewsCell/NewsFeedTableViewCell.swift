@@ -45,7 +45,6 @@ class NewsFeedTableViewCell: UITableViewCell {
         flowlayout.itemSize = CGSize(width: 200, height: 200)
         flowlayout.minimumInteritemSpacing = 1.0
         imagesCollection.collectionViewLayout = flowlayout
-        
     }
     
     override func layoutSubviews() {
@@ -56,6 +55,7 @@ class NewsFeedTableViewCell: UITableViewCell {
     }
     
     func configure(with news: News) {
+        newsDateLabel.text = Date(timeIntervalSince1970: news.date).timeAgo(numericDates: false)
         postTextLabel.text = news.text
         viewsView.label.text = String(news.viewsCount)
         repostView.label.text = String(news.repostsCount)

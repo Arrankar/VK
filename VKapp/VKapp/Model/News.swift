@@ -14,6 +14,7 @@ struct NewsResponse: Decodable {
 
 struct Response: Decodable {
     let items: [News]
+    let next_from: String
     }
 }
  class News: Decodable {

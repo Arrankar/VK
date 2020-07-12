@@ -15,6 +15,7 @@ import PromiseKit
 class ApiWrapper {
     
     let baseUrl = "https://api.vk.com/method"
+    let session = Session.instance
     
     static var authRequest: URLRequest {
         var components = URLComponents()
@@ -126,13 +127,14 @@ class ApiWrapper {
         }
     }
     
-    func getNews(completion: @escaping ([News]) -> Void) {
+    func getNews(startFrom: String, completion: @escaping (NewsResponse.Response) -> Void) {
         
         let methodUrl = "/newsfeed.get"
         let url = baseUrl + methodUrl
         let parameters: Parameters = [
             "user_ids" : "\(Session.instance.userId)",
             "access_token" : Session.instance.token,
+            "start_from" : startFrom,
             "filters" : "post",
             "fields" : "domain, photo_200_orig",
             "v" : "5.68"
@@ -140,8 +142,9 @@ class ApiWrapper {
         
         AF.request(url, method: .get, parameters: parameters).responseData(queue: DispatchQueue.global()) { response in
             guard let data = response.value else { return }
-            let news = try! JSONDecoder().decode(NewsResponse.self, from: data).response.items
-            completion(news)
+            let response = try! JSONDecoder().decode(NewsResponse.self, from: data).response
+            self.session.nextFrom = response.next_from
+            completion(response)
         }
     }
     
