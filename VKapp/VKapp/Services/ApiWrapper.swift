@@ -17,6 +17,7 @@ class ApiWrapper {
     let baseUrl = "https://api.vk.com/method"
     let session = Session.instance
     
+    
     static var authRequest: URLRequest {
         var components = URLComponents()
         
@@ -127,7 +128,7 @@ class ApiWrapper {
         }
     }
     
-    func getNews(startFrom: String, completion: @escaping (NewsResponse.Response) -> Void) {
+    func getNews(startFrom: String, completion: @escaping (NewsResponse) -> Void) {
         
         let methodUrl = "/newsfeed.get"
         let url = baseUrl + methodUrl
@@ -142,7 +143,7 @@ class ApiWrapper {
         
         AF.request(url, method: .get, parameters: parameters).responseData(queue: DispatchQueue.global()) { response in
             guard let data = response.value else { return }
-            let response = try! JSONDecoder().decode(NewsResponse.self, from: data).response
+            let response = try! JSONDecoder().decode(ResponseNewsData.self, from: data).response
             self.session.nextFrom = response.next_from
             completion(response)
         }

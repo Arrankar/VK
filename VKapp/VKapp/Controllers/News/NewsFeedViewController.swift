@@ -13,6 +13,8 @@ class NewsFeedViewController: UIViewController {
     
     @IBOutlet weak var newsFeedTableView: UITableView!
     
+  
+    let galleryView: GalleryCollectionView? = nil
     private var refreshControl: UIRefreshControl?
     var newsArray = [News]()
     let apiWrapper = ApiWrapper()
@@ -46,7 +48,7 @@ class NewsFeedViewController: UIViewController {
     
     @objc func refreshNews() {
         refreshControl?.beginRefreshing()
-        let mostFreshNews = Date().timeIntervalSince1970
+        let mostFreshNews = newsArray.first?.date ?? Date().timeIntervalSince1970
         apiWrapper.getNews(startFrom: String(mostFreshNews)) { [weak self] news in
             guard let self = self else { return }
             DispatchQueue.main.async {
@@ -90,6 +92,7 @@ extension NewsFeedViewController: UITableViewDataSourcePrefetching {
         guard indexPaths.contains(where: isLoadingCell(for:)) else {
             return
         }
+        
         apiWrapper.getNews(startFrom: Session.instance.nextFrom) { [weak self] news in
             guard let self = self else { return }
             self.newsArray = self.newsArray + news.items
@@ -102,7 +105,6 @@ extension NewsFeedViewController: UITableViewDataSourcePrefetching {
     func isLoadingCell(for indexPath: IndexPath) -> Bool {
         return indexPath.row == (self.newsArray.count - 3)
     }
-    
 }
 
 

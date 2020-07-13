@@ -8,85 +8,67 @@
 
 import UIKit
 
-struct NewsResponse: Decodable {
-    let response: Response
-
-
-struct Response: Decodable {
-    let items: [News]
-    let next_from: String
-    }
+struct ResponseNewsData: Decodable {
+    let response: NewsResponse
 }
- class News: Decodable {
-     var date = 0.0
-     var text = ""
-     var sourceId = 0
-     var commentsCount = 0
-     var likesCount = 0
-     var repostsCount = 0
-     var viewsCount = 0
-     var image = ""
-    
-    enum CodingKeys: String, CodingKey {
-        case date
-        case sourceId = "source_id"
-        case text
-        case attachments
-        case comments
-        case likes
-        case reposts
-        case views
-    }
-    
-    enum AttachmentsKeys: String, CodingKey {
-        case photo
-        case type
-    }
 
-    enum PhotoKeys: String, CodingKey {
-        case image = "photo_604"
-    }
+struct NewsResponse: Decodable {
+    var items: [News]
+    var profiles: [User]
+    var groups: [Groups]
+    var next_from: String
+}
 
-    enum CommentsKeys: String, CodingKey {
-        case count
-    }
+struct News: Decodable {
+    var date: Double
+    var text: String
+    var source_id: Int
+//    var attachments: [Attachments]
+    var comments: Comments
+    var likes: Likes
+    var reposts: Reposts
+    var views: Views
+}
 
-    enum LikesKeys: String, CodingKey {
-        case count
-    }
+struct Comments: Decodable {
+    var count: Int
+}
 
-    enum RepostsKeys: String, CodingKey {
-        case count
-    }
+struct Reposts: Decodable {
+    var count: Int
+}
 
-    enum ViewsKeys: String, CodingKey {
-        case count
-    }
-    
-    convenience required init(from decoder: Decoder) throws {
-        self.init()
-        
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        self.date = try values.decode(Double.self, forKey: .date)
-        self.text = try values.decode(String.self, forKey: .text)
-        self.sourceId = try values.decode(Int.self, forKey: .sourceId)
-        
-//        var attachmentsValues = try values.nestedUnkeyedContainer(forKey: .attachments)
-//        let firstAttachmentValue = try attachmentsValues.nestedContainer(keyedBy: AttachmentsKeys.self)
-//        let photoValues = try firstAttachmentValue.nestedContainer(keyedBy: PhotoKeys.self, forKey: .photo)
-//        self.image = try photoValues.decode(String.self, forKey: .image)
-        
-        let commentsValues = try values.nestedContainer(keyedBy: CommentsKeys.self, forKey: .comments)
-        self.commentsCount = try commentsValues.decode(Int.self, forKey: .count)
-        
-        let likesValues = try values.nestedContainer(keyedBy: LikesKeys.self, forKey: .likes)
-        self.likesCount = try likesValues.decode(Int.self, forKey: .count)
-        
-        let repostsValues = try values.nestedContainer(keyedBy: RepostsKeys.self, forKey: .reposts)
-        self.repostsCount = try repostsValues.decode(Int.self, forKey: .count)
-        
-        let viewsVAlues = try values.nestedContainer(keyedBy: ViewsKeys.self, forKey: .views)
-        self.viewsCount = try viewsVAlues.decode(Int.self, forKey: .count)
-        }
-    }
+struct Views: Decodable {
+    var count: Int
+}
 
+struct Likes: Decodable {
+    var count: Int
+}
+
+//struct Attachments: Decodable {
+//    var type: String
+//    var photo: AttachmentPhotos?
+//
+//    enum CodingKeys: String, CodingKey {
+//        case type
+//        case photo
+//    }
+//
+//    init(from decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: CodingKeys.self)
+//        type = try container.decode(String.self, forKey: .type)
+//        photo = try? container.decodeIfPresent(AttachmentPhotos.self, forKey: .photo)
+//    }
+//}
+//
+//struct AttachmentPhotos: Decodable {
+//    var photo_1280: String
+//    var height: Int
+//    var width: Int
+//}
+
+struct Groups: Decodable {
+    var id: Int
+    var name: String
+}

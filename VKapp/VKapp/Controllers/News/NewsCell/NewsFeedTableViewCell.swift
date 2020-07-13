@@ -11,7 +11,7 @@ import UIKit
 @available(iOS 13.0, *)
 class NewsFeedTableViewCell: UITableViewCell {
    
-    @IBOutlet private weak var imagesCollection: GalleryCollectionView!
+    @IBOutlet weak var imagesCollection: GalleryCollectionView!
     @IBOutlet private weak var cardView: UIView!
     @IBOutlet private weak var newsImage: UIImageView!
     @IBOutlet private weak var newsNameLabel: UILabel!
@@ -21,13 +21,15 @@ class NewsFeedTableViewCell: UITableViewCell {
     @IBOutlet private weak var commentsVIew: CommentsView!
     @IBOutlet private weak var repostView: RepostView!
     @IBOutlet private weak var viewsView: ViewsView!
-    @IBOutlet private weak var scrollView: UIScrollView!
+
+    @IBOutlet weak var showMoreButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
         backgroundColor = .clear
         selectionStyle = .none
+        showMoreButton.isHidden = true
         
         cardView.layer.cornerRadius = 10
         cardView.clipsToBounds = true
@@ -57,9 +59,14 @@ class NewsFeedTableViewCell: UITableViewCell {
     func configure(with news: News) {
         newsDateLabel.text = Date(timeIntervalSince1970: news.date).timeAgo(numericDates: false)
         postTextLabel.text = news.text
-        viewsView.label.text = String(news.viewsCount)
-        repostView.label.text = String(news.repostsCount)
-        commentsVIew.label.text = String(news.commentsCount)
-        likeView.label.text = String(news.likesCount)
+        viewsView.label.text = String(news.views.count)
+        repostView.label.text = String(news.reposts.count)
+        commentsVIew.label.text = String(news.comments.count)
+        likeView.label.text = String(news.likes.count)
     }
+    
+    @IBAction func showMoreButtonPressed(_ sender: UIButton) {
+ 
+    }
+    
 }
